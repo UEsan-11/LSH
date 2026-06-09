@@ -1,96 +1,240 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>應援禮物 · 이수혁 Lee Soo Hyuk</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Serif+TC:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Serif+TC:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap"
+    rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #0a0a0f;
-      --bg2:       #111118;
-      --bg3:       #18181f;
-      --gold:      #e2c97e;
-      --gold-dim:  rgba(226,201,126,0.14);
-      --gold-line: rgba(226,201,126,0.22);
-      --text:      #f0e8d0;
-      --text2:     rgba(240,232,208,0.55);
-      --text3:     rgba(240,232,208,0.28);
-      --green:     #7ee2b8;
-      --green-bg:  rgba(126,226,184,0.12);
-      --green-br:  rgba(126,226,184,0.35);
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; min-height: 100vh; }
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #18181f;
+      --gold: #e2c97e;
+      --gold-dim: rgba(226, 201, 126, 0.14);
+      --gold-line: rgba(226, 201, 126, 0.22);
+      --text: #f0e8d0;
+      --text2: rgba(240, 232, 208, 0.55);
+      --text3: rgba(240, 232, 208, 0.28);
+      --green: #7ee2b8;
+      --green-bg: rgba(126, 226, 184, 0.12);
+      --green-br: rgba(126, 226, 184, 0.35);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+    }
 
     /* ── NAV ── */
     .site-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 20px 40px;
-      background: rgba(10,10,15,0.92);
+      background: rgba(10, 10, 15, 0.92);
       border-bottom: 1px solid var(--gold-line);
     }
-    .nav-logo { font-family: 'Noto Serif KR', serif; font-size: 14px; font-weight: 300; letter-spacing: 0.25em; color: var(--gold); text-decoration: none; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { font-size: 11px; letter-spacing: 0.2em; color: var(--text2); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    .nav-logo {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
     .auth-btn {
-      font-size: 11px; letter-spacing: 0.15em;
+      font-size: 11px;
+      letter-spacing: 0.15em;
       padding: 7px 18px;
       border: 1px solid var(--gold-line);
       border-radius: 2px;
-      background: transparent; color: var(--text2);
-      cursor: pointer; transition: all 0.2s;
+      background: transparent;
+      color: var(--text2);
+      cursor: pointer;
+      transition: all 0.2s;
       font-family: 'Noto Sans KR', sans-serif;
     }
-    .auth-btn:hover { border-color: var(--gold); color: var(--gold); }
-    .auth-btn.primary { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); }
-    .user-name { font-size: 11px; color: var(--text3); letter-spacing: 0.1em; }
+
+    .auth-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .auth-btn.primary {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    .user-name {
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+    }
 
     /* ── HEADER ── */
-    .header { text-align: center; padding: 120px 24px 48px; border-bottom: 1px solid var(--gold-line); }
-    .header-tag { font-size: 11px; letter-spacing: 0.35em; color: var(--gold); opacity: 0.75; margin-bottom: 16px; }
-    .header-title { font-family: 'Noto Serif KR', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 300; letter-spacing: 0.1em; color: #f8f0dd; }
-    .header-rule { width: 40px; height: 1px; background: var(--gold); margin: 20px auto; opacity: 0.6; }
-    .header-sub { font-size: 12px; color: var(--text3); letter-spacing: 0.15em; }
+    .header {
+      text-align: center;
+      padding: 120px 24px 48px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
+    .header-tag {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 16px;
+    }
+
+    .header-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #f8f0dd;
+    }
+
+    .header-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 20px auto;
+      opacity: 0.6;
+    }
+
+    .header-sub {
+      font-size: 12px;
+      color: var(--text3);
+      letter-spacing: 0.15em;
+    }
 
     /* ── TOOLBAR ── */
     .toolbar {
-      max-width: 1000px; margin: 0 auto;
+      max-width: 1000px;
+      margin: 0 auto;
       padding: 32px 24px 0;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
     }
-    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
     .filter-btn {
-      padding: 6px 18px; border-radius: 2px;
-      border: 1px solid rgba(240,232,208,0.15);
-      background: transparent; color: rgba(240,232,208,0.45);
-      font-size: 12px; letter-spacing: 0.1em; cursor: pointer;
-      transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif;
+      padding: 6px 18px;
+      border-radius: 2px;
+      border: 1px solid rgba(240, 232, 208, 0.15);
+      background: transparent;
+      color: rgba(240, 232, 208, 0.45);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Noto Sans KR', sans-serif;
     }
-    .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
-    .filter-btn.active { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); }
+
+    .filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .filter-btn.active {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
 
     .upload-btn {
-      padding: 8px 24px; border-radius: 2px;
+      padding: 8px 24px;
+      border-radius: 2px;
       border: 1px solid var(--green-br);
-      background: var(--green-bg); color: var(--green);
-      font-size: 12px; letter-spacing: 0.12em; cursor: pointer;
-      transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif;
-      display: flex; align-items: center; gap: 8px;
+      background: var(--green-bg);
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .upload-btn:hover { background: rgba(126,226,184,0.2); }
-    .upload-btn.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+
+    .upload-btn:hover {
+      background: rgba(126, 226, 184, 0.2);
+    }
+
+    .upload-btn.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
 
     /* ── GRID ── */
-    .gifts-wrap { max-width: 1000px; margin: 32px auto 0; padding: 0 24px 100px; }
+    .gifts-wrap {
+      max-width: 1000px;
+      margin: 32px auto 0;
+      padding: 0 24px 100px;
+    }
+
     .gifts-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -99,48 +243,135 @@
 
     /* ── GIFT CARD ── */
     .gift-card {
-      background: rgba(255,255,255,0.022);
+      background: rgba(255, 255, 255, 0.022);
       border: 1px solid var(--gold-line);
-      border-radius: 4px; overflow: hidden;
+      border-radius: 4px;
+      overflow: hidden;
       transition: border-color 0.2s, background 0.2s;
     }
-    .gift-card:hover { border-color: rgba(226,201,126,0.4); background: rgba(255,255,255,0.038); }
+
+    .gift-card:hover {
+      border-color: rgba(226, 201, 126, 0.4);
+      background: rgba(255, 255, 255, 0.038);
+    }
 
     .gift-thumb {
-      width: 100%; aspect-ratio: 4/3;
-      object-fit: cover; display: block;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
       background: var(--bg3);
     }
+
     .gift-thumb-placeholder {
-      width: 100%; aspect-ratio: 4/3;
+      width: 100%;
+      aspect-ratio: 4/3;
       background: var(--bg3);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
-    .gift-thumb-placeholder svg { opacity: 0.15; }
-    .gift-thumb-placeholder span { font-size: 10px; letter-spacing: 0.2em; color: var(--text3); }
 
-    .gift-info { padding: 16px 18px 18px; }
-    .gift-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .gift-thumb-placeholder svg {
+      opacity: 0.15;
+    }
+
+    .gift-thumb-placeholder span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text3);
+    }
+
+    .gift-info {
+      padding: 16px 18px 18px;
+    }
+
+    .gift-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
     .gift-type-badge {
-      font-size: 9px; letter-spacing: 0.12em;
-      padding: 2px 8px; border-radius: 2px; border: 1px solid;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      padding: 2px 8px;
+      border-radius: 2px;
+      border: 1px solid;
     }
-    .type-wallpaper { color: #7eb8e2; background: rgba(126,184,226,0.12); border-color: rgba(126,184,226,0.35); }
-    .type-sticker   { color: #e27ea8; background: rgba(226,126,168,0.12); border-color: rgba(226,126,168,0.35); }
-    .type-video     { color: #c47ee2; background: rgba(196,126,226,0.12); border-color: rgba(196,126,226,0.35); }
-    .type-card      { color: #e2a87e; background: rgba(226,168,126,0.12); border-color: rgba(226,168,126,0.35); }
-    .type-physical  { color: var(--green); background: var(--green-bg); border-color: var(--green-br); }
-    .type-other     { color: var(--text3); background: rgba(240,232,208,0.05); border-color: rgba(240,232,208,0.15); }
 
-    .gift-date { font-size: 10px; color: var(--text3); letter-spacing: 0.08em; }
-    .gift-title { font-size: 14px; color: var(--text); margin-bottom: 6px; letter-spacing: 0.04em; line-height: 1.4; }
-    .gift-author {
-      font-size: 11px; color: var(--gold); opacity: 0.75;
-      letter-spacing: 0.08em; margin-bottom: 8px;
+    .type-wallpaper {
+      color: #7eb8e2;
+      background: rgba(126, 184, 226, 0.12);
+      border-color: rgba(126, 184, 226, 0.35);
     }
-    .gift-author::before { content: '✦ '; font-size: 8px; }
-    .gift-desc { font-size: 12px; color: var(--text2); line-height: 1.65; }
+
+    .type-sticker {
+      color: #e27ea8;
+      background: rgba(226, 126, 168, 0.12);
+      border-color: rgba(226, 126, 168, 0.35);
+    }
+
+    .type-video {
+      color: #c47ee2;
+      background: rgba(196, 126, 226, 0.12);
+      border-color: rgba(196, 126, 226, 0.35);
+    }
+
+    .type-card {
+      color: #e2a87e;
+      background: rgba(226, 168, 126, 0.12);
+      border-color: rgba(226, 168, 126, 0.35);
+    }
+
+    .type-physical {
+      color: var(--green);
+      background: var(--green-bg);
+      border-color: var(--green-br);
+    }
+
+    .type-other {
+      color: var(--text3);
+      background: rgba(240, 232, 208, 0.05);
+      border-color: rgba(240, 232, 208, 0.15);
+    }
+
+    .gift-date {
+      font-size: 10px;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+    }
+
+    .gift-title {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    .gift-author {
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.75;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .gift-author::before {
+      content: '✦ ';
+      font-size: 8px;
+    }
+
+    .gift-desc {
+      font-size: 12px;
+      color: var(--text2);
+      line-height: 1.65;
+    }
 
     /* ── EMPTY ── */
     .empty-state {
@@ -151,402 +382,548 @@
       font-size: 13px;
       letter-spacing: 0.15em;
     }
-    .empty-state .es-icon { font-size: 32px; margin-bottom: 16px; opacity: 0.3; }
+
+    .empty-state .es-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      opacity: 0.3;
+    }
 
     /* ── MODAL BACKDROP ── */
     .modal-backdrop {
       display: none;
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,10,15,0.88);
-      align-items: center; justify-content: center;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(10, 10, 15, 0.88);
+      align-items: center;
+      justify-content: center;
       padding: 24px;
     }
-    .modal-backdrop.open { display: flex; }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
 
     .modal {
       background: var(--bg2);
       border: 1px solid var(--gold-line);
       border-radius: 6px;
-      width: 100%; max-width: 480px;
+      width: 100%;
+      max-width: 480px;
       padding: 36px 32px;
       position: relative;
     }
+
     .modal-close {
-      position: absolute; top: 16px; right: 20px;
-      background: none; border: none;
-      color: var(--text3); font-size: 20px; cursor: pointer;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text3);
+      font-size: 20px;
+      cursor: pointer;
       transition: color 0.2s;
     }
-    .modal-close:hover { color: var(--gold); }
+
+    .modal-close:hover {
+      color: var(--gold);
+    }
+
     .modal-title {
       font-family: 'Noto Serif KR', serif;
-      font-size: 20px; font-weight: 300;
-      letter-spacing: 0.08em; color: var(--text);
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--text);
       margin-bottom: 8px;
     }
-    .modal-sub { font-size: 12px; color: var(--text3); letter-spacing: 0.1em; margin-bottom: 28px; }
+
+    .modal-sub {
+      font-size: 12px;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
 
     /* 表單 */
-    .form-group { margin-bottom: 18px; }
-    .form-label { font-size: 10px; letter-spacing: 0.2em; color: var(--gold); opacity: 0.7; display: block; margin-bottom: 8px; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; padding: 10px 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(240,232,208,0.15);
-      border-radius: 3px; color: var(--text);
-      font-size: 13px; font-family: 'Noto Sans KR', sans-serif;
-      outline: none; transition: border-color 0.2s;
+    .form-group {
+      margin-bottom: 18px;
     }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
-    .form-select option { background: #18181f; }
-    .form-textarea { resize: vertical; min-height: 80px; }
+
+    .form-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(240, 232, 208, 0.15);
+      border-radius: 3px;
+      color: var(--text);
+      font-size: 13px;
+      font-family: 'Noto Sans KR', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-select option {
+      background: #18181f;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
 
     .form-file-area {
       width: 100%;
-      border: 1px dashed rgba(240,232,208,0.2);
-      border-radius: 3px; padding: 24px;
-      text-align: center; cursor: pointer;
+      border: 1px dashed rgba(240, 232, 208, 0.2);
+      border-radius: 3px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
       transition: border-color 0.2s;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
     }
-    .form-file-area:hover { border-color: var(--gold); }
-    .form-file-area input { display: none; }
-    .form-file-area .ffa-label { font-size: 12px; color: var(--text3); letter-spacing: 0.1em; }
-    .form-file-area .ffa-sub { font-size: 10px; color: var(--text3); opacity: 0.5; margin-top: 6px; }
-    .form-file-area .ffa-preview { max-width: 100%; max-height: 160px; border-radius: 3px; margin-top: 12px; }
+
+    .form-file-area:hover {
+      border-color: var(--gold);
+    }
+
+    .form-file-area input {
+      display: none;
+    }
+
+    .form-file-area .ffa-label {
+      font-size: 12px;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+    }
+
+    .form-file-area .ffa-sub {
+      font-size: 10px;
+      color: var(--text3);
+      opacity: 0.5;
+      margin-top: 6px;
+    }
+
+    .form-file-area .ffa-preview {
+      max-width: 100%;
+      max-height: 160px;
+      border-radius: 3px;
+      margin-top: 12px;
+    }
 
     .form-submit {
-      width: 100%; padding: 12px;
+      width: 100%;
+      padding: 12px;
       border: 1px solid var(--gold);
-      background: var(--gold-dim); color: var(--gold);
-      font-size: 13px; letter-spacing: 0.15em;
-      border-radius: 2px; cursor: pointer;
+      background: var(--gold-dim);
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      border-radius: 2px;
+      cursor: pointer;
       font-family: 'Noto Sans KR', sans-serif;
       transition: background 0.2s;
       margin-top: 8px;
     }
-    .form-submit:hover { background: rgba(226,201,126,0.28); }
-    .form-submit:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    .form-msg { font-size: 12px; text-align: center; margin-top: 12px; letter-spacing: 0.08em; min-height: 18px; }
-    .form-msg.ok  { color: var(--green); }
-    .form-msg.err { color: #e27e7e; }
+    .form-submit:hover {
+      background: rgba(226, 201, 126, 0.28);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .form-msg {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: 0.08em;
+      min-height: 18px;
+    }
+
+    .form-msg.ok {
+      color: var(--green);
+    }
+
+    .form-msg.err {
+      color: #e27e7e;
+    }
 
     /* Auth modal tabs */
-    .auth-tabs { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--gold-line); }
+    .auth-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
     .auth-tab {
-      flex: 1; padding: 10px; text-align: center;
-      font-size: 12px; letter-spacing: 0.15em; cursor: pointer;
-      color: var(--text3); border-bottom: 2px solid transparent;
-      transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none;
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      color: var(--text3);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
       font-family: 'Noto Sans KR', sans-serif;
     }
-    .auth-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .auth-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 560px) {
-      .site-nav { padding: 16px 20px; }
-      .nav-links { gap: 14px; }
-      .gifts-grid { grid-template-columns: 1fr 1fr; }
-      .modal { padding: 28px 20px; }
+      .site-nav {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .gifts-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal {
+        padding: 28px 20px;
+      }
     }
+
     @media (max-width: 400px) {
-      .gifts-grid { grid-template-columns: 1fr; }
+      .gifts-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="site-nav">
-  <a class="nav-logo" href="index.html">이수혁</a>
-  <ul class="nav-links">
-    <li><a href="about.html">ABOUT</a></li>
-    <li><a href="works.html">WORKS</a></li>
-    <li><a href="cheers.html">CHEERS</a></li>
-    <li><a href="gifts.html" class="active">GIFTS</a></li>
-  </ul>
-  <div class="nav-right">
-    <span class="user-name" id="navUserName"></span>
-    <button class="auth-btn" id="navAuthBtn" onclick="handleAuthBtn()">登入</button>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">이수혁</a>
+    <ul class="nav-links">
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="works.html">WORKS</a></li>
+      <li><a href="cheers.html">CHEERS</a></li>
+      <li><a href="gifts.html" class="active">GIFTS</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="user-name" id="navUserName"></span>
+      <button class="auth-btn" id="navAuthBtn" onclick="handleAuthBtn()">登入</button>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-tag">LEE SOO-HYUK · 이수혁</div>
+    <h1 class="header-title">선물 · 應援禮物</h1>
+    <div class="header-rule"></div>
+    <div class="header-sub">粉絲免費應援禮物 · Fan Free Gifts</div>
+  </header>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="setFilter('全部', this)">全部</button>
+      <button class="filter-btn" onclick="setFilter('壁紙', this)">壁紙/桌布</button>
+      <button class="filter-btn" onclick="setFilter('貼圖', this)">貼圖包</button>
+      <button class="filter-btn" onclick="setFilter('影片', this)">影片剪輯</button>
+      <button class="filter-btn" onclick="setFilter('卡片', this)">卡片/圖卡</button>
+      <button class="filter-btn" onclick="setFilter('實體', this)">實體周邊</button>
+      <button class="filter-btn" onclick="setFilter('其他', this)">其他</button>
+    </div>
+    <button class="upload-btn disabled" id="uploadBtn" onclick="openUploadModal()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1v8M3.5 4.5L7 1l3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M1 10.5V13h12v-2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      </svg>
+      上傳禮物
+    </button>
   </div>
-</nav>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-tag">LEE SOO-HYUK · 이수혁</div>
-  <h1 class="header-title">선물 · 應援禮物</h1>
-  <div class="header-rule"></div>
-  <div class="header-sub">粉絲免費應援禮物 · Fan Free Gifts</div>
-</header>
-
-<!-- TOOLBAR -->
-<div class="toolbar">
-  <div class="filter-tabs">
-    <button class="filter-btn active" onclick="setFilter('全部', this)">全部</button>
-    <button class="filter-btn" onclick="setFilter('壁紙', this)">壁紙/桌布</button>
-    <button class="filter-btn" onclick="setFilter('貼圖', this)">貼圖包</button>
-    <button class="filter-btn" onclick="setFilter('影片', this)">影片剪輯</button>
-    <button class="filter-btn" onclick="setFilter('卡片', this)">卡片/圖卡</button>
-    <button class="filter-btn" onclick="setFilter('實體', this)">實體周邊</button>
-    <button class="filter-btn" onclick="setFilter('其他', this)">其他</button>
-  </div>
-  <button class="upload-btn disabled" id="uploadBtn" onclick="openUploadModal()">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M3.5 4.5L7 1l3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 10.5V13h12v-2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-    上傳禮物
-  </button>
-</div>
-
-<!-- GIFTS GRID -->
-<div class="gifts-wrap">
-  <div class="gifts-grid" id="giftsGrid">
-    <div class="empty-state">
-      <div class="es-icon">🎁</div>
-      <div>載入中…</div>
+  <!-- GIFTS GRID -->
+  <div class="gifts-wrap">
+    <div class="gifts-grid" id="giftsGrid">
+      <div class="empty-state">
+        <div class="es-icon">🎁</div>
+        <div>載入中…</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ── AUTH MODAL ── -->
-<div class="modal-backdrop" id="authModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('authModal')">✕</button>
-    <div class="modal-title">이수혁 팬클럽</div>
-    <div class="modal-sub">登入 / 註冊以參與應援</div>
-    <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchAuthTab('login', this)">登入</button>
-      <button class="auth-tab" onclick="switchAuthTab('register', this)">註冊</button>
+  <!-- ── AUTH MODAL ── -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+      <div class="modal-title">이수혁 팬클럽</div>
+      <div class="modal-sub">登入 / 註冊以參與應援</div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchAuthTab('login', this)">登入</button>
+        <button class="auth-tab" onclick="switchAuthTab('register', this)">註冊</button>
+      </div>
+      <div id="authLoginForm">
+        <div class="form-group">
+          <label class="form-label">EMAIL</label>
+          <input class="form-input" type="email" id="loginEmail" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">密碼</label>
+          <input class="form-input" type="password" id="loginPwd" placeholder="••••••••" />
+        </div>
+        <button class="form-submit" onclick="doLogin()">登入</button>
+      </div>
+      <div id="authRegisterForm" style="display:none">
+        <div class="form-group">
+          <label class="form-label">顯示名稱（作者名）</label>
+          <input class="form-input" type="text" id="regName" placeholder="例：豹迷小花" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">EMAIL</label>
+          <input class="form-input" type="email" id="regEmail" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">密碼（至少6位）</label>
+          <input class="form-input" type="password" id="regPwd" placeholder="••••••••" />
+        </div>
+        <button class="form-submit" onclick="doRegister()">建立帳號</button>
+      </div>
+      <div class="form-msg" id="authMsg"></div>
     </div>
-    <div id="authLoginForm">
+  </div>
+
+  <!-- ── UPLOAD MODAL ── -->
+  <div class="modal-backdrop" id="uploadModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('uploadModal')">✕</button>
+      <div class="modal-title">上傳應援禮物</div>
+      <div class="modal-sub">登入後免費分享給大家 🎁</div>
+
       <div class="form-group">
-        <label class="form-label">EMAIL</label>
-        <input class="form-input" type="email" id="loginEmail" placeholder="your@email.com"/>
+        <label class="form-label">禮物標題</label>
+        <input class="form-input" type="text" id="giftTitle" placeholder="例：2025 豹紋手機壁紙" />
       </div>
       <div class="form-group">
-        <label class="form-label">密碼</label>
-        <input class="form-input" type="password" id="loginPwd" placeholder="••••••••"/>
+        <label class="form-label">類型</label>
+        <select class="form-select" id="giftType">
+          <option value="壁紙">壁紙/桌布</option>
+          <option value="貼圖">貼圖包</option>
+          <option value="影片">影片剪輯</option>
+          <option value="卡片">卡片/圖卡</option>
+          <option value="實體">實體周邊（拍照上傳）</option>
+          <option value="其他">其他</option>
+        </select>
       </div>
-      <button class="form-submit" onclick="doLogin()">登入</button>
+      <div class="form-group">
+        <label class="form-label">IG 帳號（選填，方便大家認識你）</label>
+        <input class="form-input" type="text" id="giftIg" placeholder="@your_ig_handle" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">說明（選填）</label>
+        <textarea class="form-textarea" id="giftDesc" placeholder="簡單介紹這個禮物…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">封面圖片</label>
+        <label class="form-file-area" id="fileArea">
+          <input type="file" id="giftFile" accept="image/*" onchange="previewFile(this)" />
+          <div class="ffa-label">點擊選擇圖片</div>
+          <div class="ffa-sub">JPG / PNG / WEBP · 最大 5MB</div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="form-label">下載連結（選填，Cloudinary / Google Drive 等）</label>
+        <input class="form-input" type="url" id="giftLink" placeholder="https://…" />
+      </div>
+      <button class="form-submit" id="submitGiftBtn" onclick="submitGift()">送出禮物 ✦</button>
+      <div class="form-msg" id="uploadMsg"></div>
     </div>
-    <div id="authRegisterForm" style="display:none">
-      <div class="form-group">
-        <label class="form-label">顯示名稱（作者名）</label>
-        <input class="form-input" type="text" id="regName" placeholder="例：豹迷小花"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">EMAIL</label>
-        <input class="form-input" type="email" id="regEmail" placeholder="your@email.com"/>
-      </div>
-      <div class="form-group">
-        <label class="form-label">密碼（至少6位）</label>
-        <input class="form-input" type="password" id="regPwd" placeholder="••••••••"/>
-      </div>
-      <button class="form-submit" onclick="doRegister()">建立帳號</button>
-    </div>
-    <div class="form-msg" id="authMsg"></div>
   </div>
-</div>
 
-<!-- ── UPLOAD MODAL ── -->
-<div class="modal-backdrop" id="uploadModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('uploadModal')">✕</button>
-    <div class="modal-title">上傳應援禮物</div>
-    <div class="modal-sub">登入後免費分享給大家 🎁</div>
+  <footer
+    style="text-align:center;padding:24px;font-size:11px;color:var(--text3);letter-spacing:0.2em;border-top:1px solid var(--gold-line)">
+    LSH · 豹 · 2006 –
+  </footer>
 
-    <div class="form-group">
-      <label class="form-label">禮物標題</label>
-      <input class="form-input" type="text" id="giftTitle" placeholder="例：2025 豹紋手機壁紙"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label">類型</label>
-      <select class="form-select" id="giftType">
-        <option value="壁紙">壁紙/桌布</option>
-        <option value="貼圖">貼圖包</option>
-        <option value="影片">影片剪輯</option>
-        <option value="卡片">卡片/圖卡</option>
-        <option value="實體">實體周邊（拍照上傳）</option>
-        <option value="其他">其他</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">IG 帳號（選填，方便大家認識你）</label>
-      <input class="form-input" type="text" id="giftIg" placeholder="@your_ig_handle"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label">說明（選填）</label>
-      <textarea class="form-textarea" id="giftDesc" placeholder="簡單介紹這個禮物…"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">封面圖片</label>
-      <label class="form-file-area" id="fileArea">
-        <input type="file" id="giftFile" accept="image/*" onchange="previewFile(this)"/>
-        <div class="ffa-label">點擊選擇圖片</div>
-        <div class="ffa-sub">JPG / PNG / WEBP · 最大 5MB</div>
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="form-label">下載連結（選填，Cloudinary / Google Drive 等）</label>
-      <input class="form-input" type="url" id="giftLink" placeholder="https://…"/>
-    </div>
-    <button class="form-submit" id="submitGiftBtn" onclick="submitGift()">送出禮物 ✦</button>
-    <div class="form-msg" id="uploadMsg"></div>
-  </div>
-</div>
+  <script>
+    /* ── 狀態 ── */
+    let currentUser = null;
+    let currentFilter = '全部';
+    let allGifts = [];
 
-<footer style="text-align:center;padding:24px;font-size:11px;color:var(--text3);letter-spacing:0.2em;border-top:1px solid var(--gold-line)">
-  LSH · 豹 · 2006 –
-</footer>
+    const TYPE_CLASS = {
+      壁紙: 'type-wallpaper', 貼圖: 'type-sticker',
+      影片: 'type-video', 卡片: 'type-card',
+      實體: 'type-physical', 其他: 'type-other'
+    };
 
-<script>
-/* ── 狀態 ── */
-let currentUser   = null;
-let currentFilter = '全部';
-let allGifts      = [];
+    /* ════ AUTH（靜態預覽版）════ */
+    function updateNavAuth() {
+      const btn = document.getElementById('navAuthBtn');
+      const name = document.getElementById('navUserName');
+      const upBtn = document.getElementById('uploadBtn');
+      if (currentUser) {
+        name.textContent = currentUser.name;
+        btn.textContent = '登出';
+        btn.className = 'auth-btn';
+        upBtn.classList.remove('disabled');
+      } else {
+        name.textContent = '';
+        btn.textContent = '登入';
+        btn.className = 'auth-btn primary';
+        upBtn.classList.add('disabled');
+      }
+    }
 
-const TYPE_CLASS = {
-  壁紙:'type-wallpaper', 貼圖:'type-sticker',
-  影片:'type-video',     卡片:'type-card',
-  實體:'type-physical',  其他:'type-other'
-};
+    function handleAuthBtn() {
+      if (currentUser) { currentUser = null; updateNavAuth(); }
+      else openModal('authModal');
+    }
 
-/* ════ AUTH（靜態預覽版）════ */
-function updateNavAuth() {
-  const btn   = document.getElementById('navAuthBtn');
-  const name  = document.getElementById('navUserName');
-  const upBtn = document.getElementById('uploadBtn');
-  if (currentUser) {
-    name.textContent = currentUser.name;
-    btn.textContent  = '登出';
-    btn.className    = 'auth-btn';
-    upBtn.classList.remove('disabled');
-  } else {
-    name.textContent = '';
-    btn.textContent  = '登入';
-    btn.className    = 'auth-btn primary';
-    upBtn.classList.add('disabled');
-  }
-}
+    function switchAuthTab(tab, el) {
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('authLoginForm').style.display = tab === 'login' ? '' : 'none';
+      document.getElementById('authRegisterForm').style.display = tab === 'register' ? '' : 'none';
+      document.getElementById('authMsg').textContent = '';
+    }
 
-function handleAuthBtn() {
-  if (currentUser) { currentUser = null; updateNavAuth(); }
-  else openModal('authModal');
-}
+    function doLogin() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const msg = document.getElementById('authMsg');
+      if (!email) { msg.className = 'form-msg err'; msg.textContent = '請輸入 Email'; return; }
+      currentUser = { name: email.split('@')[0] };
+      updateNavAuth();
+      msg.className = 'form-msg ok'; msg.textContent = '登入成功！（預覽模式）';
+      setTimeout(() => closeModal('authModal'), 900);
+    }
 
-function switchAuthTab(tab, el) {
-  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('authLoginForm').style.display    = tab === 'login'    ? '' : 'none';
-  document.getElementById('authRegisterForm').style.display = tab === 'register' ? '' : 'none';
-  document.getElementById('authMsg').textContent = '';
-}
+    function doRegister() {
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const msg = document.getElementById('authMsg');
+      if (!name || !email) { msg.className = 'form-msg err'; msg.textContent = '請填入所有欄位'; return; }
+      currentUser = { name };
+      updateNavAuth();
+      msg.className = 'form-msg ok'; msg.textContent = '註冊成功！（預覽模式）';
+      setTimeout(() => closeModal('authModal'), 900);
+    }
 
-function doLogin() {
-  const email = document.getElementById('loginEmail').value.trim();
-  const msg   = document.getElementById('authMsg');
-  if (!email) { msg.className = 'form-msg err'; msg.textContent = '請輸入 Email'; return; }
-  currentUser = { name: email.split('@')[0] };
-  updateNavAuth();
-  msg.className = 'form-msg ok'; msg.textContent = '登入成功！（預覽模式）';
-  setTimeout(() => closeModal('authModal'), 900);
-}
+    /* ════ GIFTS 資料 ════ */
+    /* 靜態預覽資料，接上 Supabase 後換成 loadGifts() */
+    const STATIC_GIFTS = [
+      {
+        id: 1,
+        title: '2026 見面會 SVIP 吊牌',
+        type: '實體',
+        description: 'Eternal Man Tour 見面會 SVIP 限定吊牌，金色燙字設計。',
+        image_url: 'assets/images/gift01.jpg',
+        link_url: null,
+        author_name: '爰爰',
+        author_ig: null,
+        created_at: '2026-05-30',
+      },
+      {
+        id: 2,
+        title: '2026 見面會 壓克力牌',
+        type: '實體',
+        description: '見面會限定壓克力立牌，櫻花騎士款。',
+        image_url: 'assets/images/gift02.jpg',
+        link_url: null,
+        author_name: 'kumy',
+        author_ig: null,
+        created_at: '2026-05-30',
+      },
+      {
+        id: 3,
+        title: '2026 見面會 豹豹赫徽章',
+        type: '實體',
+        description: '手工豹豹赫閃光徽章，閃亮星星款。',
+        image_url: 'assets/images/gift03.jpg',
+        link_url: null,
+        author_name: 'hyukmi',
+        author_ig: null,
+        created_at: '2026-05-30',
+      },
+      {
+        id: 4,
+        title: '2026 見面會 台灣飯T「I LOVE LEESOOHYUK」',
+        type: '實體',
+        description: '台灣粉絲應援T恤，I ♥ SOOHYUK 水鑽字款，附 Little Hyukmi 徽章。',
+        image_url: 'assets/images/gift04.jpg',
+        link_url: null,
+        author_name: '台灣飯',
+        author_ig: null,
+        created_at: '2026-05-30',
+      },
+    ];
 
-function doRegister() {
-  const name  = document.getElementById('regName').value.trim();
-  const email = document.getElementById('regEmail').value.trim();
-  const msg   = document.getElementById('authMsg');
-  if (!name || !email) { msg.className = 'form-msg err'; msg.textContent = '請填入所有欄位'; return; }
-  currentUser = { name };
-  updateNavAuth();
-  msg.className = 'form-msg ok'; msg.textContent = '註冊成功！（預覽模式）';
-  setTimeout(() => closeModal('authModal'), 900);
-}
+    async function loadGifts() {
+      allGifts = STATIC_GIFTS;
+      renderGifts();
+    }
 
-/* ════ GIFTS 資料 ════ */
-/* 靜態預覽資料，接上 Supabase 後換成 loadGifts() */
-const STATIC_GIFTS = [
-  {
-    id: 1,
-    title: '2026 見面會 SVIP 吊牌',
-    type: '實體',
-    description: 'Eternal Man Tour 見面會 SVIP 限定吊牌，金色燙字設計。',
-    image_url: 'assets/images/gift01.jpg',
-    link_url: null,
-    author_name: '爰爰',
-    author_ig: null,
-    created_at: '2026-05-01',
-  },
-  {
-    id: 2,
-    title: '2026 見面會 壓克力牌',
-    type: '實體',
-    description: '見面會限定壓克力立牌，豹豹插畫款。',
-    image_url: 'assets/images/gift02.jpg',
-    link_url: null,
-    author_name: 'kumy',
-    author_ig: null,
-    created_at: '2026-05-01',
-  },
-  {
-    id: 3,
-    title: '2026 見面會 豹豹赫徽章',
-    type: '實體',
-    description: '手工豹豹赫閃光徽章，閃亮星星款。',
-    image_url: 'assets/images/gift03.jpg',
-    link_url: null,
-    author_name: 'hyukmi',
-    author_ig: null,
-    created_at: '2026-05-01',
-  },
-  {
-    id: 4,
-    title: '2026 見面會 台灣飯T「I LOVE LEESOOHYUK」',
-    type: '實體',
-    description: '台灣粉絲應援T恤，I ♥ SOOHYUK 水鑽字款，附 Little Hyukmi 徽章。',
-    image_url: 'assets/images/gift04.jpg',
-    link_url: null,
-    author_name: '台灣飯',
-    author_ig: null,
-    created_at: '2026-05-01',
-  },
-];
+    function setFilter(f, btn) {
+      currentFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGifts();
+    }
 
-async function loadGifts() {
-  allGifts = STATIC_GIFTS;
-  renderGifts();
-}
+    function renderGifts() {
+      const grid = document.getElementById('giftsGrid');
+      const list = currentFilter === '全部'
+        ? allGifts
+        : allGifts.filter(g => g.type === currentFilter);
 
-function setFilter(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderGifts();
-}
+      if (!list.length) {
+        grid.innerHTML = `<div class="empty-state"><div class="es-icon">🎁</div><div>還沒有禮物，快來第一個上傳！</div></div>`;
+        return;
+      }
 
-function renderGifts() {
-  const grid = document.getElementById('giftsGrid');
-  const list = currentFilter === '全部'
-    ? allGifts
-    : allGifts.filter(g => g.type === currentFilter);
-
-  if (!list.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="es-icon">🎁</div><div>還沒有禮物，快來第一個上傳！</div></div>`;
-    return;
-  }
-
-  grid.innerHTML = list.map(g => {
-    const tc = TYPE_CLASS[g.type] || 'type-other';
-    const dateStr = g.created_at ? g.created_at.slice(0,7) : '';
-    const thumb = g.image_url
-      ? `<img class="gift-thumb" src="${g.image_url}" alt="${g.title}" loading="lazy"/>`
-      : `<div class="gift-thumb-placeholder">
+      grid.innerHTML = list.map(g => {
+        const tc = TYPE_CLASS[g.type] || 'type-other';
+        const dateStr = g.created_at ? g.created_at.slice(0, 7) : '';
+        const thumb = g.image_url
+          ? `<img class="gift-thumb" src="${g.image_url}" alt="${g.title}" loading="lazy"/>`
+          : `<div class="gift-thumb-placeholder">
            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3" y="7" width="30" height="22" rx="3" stroke="#e2c97e" stroke-width="1.2"/><circle cx="18" cy="18" r="5" stroke="#e2c97e" stroke-width="1.2"/></svg>
            <span>NO IMAGE</span>
          </div>`;
-    const linkBtn = g.link_url
-      ? `<a href="${g.link_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-size:11px;color:var(--gold);letter-spacing:0.1em;opacity:0.8;text-decoration:none;border-bottom:1px solid rgba(226,201,126,0.3);">查看 / 下載 →</a>`
-      : '';
-    return `
+        const linkBtn = g.link_url
+          ? `<a href="${g.link_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-size:11px;color:var(--gold);letter-spacing:0.1em;opacity:0.8;text-decoration:none;border-bottom:1px solid rgba(226,201,126,0.3);">查看 / 下載 →</a>`
+          : '';
+        return `
       <div class="gift-card">
         ${thumb}
         <div class="gift-info">
@@ -557,101 +934,102 @@ function renderGifts() {
           <div class="gift-title">${g.title}</div>
           <div class="gift-author">
             ${g.author_ig
-              ? `<a href="https://instagram.com/${g.author_ig.replace('@','')}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;opacity:0.8;">✦ ${g.author_name || '匿名'} <span style="font-size:9px;opacity:0.6;">@${g.author_ig.replace('@','')}</span></a>`
-              : `✦ ${g.author_name || '匿名'}`
-            }
+            ? `<a href="https://instagram.com/${g.author_ig.replace('@', '')}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;opacity:0.8;">✦ ${g.author_name || '匿名'} <span style="font-size:9px;opacity:0.6;">@${g.author_ig.replace('@', '')}</span></a>`
+            : `✦ ${g.author_name || '匿名'}`
+          }
           </div>
           ${g.description ? `<div class="gift-desc">${g.description}</div>` : ''}
           ${linkBtn}
         </div>
       </div>`;
-  }).join('');
-}
+      }).join('');
+    }
 
-/* ════ UPLOAD ════ */
-function openUploadModal() {
-  if (!currentUser) { openModal('authModal'); return; }
-  openModal('uploadModal');
-}
+    /* ════ UPLOAD ════ */
+    function openUploadModal() {
+      if (!currentUser) { openModal('authModal'); return; }
+      openModal('uploadModal');
+    }
 
-function previewFile(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const area = document.getElementById('fileArea');
-  const existing = area.querySelector('.ffa-preview');
-  if (existing) existing.remove();
-  const img = document.createElement('img');
-  img.className = 'ffa-preview';
-  img.src = URL.createObjectURL(file);
-  area.appendChild(img);
-}
+    function previewFile(input) {
+      const file = input.files[0];
+      if (!file) return;
+      const area = document.getElementById('fileArea');
+      const existing = area.querySelector('.ffa-preview');
+      if (existing) existing.remove();
+      const img = document.createElement('img');
+      img.className = 'ffa-preview';
+      img.src = URL.createObjectURL(file);
+      area.appendChild(img);
+    }
 
-async function submitGift() {
-  if (!currentUser) return;
-  const title = document.getElementById('giftTitle').value.trim();
-  const type  = document.getElementById('giftType').value;
-  const desc  = document.getElementById('giftDesc').value.trim();
-  const link  = document.getElementById('giftLink').value.trim();
-  const file  = document.getElementById('giftFile').files[0];
-  const msg   = document.getElementById('uploadMsg');
-  const btn   = document.getElementById('submitGiftBtn');
+    async function submitGift() {
+      if (!currentUser) return;
+      const title = document.getElementById('giftTitle').value.trim();
+      const type = document.getElementById('giftType').value;
+      const desc = document.getElementById('giftDesc').value.trim();
+      const link = document.getElementById('giftLink').value.trim();
+      const file = document.getElementById('giftFile').files[0];
+      const msg = document.getElementById('uploadMsg');
+      const btn = document.getElementById('submitGiftBtn');
 
-  if (!title) { msg.className = 'form-msg err'; msg.textContent = '請填入標題'; return; }
+      if (!title) { msg.className = 'form-msg err'; msg.textContent = '請填入標題'; return; }
 
-  btn.disabled = true;
-  msg.className = 'form-msg'; msg.textContent = '上傳中…';
+      btn.disabled = true;
+      msg.className = 'form-msg'; msg.textContent = '上傳中…';
 
-  let image_url = null;
+      let image_url = null;
 
-  /* 上傳圖片到 Supabase Storage */
-  if (file) {
-    const ext  = file.name.split('.').pop();
-    const path = `gifts/${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
-    const { error: upErr } = await sb.storage.from('gift-images').upload(path, file);
-    if (upErr) { msg.className = 'form-msg err'; msg.textContent = '圖片上傳失敗：' + upErr.message; btn.disabled = false; return; }
-    const { data: urlData } = sb.storage.from('gift-images').getPublicUrl(path);
-    image_url = urlData.publicUrl;
-  }
+      /* 上傳圖片到 Supabase Storage */
+      if (file) {
+        const ext = file.name.split('.').pop();
+        const path = `gifts/${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+        const { error: upErr } = await sb.storage.from('gift-images').upload(path, file);
+        if (upErr) { msg.className = 'form-msg err'; msg.textContent = '圖片上傳失敗：' + upErr.message; btn.disabled = false; return; }
+        const { data: urlData } = sb.storage.from('gift-images').getPublicUrl(path);
+        image_url = urlData.publicUrl;
+      }
 
-  const display_name = currentUser.user_metadata?.display_name || currentUser.email;
+      const display_name = currentUser.user_metadata?.display_name || currentUser.email;
 
-  const { error } = await sb.from('gifts').insert({
-    title,
-    type,
-    description: desc || null,
-    link_url:    link || null,
-    image_url,
-    author_name: display_name,
-    user_id:     currentUser.id,
-  });
+      const { error } = await sb.from('gifts').insert({
+        title,
+        type,
+        description: desc || null,
+        link_url: link || null,
+        image_url,
+        author_name: display_name,
+        user_id: currentUser.id,
+      });
 
-  if (error) {
-    msg.className = 'form-msg err'; msg.textContent = '送出失敗：' + error.message;
-    btn.disabled = false; return;
-  }
+      if (error) {
+        msg.className = 'form-msg err'; msg.textContent = '送出失敗：' + error.message;
+        btn.disabled = false; return;
+      }
 
-  msg.className = 'form-msg ok'; msg.textContent = '✦ 禮物已上傳，謝謝你！';
-  btn.disabled = false;
+      msg.className = 'form-msg ok'; msg.textContent = '✦ 禮物已上傳，謝謝你！';
+      btn.disabled = false;
 
-  /* 清空表單 */
-  ['giftTitle','giftDesc','giftLink'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('giftFile').value = '';
-  const prev = document.querySelector('.ffa-preview');
-  if (prev) prev.remove();
+      /* 清空表單 */
+      ['giftTitle', 'giftDesc', 'giftLink'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('giftFile').value = '';
+      const prev = document.querySelector('.ffa-preview');
+      if (prev) prev.remove();
 
-  setTimeout(() => { closeModal('uploadModal'); loadGifts(); }, 1200);
-}
+      setTimeout(() => { closeModal('uploadModal'); loadGifts(); }, 1200);
+    }
 
-/* ════ MODAL HELPERS ════ */
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-backdrop').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
-});
+    /* ════ MODAL HELPERS ════ */
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+    document.querySelectorAll('.modal-backdrop').forEach(m => {
+      m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+    });
 
-/* ════ INIT ════ */
-updateNavAuth();
-loadGifts();
-</script>
+    /* ════ INIT ════ */
+    updateNavAuth();
+    loadGifts();
+  </script>
 </body>
+
 </html>
