@@ -25,6 +25,20 @@
 
     html { scroll-behavior: smooth; }
 
+    /* ── NAV ── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 40px;
+      background: rgba(10,10,15,0.92);
+      border-bottom: 1px solid rgba(226,201,126,0.22);
+    }
+    .nav-logo { font-family: 'Noto Serif KR', serif; font-size: 14px; font-weight: 300; letter-spacing: 0.25em; color: #e2c97e; text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 11px; letter-spacing: 0.2em; color: rgba(240,232,208,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #e2c97e; }
+    .nav-links a.active { color: #e2c97e; }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -35,7 +49,7 @@
     /* ── HEADER ── */
     .header {
       text-align: center;
-      padding: 64px 24px 44px;
+      padding: 100px 24px 44px;
       border-bottom: 1px solid var(--gold-line);
       position: relative;
     }
@@ -246,6 +260,16 @@
 </head>
 <body>
 
+<nav class="site-nav">
+  <a class="nav-logo" href="index.html">이수혁</a>
+  <ul class="nav-links">
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="works.html" class="active">WORKS</a></li>
+    <li><a href="cheers.html">CHEERS</a></li>
+    <li><a href="gifts.html">GIFTS</a></li>
+  </ul>
+</nav>
+
 <header class="header">
   <div class="header-tag">LEE SOO-HYUK · 이수혁 · 李洙赫</div>
   <h1 class="header-title">作品年表</h1>
@@ -287,6 +311,7 @@ const works = [
   { year:2022, title:"《還有明天》", type:"電視劇", desc:"飾演死神組長朴重吉，粉絲人氣高峰角色之一。", tags:["奇幻","人氣高峰"] },
   { year:2023, title:"時尚活動・品牌代言", type:"活動", desc:"持續維持高級精品形象，活躍於時尚圈。", tags:["時尚","代言"] },
   { year:2024, title:"《于氏王后》", type:"電視劇", desc:"古裝權力鬥爭劇，帝王氣場很強。", tags:["古裝","權謀"] },
+  { year:2024, title:"加入 Saram Entertainment", type:"活動", desc:"離開 YG Entertainment，正式簽約新公司 Saram Entertainment，展開全新篇章。", tags:["公司","轉簽"] },
   { year:2025, title:"《파란／Lost》", type:"電影", desc:"心理懸疑電影。", tags:["心理","懸疑"] },
   { year:2025, title:"《S LINE》", type:"電視劇", desc:"黑暗奇幻題材，話題度很高。", tags:["黑暗奇幻","話題"] },
   { year:2025, month:"11/21", title:"《杭州飯咪》", type:"活動", desc:"時隔10年的官方見面會 #1。", tags:[] },
