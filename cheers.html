@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>應援語 · 이수혁 Lee Soo Hyuk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Serif+TC:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0f;
+      --bg2:       #111118;
+      --bg3:       #18181f;
+      --gold:      #e2c97e;
+      --gold-dim:  rgba(226,201,126,0.14);
+      --gold-line: rgba(226,201,126,0.22);
+      --text:      #f0e8d0;
+      --text2:     rgba(240,232,208,0.55);
+      --text3:     rgba(240,232,208,0.28);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(10,10,15,0.92);
+      border-bottom: 1px solid var(--gold-line);
+    }
+    .nav-logo {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 11px; letter-spacing: 0.2em;
+      color: var(--text2); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 120px 24px 48px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+    .header-tag {
+      font-size: 11px; letter-spacing: 0.35em;
+      color: var(--gold); opacity: 0.75; margin-bottom: 16px;
+    }
+    .header-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 300; letter-spacing: 0.1em;
+      color: #f8f0dd; line-height: 1.15;
+    }
+    .header-rule {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin: 20px auto; opacity: 0.6;
+    }
+    .header-sub {
+      font-size: 12px; color: var(--text3);
+      letter-spacing: 0.15em;
+    }
+
+    /* ── CATEGORY TABS ── */
+    .cat-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 36px 24px 0;
+      flex-wrap: wrap;
+    }
+    .cat-btn {
+      padding: 7px 22px;
+      border-radius: 2px;
+      border: 1px solid rgba(240,232,208,0.15);
+      background: transparent;
+      color: rgba(240,232,208,0.45);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 12px; letter-spacing: 0.12em;
+      cursor: pointer; transition: all 0.22s ease;
+    }
+    .cat-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .cat-btn.active {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* ── GRID ── */
+    .cards-wrap {
+      max-width: 900px;
+      margin: 44px auto 0;
+      padding: 0 24px 100px;
+    }
+    .cat-section { margin-bottom: 52px; }
+    .cat-section.hidden { display: none; }
+    .cat-label {
+      font-size: 10px; letter-spacing: 0.3em;
+      color: var(--gold); opacity: 0.65;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    /* ── CARD ── */
+    .cheer-card {
+      background: rgba(255,255,255,0.022);
+      border: 1px solid var(--gold-line);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cheer-card:hover {
+      background: rgba(226,201,126,0.06);
+      border-color: rgba(226,201,126,0.4);
+    }
+    .cheer-card.open {
+      background: rgba(226,201,126,0.07);
+      border-color: rgba(226,201,126,0.45);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      gap: 12px;
+    }
+    .card-ko {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 17px; font-weight: 300;
+      color: var(--text); letter-spacing: 0.05em;
+      flex: 1;
+    }
+    .card-rom {
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-style: italic;
+    }
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); opacity: 0.6;
+      font-size: 14px;
+      transition: transform 0.25s, opacity 0.2s;
+    }
+    .cheer-card.open .card-toggle {
+      transform: rotate(45deg);
+      opacity: 1;
+    }
+
+    /* 展開區 */
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .cheer-card.open .card-body { max-height: 300px; }
+
+    .card-langs {
+      padding: 0 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid rgba(226,201,126,0.12);
+    }
+    .lang-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .lang-tag {
+      width: 28px; flex-shrink: 0;
+      font-size: 9px; letter-spacing: 0.1em;
+      color: var(--gold); opacity: 0.6;
+      padding-top: 3px;
+    }
+    .lang-text {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+      flex: 1;
+    }
+    .lang-text.ko {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 300;
+      color: rgba(240,232,208,0.75);
+    }
+
+    /* 複製按鈕 */
+    .copy-row {
+      padding: 0 20px 16px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .copy-btn {
+      font-size: 10px; letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border: 1px solid var(--gold-line);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--text3);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .copy-btn.copied { color: #7ee2b8; border-color: rgba(126,226,184,0.5); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.2em;
+      border-top: 1px solid var(--gold-line);
+    }
+
+    @media (max-width: 480px) {
+      .site-nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="nav-logo" href="index.html">이수혁</a>
+  <ul class="nav-links">
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="works.html">WORKS</a></li>
+    <li><a href="cheers.html" class="active">CHEERS</a></li>
+    <li><a href="gifts.html">GIFTS</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-tag">LEE SOO-HYUK · 이수혁</div>
+  <h1 class="header-title">응원어 · 應援語</h1>
+  <div class="header-rule"></div>
+  <div class="header-sub">繁中 · EN · 한국어 · 日本語</div>
+</header>
+
+<!-- CATEGORY TABS -->
+<div class="cat-tabs">
+  <button class="cat-btn active" onclick="setFilter('全部', this)">全部</button>
+  <button class="cat-btn" onclick="setFilter('基本', this)">基本應援</button>
+  <button class="cat-btn" onclick="setFilter('見面會', this)">見面會</button>
+  <button class="cat-btn" onclick="setFilter('生日', this)">生日</button>
+  <button class="cat-btn" onclick="setFilter('日常', this)">日常對話</button>
+</div>
+
+<!-- CARDS -->
+<div class="cards-wrap" id="cardsWrap"></div>
+
+<footer>LSH · 豹 · 2006 –</footer>
+
+<script>
+const cheers = [
+  /* ── 基本應援 ── */
+  {
+    cat: '基本',
+    ko: '수혁아 사랑해',
+    rom: 'Su-hyeok-a sa-rang-hae',
+    langs: { zh: '洙赫，我愛你', en: 'Soo-hyuk, I love you', ja: 'スヒョク、愛してる' }
+  },
+  {
+    cat: '基本',
+    ko: '최고야！',
+    rom: 'Choe-go-ya!',
+    langs: { zh: '你最棒！', en: "You're the best!", ja: '最高だよ！' }
+  },
+  {
+    cat: '基本',
+    ko: '파이팅！',
+    rom: 'Pa-i-ting!',
+    langs: { zh: '加油！', en: 'Fighting! / You got this!', ja: 'ファイティン！' }
+  },
+  {
+    cat: '基本',
+    ko: '행복해라',
+    rom: 'Haeng-bo-kae-ra',
+    langs: { zh: '希望你幸福', en: 'I hope you are happy', ja: '幸せでいてね' }
+  },
+  {
+    cat: '基本',
+    ko: '오래오래 함께해요',
+    rom: 'O-rae-o-rae ham-kke-hae-yo',
+    langs: { zh: '請陪我們很久很久', en: 'Please stay with us for a long time', ja: 'ずっと一緒にいてね' }
+  },
+  {
+    cat: '基本',
+    ko: '항상 응원할게요',
+    rom: 'Hang-sang eung-won-hal-ge-yo',
+    langs: { zh: '我會一直應援你', en: "I'll always support you", ja: 'いつも応援してるよ' }
+  },
+
+  /* ── 見面會 ── */
+  {
+    cat: '見面會',
+    ko: '사인 부탁드려요',
+    rom: 'Sa-in bu-tak-deu-ryeo-yo',
+    langs: { zh: '請幫我簽名', en: 'Could I have your autograph, please?', ja: 'サインをお願いします' }
+  },
+  {
+    cat: '見面會',
+    ko: '같이 사진 찍어도 될까요?',
+    rom: 'Ga-chi sa-jin jji-geo-do doel-kka-yo?',
+    langs: { zh: '可以和你一起拍照嗎？', en: 'May I take a photo with you?', ja: '一緒に写真を撮ってもいいですか？' }
+  },
+  {
+    cat: '見面會',
+    ko: '악수해 주세요',
+    rom: 'Ak-su-hae ju-se-yo',
+    langs: { zh: '請跟我握手', en: 'Please shake my hand', ja: '握手してください' }
+  },
+  {
+    cat: '見面會',
+    ko: '선물이에요, 받아 주세요',
+    rom: 'Seon-mu-ri-e-yo, ba-da ju-se-yo',
+    langs: { zh: '這是禮物，請收下', en: 'This is a gift for you, please accept it', ja: 'プレゼントです、受け取ってください' }
+  },
+  {
+    cat: '見面會',
+    ko: '오늘 정말 멋있어요',
+    rom: 'O-neul jeong-mal meo-si-sseo-yo',
+    langs: { zh: '你今天真的好帥', en: 'You look amazing today', ja: '今日本当にかっこいいです' }
+  },
+  {
+    cat: '見面會',
+    ko: '대만에서 왔어요',
+    rom: 'Dae-ma-ne-seo wa-sseo-yo',
+    langs: { zh: '我從台灣來的', en: 'I came from Taiwan', ja: '台湾から来ました' }
+  },
+  {
+    cat: '見面會',
+    ko: '중국에서 왔어요',
+    rom: 'Jung-gu-ge-seo wa-sseo-yo',
+    langs: { zh: '我從中國來的', en: 'I came from China', ja: '中国から来ました' }
+  },
+  {
+    cat: '見面會',
+    ko: '일본에서 왔어요',
+    rom: 'Il-bo-ne-seo wa-sseo-yo',
+    langs: { zh: '我從日本來的', en: 'I came from Japan', ja: '日本から来ました' }
+  },
+  {
+    cat: '見面會',
+    ko: '오랫동안 기다렸어요',
+    rom: 'O-raet-dong-an gi-da-ryeo-sseo-yo',
+    langs: { zh: '我等了好久', en: "I've been waiting for so long", ja: 'ずっと待っていました' }
+  },
+
+  /* ── 生日 ── */
+  {
+    cat: '生日',
+    ko: '생일 축하해요！',
+    rom: 'Saeng-il chu-ka-hae-yo!',
+    langs: { zh: '生日快樂！', en: 'Happy birthday!', ja: 'お誕生日おめでとうございます！' }
+  },
+  {
+    cat: '生日',
+    ko: '올해도 건강하고 행복하세요',
+    rom: 'Ol-hae-do geon-gang-ha-go haeng-bo-ka-se-yo',
+    langs: { zh: '今年也要健康、幸福喔', en: 'Wishing you good health and happiness this year too', ja: '今年も健康で幸せでいてください' }
+  },
+  {
+    cat: '生日',
+    ko: '태어나 줘서 고마워요',
+    rom: 'Tae-eo-na jweo-seo go-ma-wo-yo',
+    langs: { zh: '謝謝你來到這個世界', en: 'Thank you for being born', ja: '生まれてきてくれてありがとう' }
+  },
+  {
+    cat: '生日',
+    ko: '수혁이가 있어서 행복해요',
+    rom: 'Su-hyeo-gi-ga i-sseo-seo haeng-bo-kae-yo',
+    langs: { zh: '有洙赫在真的好幸福', en: "I'm so happy that you exist", ja: 'スヒョクがいてくれて幸せです' }
+  },
+
+  /* ── 日常對話 ── */
+  {
+    cat: '日常',
+    ko: '보고 싶어요',
+    rom: 'Bo-go si-peo-yo',
+    langs: { zh: '好想見你', en: 'I miss you', ja: '会いたいです' }
+  },
+  {
+    cat: '日常',
+    ko: '수고했어요',
+    rom: 'Su-go-hae-sseo-yo',
+    langs: { zh: '辛苦了', en: 'You worked hard / Good job', ja: 'お疲れ様です' }
+  },
+  {
+    cat: '日常',
+    ko: '밥은 먹었어요?',
+    rom: 'Ba-beun meo-geo-sseo-yo?',
+    langs: { zh: '你吃飯了嗎？', en: 'Have you eaten yet?', ja: 'ご飯は食べましたか？' }
+  },
+  {
+    cat: '日常',
+    ko: '잘 자요',
+    rom: 'Jal ja-yo',
+    langs: { zh: '晚安', en: 'Good night', ja: 'おやすみなさい' }
+  },
+  {
+    cat: '日常',
+    ko: '건강 챙겨요',
+    rom: 'Geon-gang chaeng-gyeo-yo',
+    langs: { zh: '要注意身體喔', en: 'Please take care of your health', ja: '体に気をつけてね' }
+  },
+  {
+    cat: '日常',
+    ko: '작품 잘 봤어요',
+    rom: 'Jak-pum jal bwa-sseo-yo',
+    langs: { zh: '作品看得很開心', en: 'I really enjoyed your work', ja: '作品、とても楽しみました' }
+  },
+];
+
+const CATS = ['基本', '見面會', '生日', '日常'];
+let currentFilter = '全部';
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ 已複製';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '複製韓文';
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+
+function toggleCard(card) {
+  card.classList.toggle('open');
+}
+
+function render() {
+  const wrap = document.getElementById('cardsWrap');
+  wrap.innerHTML = '';
+
+  const filteredCats = currentFilter === '全部' ? CATS : [currentFilter];
+
+  filteredCats.forEach(cat => {
+    const items = cheers.filter(c => c.cat === cat);
+    if (!items.length) return;
+
+    const catLabel = { '基本':'基本應援', '見面會':'見面會現場用語', '生日':'生日應援', '日常':'日常對話' }[cat];
+
+    const section = document.createElement('div');
+    section.className = 'cat-section';
+
+    const label = document.createElement('div');
+    label.className = 'cat-label';
+    label.textContent = catLabel;
+    section.appendChild(label);
+
+    const grid = document.createElement('div');
+    grid.className = 'cards-grid';
+
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'cheer-card';
+      card.onclick = () => card.classList.toggle('open');
+
+      card.innerHTML = `
+        <div class="card-head">
+          <div style="flex:1">
+            <div class="card-ko">${item.ko}</div>
+            <div class="card-rom">${item.rom}</div>
+          </div>
+          <div class="card-toggle">＋</div>
+        </div>
+        <div class="card-body">
+          <div class="card-langs">
+            <div class="lang-row">
+              <span class="lang-tag">KO</span>
+              <span class="lang-text ko">${item.ko}</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-tag">繁中</span>
+              <span class="lang-text">${item.langs.zh}</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-tag">EN</span>
+              <span class="lang-text">${item.langs.en}</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-tag">日本語</span>
+              <span class="lang-text">${item.langs.ja}</span>
+            </div>
+          </div>
+          <div class="copy-row">
+            <button class="copy-btn" onclick="event.stopPropagation(); copyText('${item.ko.replace(/'/g,"\\'")}', this)">複製韓文</button>
+          </div>
+        </div>`;
+
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    wrap.appendChild(section);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
