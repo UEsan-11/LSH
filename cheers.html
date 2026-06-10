@@ -5,254 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>應援語 · 이수혁 Lee Soo Hyuk</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Serif+TC:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+<style>
+  /* ── cheers 專屬 ── */
 
-    :root {
-      --bg:        #0a0a0f;
-      --bg2:       #111118;
-      --bg3:       #18181f;
-      --gold:      #e2c97e;
-      --gold-dim:  rgba(226,201,126,0.14);
-      --gold-line: rgba(226,201,126,0.22);
-      --text:      #f0e8d0;
-      --text2:     rgba(240,232,208,0.55);
-      --text3:     rgba(240,232,208,0.28);
-    }
+  /* CAT TABS */
+  .cat-tabs {
+    display: flex; justify-content: center;
+    gap: 8px; padding: 36px 24px 0; flex-wrap: wrap;
+  }
+  .cat-btn {
+    padding: 7px 22px; border-radius: 2px;
+    border: 1px solid rgba(240,232,208,0.15);
+    background: transparent; color: rgba(240,232,208,0.45);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; transition: all 0.22s ease;
+  }
+  .cat-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .cat-btn.active { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); }
 
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Noto Sans KR', sans-serif;
-      min-height: 100vh;
-    }
+  /* CARDS WRAP */
+  .cards-wrap { max-width: 900px; margin: 44px auto 0; padding: 0 24px 100px; }
+  .cat-section { margin-bottom: 52px; }
+  .cat-label {
+    font-size: 10px; letter-spacing: 0.3em;
+    color: var(--gold); opacity: 0.65;
+    margin-bottom: 20px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
 
-    /* ── NAV ── */
-    .site-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(10,10,15,0.92);
-      border-bottom: 1px solid var(--gold-line);
-    }
-    .nav-logo {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 14px;
-      font-weight: 300;
-      letter-spacing: 0.25em;
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a {
-      font-size: 11px; letter-spacing: 0.2em;
-      color: var(--text2); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  /* CHEER CARD */
+  .cheer-card {
+    background: rgba(255,255,255,0.022);
+    border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden;
+    cursor: pointer; transition: background 0.2s, border-color 0.2s;
+  }
+  .cheer-card:hover { background: rgba(226,201,126,0.06); border-color: rgba(226,201,126,0.4); }
+  .cheer-card.open  { background: rgba(226,201,126,0.07); border-color: rgba(226,201,126,0.45); }
 
-    /* ── HEADER ── */
-    .header {
-      text-align: center;
-      padding: 120px 24px 48px;
-      border-bottom: 1px solid var(--gold-line);
-    }
-    .header-tag {
-      font-size: 11px; letter-spacing: 0.35em;
-      color: var(--gold); opacity: 0.75; margin-bottom: 16px;
-    }
-    .header-title {
-      font-family: 'Noto Serif KR', serif;
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 300; letter-spacing: 0.1em;
-      color: #f8f0dd; line-height: 1.15;
-    }
-    .header-rule {
-      width: 40px; height: 1px;
-      background: var(--gold);
-      margin: 20px auto; opacity: 0.6;
-    }
-    .header-sub {
-      font-size: 12px; color: var(--text3);
-      letter-spacing: 0.15em;
-    }
+  .card-head {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px; gap: 12px;
+  }
+  .card-ko {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px; font-weight: 300;
+    color: var(--text); letter-spacing: 0.05em; flex: 1;
+  }
+  .card-rom {
+    font-size: 11px; color: var(--text3);
+    letter-spacing: 0.08em; margin-top: 4px;
+    font-family: 'Noto Sans KR', sans-serif; font-style: italic;
+  }
+  .card-toggle {
+    width: 20px; height: 20px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); opacity: 0.6; font-size: 14px;
+    transition: transform 0.25s, opacity 0.2s;
+  }
+  .cheer-card.open .card-toggle { transform: rotate(45deg); opacity: 1; }
 
-    /* ── CATEGORY TABS ── */
-    .cat-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding: 36px 24px 0;
-      flex-wrap: wrap;
-    }
-    .cat-btn {
-      padding: 7px 22px;
-      border-radius: 2px;
-      border: 1px solid rgba(240,232,208,0.15);
-      background: transparent;
-      color: rgba(240,232,208,0.45);
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 12px; letter-spacing: 0.12em;
-      cursor: pointer; transition: all 0.22s ease;
-    }
-    .cat-btn:hover { border-color: var(--gold); color: var(--gold); }
-    .cat-btn.active {
-      border-color: var(--gold);
-      background: var(--gold-dim);
-      color: var(--gold);
-    }
+  /* 展開區 */
+  .card-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .cheer-card.open .card-body { max-height: 300px; }
+  .card-langs {
+    padding: 0 20px 18px;
+    display: flex; flex-direction: column; gap: 10px;
+    border-top: 1px solid rgba(226,201,126,0.12);
+  }
+  .lang-row { display: flex; gap: 12px; align-items: flex-start; }
+  .lang-tag {
+    width: 28px; flex-shrink: 0;
+    font-size: 9px; letter-spacing: 0.1em;
+    color: var(--gold); opacity: 0.6; padding-top: 3px;
+  }
+  .lang-text { font-size: 13px; color: var(--text2); line-height: 1.6; letter-spacing: 0.03em; flex: 1; }
+  .lang-text.ko { font-family: 'Noto Serif KR', serif; font-weight: 300; color: rgba(240,232,208,0.75); }
 
-    /* ── GRID ── */
-    .cards-wrap {
-      max-width: 900px;
-      margin: 44px auto 0;
-      padding: 0 24px 100px;
-    }
-    .cat-section { margin-bottom: 52px; }
-    .cat-section.hidden { display: none; }
-    .cat-label {
-      font-size: 10px; letter-spacing: 0.3em;
-      color: var(--gold); opacity: 0.65;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--gold-line);
-    }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-    }
+  /* 複製按鈕 */
+  .copy-row { padding: 0 20px 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .copy-btn {
+    font-size: 10px; letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border: 1px solid var(--gold-line); border-radius: 2px;
+    background: transparent; color: var(--text3);
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .copy-btn.copied { color: var(--event-c); border-color: rgba(126,226,184,0.5); }
 
-    /* ── CARD ── */
-    .cheer-card {
-      background: rgba(255,255,255,0.022);
-      border: 1px solid var(--gold-line);
-      border-radius: 4px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .cheer-card:hover {
-      background: rgba(226,201,126,0.06);
-      border-color: rgba(226,201,126,0.4);
-    }
-    .cheer-card.open {
-      background: rgba(226,201,126,0.07);
-      border-color: rgba(226,201,126,0.45);
-    }
-
-    .card-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 20px;
-      gap: 12px;
-    }
-    .card-ko {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 17px; font-weight: 300;
-      color: var(--text); letter-spacing: 0.05em;
-      flex: 1;
-    }
-    .card-rom {
-      font-size: 11px;
-      color: var(--text3);
-      letter-spacing: 0.08em;
-      margin-top: 4px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-style: italic;
-    }
-      width: 20px; height: 20px;
-      flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); opacity: 0.6;
-      font-size: 14px;
-      transition: transform 0.25s, opacity 0.2s;
-    }
-    .cheer-card.open .card-toggle {
-      transform: rotate(45deg);
-      opacity: 1;
-    }
-
-    /* 展開區 */
-    .card-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
-    }
-    .cheer-card.open .card-body { max-height: 300px; }
-
-    .card-langs {
-      padding: 0 20px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      border-top: 1px solid rgba(226,201,126,0.12);
-    }
-    .lang-row {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .lang-tag {
-      width: 28px; flex-shrink: 0;
-      font-size: 9px; letter-spacing: 0.1em;
-      color: var(--gold); opacity: 0.6;
-      padding-top: 3px;
-    }
-    .lang-text {
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.6;
-      letter-spacing: 0.03em;
-      flex: 1;
-    }
-    .lang-text.ko {
-      font-family: 'Noto Serif KR', serif;
-      font-weight: 300;
-      color: rgba(240,232,208,0.75);
-    }
-
-    /* 複製按鈕 */
-    .copy-row {
-      padding: 0 20px 16px;
-      display: flex; gap: 8px; flex-wrap: wrap;
-    }
-    .copy-btn {
-      font-size: 10px; letter-spacing: 0.1em;
-      padding: 4px 12px;
-      border: 1px solid var(--gold-line);
-      border-radius: 2px;
-      background: transparent;
-      color: var(--text3);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
-    .copy-btn.copied { color: #7ee2b8; border-color: rgba(126,226,184,0.5); }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 11px;
-      color: var(--text3);
-      letter-spacing: 0.2em;
-      border-top: 1px solid var(--gold-line);
-    }
-
-    @media (max-width: 480px) {
-      .site-nav { padding: 16px 20px; }
-      .nav-links { gap: 16px; }
-      .cards-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 

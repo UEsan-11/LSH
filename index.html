@@ -1,715 +1,382 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>이수혁 Lee Soo Hyuk</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap"
-    rel="stylesheet" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #0a0a0f;
-      --gold: #e2c97e;
-      --gold-dim: rgba(226, 201, 126, 0.18);
-      --gold-line: rgba(226, 201, 126, 0.22);
-      --text: #f0e8d0;
-      --text2: rgba(240, 232, 208, 0.55);
-      --text3: rgba(240, 232, 208, 0.28);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Noto Sans KR', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    .site-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: linear-gradient(180deg, rgba(10, 10, 15, 0.85) 0%, transparent 100%);
-      transition: background 0.3s;
-    }
-
-    .site-nav.scrolled {
-      background: rgba(10, 10, 15, 0.95);
-      border-bottom: 1px solid var(--gold-line);
-    }
-
-    .nav-logo {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 14px;
-      font-weight: 300;
-      letter-spacing: 0.25em;
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--text2);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('assets/images/hero.jpg');
-      background-size: cover;
-      background-position: center top;
-    }
-
-    /* 底部漸層讓文字浮字可讀，上半部保持圖片清晰 */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-          rgba(10, 10, 15, 0.08) 0%,
-          rgba(10, 10, 15, 0.0) 25%,
-          rgba(10, 10, 15, 0.15) 55%,
-          rgba(10, 10, 15, 0.82) 80%,
-          rgba(10, 10, 15, 0.97) 100%);
-    }
-
-    /* 豹紋裝飾點 */
-    .hero-deco {
-      position: absolute;
-      top: 18%;
-      right: 8%;
-      width: 180px;
-      height: 180px;
-      opacity: 0.06;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 48px 72px;
-      width: 100%;
-    }
-
-    .hero-tag {
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--gold);
-      opacity: 0.8;
-      margin-bottom: 16px;
-    }
-
-    .hero-name-kr {
-      font-family: 'Noto Serif KR', serif;
-      font-size: clamp(52px, 9vw, 96px);
-      font-weight: 200;
-      letter-spacing: 0.12em;
-      color: #f8f2e2;
-      line-height: 1.0;
-      margin-bottom: 4px;
-    }
-
-    .hero-name-en {
-      font-family: 'Noto Serif TC', serif;
-      font-size: clamp(13px, 1.8vw, 18px);
-      font-weight: 200;
-      letter-spacing: 0.35em;
-      color: rgba(240, 232, 208, 0.45);
-      margin-bottom: 28px;
-    }
-
-    .hero-rule {
-      width: 48px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.6;
-      margin-bottom: 20px;
-    }
-
-    .hero-tagline {
-      font-size: 13px;
-      color: var(--text2);
-      letter-spacing: 0.08em;
-      line-height: 1.8;
-      max-width: 320px;
-    }
-
-    /* 語言切換 */
-    .lang-switch {
-      position: absolute;
-      top: 24px;
-      right: 40px;
-      z-index: 101;
-      display: flex;
-      gap: 10px;
-    }
-
-    .lang-btn {
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--text3);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 2px 0;
-      transition: color 0.2s;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-
-    .lang-btn:hover,
-    .lang-btn.active {
-      color: var(--gold);
-    }
-
-    .lang-btn+.lang-btn::before {
-      content: '/';
-      margin-right: 10px;
-      color: var(--text3);
-    }
-
-    /* 捲動提示 */
-    .scroll-hint {
-      position: absolute;
-      bottom: 28px;
-      right: 48px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .scroll-hint span {
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      color: var(--text3);
-      writing-mode: vertical-rl;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(180deg, var(--gold-line), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-
-      0%,
-      100% {
-        opacity: 0.4;
-        transform: scaleY(1);
-      }
-
-      50% {
-        opacity: 1.0;
-        transform: scaleY(1.15);
-      }
-    }
-
-    /* ── ABOUT STRIP ── */
-    .about-strip {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 72px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-      gap: 0 40px;
-      border-bottom: 1px solid var(--gold-line);
-    }
-
-    .about-divider {
-      background: var(--gold-line);
-    }
-
-    .about-block-title {
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      opacity: 0.7;
-      margin-bottom: 20px;
-    }
-
-    .about-bio {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 2.0;
-      color: var(--text2);
-      letter-spacing: 0.05em;
-    }
-
-    .about-bio strong {
-      color: var(--text);
-      font-weight: 400;
-    }
-
-    .profile-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .profile-list li {
-      display: flex;
-      gap: 16px;
-      font-size: 13px;
-    }
-
-    .profile-list .pl-key {
-      width: 64px;
-      flex-shrink: 0;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      opacity: 0.7;
-      padding-top: 1px;
-    }
-
-    .profile-list .pl-val {
-      color: var(--text2);
-      line-height: 1.6;
-    }
-
-    /* ── CAROUSEL ── */
-    .carousel-section {
-      padding: 64px 0 80px;
-      border-bottom: 1px solid var(--gold-line);
-    }
-
-    .section-eyebrow {
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      color: var(--gold);
-      opacity: 0.7;
-      margin-bottom: 40px;
-    }
-
-    .carousel-track-wrap {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 16px;
-      padding: 0 48px;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .carousel-slide {
-      flex-shrink: 0;
-      width: calc((100vw - 96px - 32px) / 3);
-      max-width: 320px;
-      aspect-ratio: 3/4;
-      border-radius: 3px;
-      overflow: hidden;
-      position: relative;
-      background: #18181f;
-      border: 1px solid var(--gold-line);
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 0.88;
-      transition: opacity 0.3s, transform 0.5s;
-    }
-
-    .carousel-slide:hover img {
-      opacity: 1;
-      transform: scale(1.03);
-    }
-
-    /* 佔位（沒有圖片時顯示）*/
-    .slide-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .slide-placeholder .ph-icon {
-      width: 40px;
-      height: 40px;
-      opacity: 0.15;
-    }
-
-    .slide-placeholder .ph-label {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      color: var(--text3);
-    }
-
-    .carousel-slide .slide-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 32px 16px 16px;
-      background: linear-gradient(transparent, rgba(10, 10, 15, 0.75));
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--text2);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .carousel-slide:hover .slide-caption {
-      opacity: 1;
-    }
-
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      margin-top: 32px;
-    }
-
-    .carousel-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--gold-line);
-      background: transparent;
-      color: var(--gold);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      font-size: 16px;
-    }
-
-    .carousel-btn:hover {
-      border-color: var(--gold);
-      background: var(--gold-dim);
-    }
-
-    .carousel-dots {
-      display: flex;
-      gap: 8px;
-    }
-
-    .carousel-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--text3);
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .carousel-dot.active {
-      background: var(--gold);
-      width: 20px;
-      border-radius: 2px;
-    }
-
-    /* ── NAV CARDS ── */
-    .nav-cards-section {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 72px 48px 80px;
-    }
-
-    .nav-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 40px;
-    }
-
-    .nav-card {
-      display: block;
-      text-decoration: none;
-      padding: 28px 20px;
-      border: 1px solid var(--gold-line);
-      border-radius: 3px;
-      background: rgba(255, 255, 255, 0.02);
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transition: transform 0.25s ease;
-    }
-
-    .nav-card:hover {
-      background: rgba(226, 201, 126, 0.06);
-      border-color: rgba(226, 201, 126, 0.4);
-    }
-
-    .nav-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .nav-card-kr {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 20px;
-      font-weight: 300;
-      color: var(--text);
-      margin-bottom: 8px;
-      letter-spacing: 0.05em;
-    }
-
-    .nav-card-en {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      color: var(--text3);
-      margin-bottom: 16px;
-    }
-
-    .nav-card-desc {
-      font-size: 12px;
-      color: var(--text2);
-      line-height: 1.65;
-    }
-
-    .nav-card-arrow {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      font-size: 14px;
-      color: var(--gold);
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: all 0.25s ease;
-    }
-
-    .nav-card:hover .nav-card-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 24px;
-      font-size: 11px;
-      color: var(--text3);
-      letter-spacing: 0.2em;
-      border-top: 1px solid var(--gold-line);
-    }
-
-    footer a {
-      color: var(--text3);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover {
-      color: var(--gold);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .site-nav {
-        padding: 16px 20px;
-      }
-
-      .hero-content {
-        padding: 0 24px 60px;
-      }
-
-      .about-strip {
-        grid-template-columns: 1fr;
-        padding: 48px 24px;
-        gap: 32px 0;
-      }
-
-      .about-divider {
-        display: none;
-      }
-
-      .carousel-track {
-        padding: 0 24px;
-      }
-
-      .carousel-slide {
-        width: calc(100vw - 64px);
-        max-width: none;
-      }
-
-      .nav-cards-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .nav-cards-section {
-        padding: 48px 24px 60px;
-      }
-
-      .lang-switch {
-        display: none;
-      }
-
-      .scroll-hint {
-        display: none;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+<style>
+  /* ── index 專屬 ── */
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 100vh; min-height: 600px;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('assets/images/hero.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10,10,15,0.08) 0%,
+      rgba(10,10,15,0.0)  25%,
+      rgba(10,10,15,0.15) 55%,
+      rgba(10,10,15,0.82) 80%,
+      rgba(10,10,15,0.97) 100%
+    );
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 48px 72px; width: 100%;
+  }
+  .hero-tag {
+    font-size: 11px; letter-spacing: 0.4em;
+    color: var(--gold); opacity: 0.8; margin-bottom: 16px;
+  }
+  .hero-name-kr {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(52px, 9vw, 96px);
+    font-weight: 200; letter-spacing: 0.12em;
+    color: #f8f2e2; line-height: 1.0; margin-bottom: 4px;
+  }
+  .hero-name-en {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(13px, 1.8vw, 18px);
+    font-weight: 200; letter-spacing: 0.35em;
+    color: rgba(240,232,208,0.45); margin-bottom: 28px;
+  }
+  .hero-rule {
+    width: 48px; height: 1px;
+    background: var(--gold); opacity: 0.6; margin-bottom: 20px;
+  }
+  .hero-tagline {
+    font-size: 13px; color: var(--text2);
+    letter-spacing: 0.08em; line-height: 1.8; max-width: 320px;
+  }
+
+  /* 語言下拉 */
+  .lang-dropdown { position: relative; }
+  .lang-globe-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid rgba(240,232,208,0.18);
+    border-radius: 3px; padding: 6px 10px;
+    color: var(--text2); cursor: pointer;
+    font-size: 11px; letter-spacing: 0.1em;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all 0.2s;
+  }
+  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: rgba(17,17,24,0.98);
+    border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden;
+    min-width: 100px; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-menu.open { display: block; }
+  .lang-menu button {
+    display: block; width: 100%; padding: 10px 16px;
+    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
+    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; text-align: left;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
+  }
+  .lang-menu button:last-child { border-bottom: none; }
+  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }
+
+  /* 捲動提示 */
+  .scroll-hint {
+    position: absolute; bottom: 28px; right: 48px; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .scroll-hint span {
+    font-size: 9px; letter-spacing: 0.3em; color: var(--text3);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(180deg, var(--gold-line), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 1.0; transform: scaleY(1.15); }
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    max-width: 860px; margin: 0 auto;
+    padding: 72px 48px;
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    gap: 0 40px;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  .about-divider { background: var(--gold-line); }
+  .about-block-title {
+    font-size: 10px; letter-spacing: 0.3em;
+    color: var(--gold); opacity: 0.7; margin-bottom: 20px;
+  }
+  .about-bio {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px; font-weight: 300;
+    line-height: 2.0; color: var(--text2); letter-spacing: 0.05em;
+  }
+  .about-bio strong { color: var(--text); font-weight: 400; }
+  .profile-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .profile-list li { display: flex; gap: 16px; font-size: 13px; }
+  .profile-list .pl-key {
+    width: 64px; flex-shrink: 0;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: var(--gold); opacity: 0.7; padding-top: 1px;
+  }
+  .profile-list .pl-val { color: var(--text2); line-height: 1.6; }
+
+  /* CAROUSEL */
+  .carousel-section { padding: 64px 0 80px; border-bottom: 1px solid var(--gold-line); }
+  .section-eyebrow {
+    text-align: center; font-size: 10px; letter-spacing: 0.35em;
+    color: var(--gold); opacity: 0.7; margin-bottom: 40px;
+  }
+  .carousel-track-wrap { overflow: hidden; position: relative; }
+  .carousel-track {
+    display: flex; gap: 16px; padding: 0 48px;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .carousel-slide {
+    flex-shrink: 0;
+    width: calc((100vw - 96px - 32px) / 3);
+    max-width: 320px; aspect-ratio: 3/4;
+    border-radius: 3px; overflow: hidden;
+    position: relative; background: #18181f;
+    border: 1px solid var(--gold-line);
+  }
+  .carousel-slide img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; opacity: 0.88;
+    transition: opacity 0.3s, transform 0.5s;
+  }
+  .carousel-slide:hover img { opacity: 1; transform: scale(1.03); }
+  .slide-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+  .slide-placeholder .ph-icon { width: 40px; height: 40px; opacity: 0.15; }
+  .slide-placeholder .ph-label { font-size: 10px; letter-spacing: 0.2em; color: var(--text3); }
+  .carousel-slide .slide-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 32px 16px 16px;
+    background: linear-gradient(transparent, rgba(10,10,15,0.75));
+    font-size: 11px; letter-spacing: 0.1em; color: var(--text2);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .carousel-slide:hover .slide-caption { opacity: 1; }
+  .carousel-controls {
+    display: flex; justify-content: center;
+    align-items: center; gap: 20px; margin-top: 32px;
+  }
+  .carousel-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--gold-line);
+    background: transparent; color: var(--gold);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; font-size: 16px;
+  }
+  .carousel-btn:hover { border-color: var(--gold); background: var(--gold-dim); }
+  .carousel-dots { display: flex; gap: 8px; }
+  .carousel-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--text3); transition: all 0.2s; cursor: pointer;
+  }
+  .carousel-dot.active { background: var(--gold); width: 20px; border-radius: 2px; }
+
+  /* NAV CARDS */
+  .nav-cards-section {
+    max-width: 860px; margin: 0 auto; padding: 72px 48px 80px;
+  }
+  .nav-cards-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-top: 40px;
+  }
+  .nav-card {
+    display: block; text-decoration: none;
+    padding: 28px 20px;
+    border: 1px solid var(--gold-line); border-radius: 3px;
+    background: rgba(255,255,255,0.02);
+    transition: all 0.25s ease; position: relative; overflow: hidden;
+  }
+  .nav-card::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transition: transform 0.25s ease;
+  }
+  .nav-card:hover { background: rgba(226,201,126,0.06); border-color: rgba(226,201,126,0.4); }
+  .nav-card:hover::before { transform: scaleX(1); }
+  .nav-card-kr {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px; font-weight: 300;
+    color: var(--text); margin-bottom: 8px; letter-spacing: 0.05em;
+  }
+  .nav-card-en { font-size: 10px; letter-spacing: 0.2em; color: var(--text3); margin-bottom: 16px; }
+  .nav-card-desc { font-size: 12px; color: var(--text2); line-height: 1.65; }
+  .nav-card-arrow {
+    position: absolute; bottom: 20px; right: 20px;
+    font-size: 14px; color: var(--gold); opacity: 0;
+    transform: translateX(-6px); transition: all 0.25s ease;
+  }
+  .nav-card:hover .nav-card-arrow { opacity: 1; transform: translateX(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .site-nav { padding: 16px 20px; }
+    .hero-content { padding: 0 24px 60px; }
+    .about-strip { grid-template-columns: 1fr; padding: 48px 24px; gap: 32px 0; }
+    .about-divider { display: none; }
+    .carousel-track { padding: 0 24px; }
+    .carousel-slide { width: calc(100vw - 64px); max-width: none; }
+    .nav-cards-grid { grid-template-columns: 1fr 1fr; }
+    .nav-cards-section { padding: 48px 24px 60px; }
+    .lang-switch { display: none; }
+    .scroll-hint { display: none; }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- NAV -->
-  <nav class="site-nav" id="siteNav">
-    <a class="nav-logo" href="index.html">이수혁</a>
-    <ul class="nav-links">
-      <li><a href="about.html">ABOUT</a></li>
-      <li><a href="works.html">WORKS</a></li>
-      <li><a href="cheers.html">CHEERS</a></li>
-      <li><a href="gifts.html">GIFTS</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav class="site-nav" id="siteNav">
+  <a class="nav-logo" href="index.html">이수혁</a>
+  <ul class="nav-links">
+    <li><a href="about.html">ABOUT</a></li>
+    <li><a href="works.html">WORKS</a></li>
+    <li><a href="cheers.html">CHEERS</a></li>
+    <li><a href="gifts.html">GIFTS</a></li>
+  </ul>
+  <div class="lang-dropdown" id="langDropdown">
+    <button class="lang-globe-btn" onclick="toggleLangMenu()" aria-label="語言切換">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+        <ellipse cx="8" cy="8" rx="3" ry="7" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="1" y1="6" x2="15" y2="6" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="1" y1="10" x2="15" y2="10" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <span id="langLabel">繁中</span>
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="opacity:0.5">
+        <path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="lang-menu" id="langMenu">
+      <button onclick="setLang('zh'); toggleLangMenu()">繁中</button>
+      <button onclick="setLang('en'); toggleLangMenu()">EN</button>
+      <button onclick="setLang('ko'); toggleLangMenu()">한국어</button>
+    </div>
+  </div>
+</nav>
 
-  <!-- 語言切換（nav 右側另外放，避免擠掉連結） -->
-  <div class="lang-switch">
-    <button class="lang-btn active" onclick="setLang('zh')">繁中</button>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('ko')">한국어</button>
-    <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+
+  <div class="hero-content">
+    <div class="hero-tag" data-i18n="hero-tag">LEE SOO-HYUK · 이수혁 · 李洙赫</div>
+    <h1 class="hero-name-kr">이수혁</h1>
+    <div class="hero-name-en" data-i18n="hero-name-en">LEE SOO HYUK</div>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline" data-i18n="hero-tagline">
+      模特兒・演員・MC<br>
+      2006年出道，獨一無二的存在感。
+    </p>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
 
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div>
+    <div class="about-block-title" data-i18n="about-intro-title">INTRODUCTION</div>
+    <p class="about-bio" data-i18n="about-bio">
+      <strong>이수혁（李洙赫）</strong>，1988年5月31日生於韓國果川。<br>
+      2006年以設計師鄭旭俊服裝秀模特兒身分出道，與 G-Dragon、Kim Woo-bin 同期。
+      憑藉184cm 的高挑身形與冷峻眼神，迅速成為韓國頂尖男模。<br><br>
+      2011年《White Christmas》跨足演員領域，
+      2015年《夜行書生》飾演吸血鬼反派「鬼」大受歡迎。
+      近年以《某一天滅亡》《還有明天》《S LINE》持續活躍。
+    </p>
+  </div>
+  <div class="about-divider"></div>
+  <div>
+    <div class="about-block-title" data-i18n="about-profile-title">PROFILE</div>
+    <ul class="profile-list">
+      <li><span class="pl-key" data-i18n="pl-birth">生日</span><span class="pl-val">1988 · 05 · 31</span></li>
+      <li><span class="pl-key" data-i18n="pl-height">身高</span><span class="pl-val">184 cm</span></li>
+      <li><span class="pl-key" data-i18n="pl-debut">出道</span><span class="pl-val">2006</span></li>
+      <li><span class="pl-key" data-i18n="pl-agency">公司</span><span class="pl-val">Saram Entertainment</span></li>
+      <li><span class="pl-key" data-i18n="pl-job">職業</span><span class="pl-val" data-i18n="pl-job-val">模特兒・演員・MC</span></li>
+      <li><span class="pl-key" data-i18n="pl-symbol">象徵</span><span class="pl-val">豹 · 🐆</span></li>
+    </ul>
+  </div>
+</section>
 
-    <div class="hero-content">
-      <div class="hero-tag" data-i18n="hero-tag">LEE SOO-HYUK · 이수혁 · 李洙赫</div>
-      <h1 class="hero-name-kr">이수혁</h1>
-      <div class="hero-name-en" data-i18n="hero-name-en">LEE SOO HYUK</div>
-      <div class="hero-rule"></div>
-      <p class="hero-tagline" data-i18n="hero-tagline">
-        模特兒・演員・MC<br>
-        2006年出道，獨一無二的存在感。
-      </p>
-    </div>
-
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      <span>SCROLL</span>
-    </div>
-  </section>
-
-  <!-- ABOUT STRIP -->
-  <section class="about-strip">
-    <div>
-      <div class="about-block-title" data-i18n="about-intro-title">INTRODUCTION</div>
-      <p class="about-bio" data-i18n="about-bio">
-        <strong>이수혁（李洙赫）</strong>，1988年5月31日生於韓國果川。<br>
-        2006年以設計師鄭旭俊服裝秀模特兒身分出道，與 G-Dragon、Kim Woo-bin 同期。
-        憑藉184cm 的高挑身形與冷峻眼神，迅速成為韓國頂尖男模。<br><br>
-        2011年《White Christmas》跨足演員領域，
-        2015年《夜行書生》飾演吸血鬼反派「鬼」大受歡迎。
-        近年以《某一天滅亡》《還有明天》《S LINE》持續活躍。
-      </p>
-    </div>
-    <div class="about-divider"></div>
-    <div>
-      <div class="about-block-title" data-i18n="about-profile-title">PROFILE</div>
-      <ul class="profile-list">
-        <li><span class="pl-key" data-i18n="pl-birth">生日</span><span class="pl-val">1988 · 05 · 31</span></li>
-        <li><span class="pl-key" data-i18n="pl-height">身高</span><span class="pl-val">184 cm</span></li>
-        <li><span class="pl-key" data-i18n="pl-debut">出道</span><span class="pl-val">2006</span></li>
-        <li><span class="pl-key" data-i18n="pl-agency">公司</span><span class="pl-val">Saram Entertainment</span></li>
-        <li><span class="pl-key" data-i18n="pl-job">職業</span><span class="pl-val"
-            data-i18n="pl-job-val">模特兒・演員・MC</span></li>
-        <li><span class="pl-key" data-i18n="pl-symbol">象徵</span><span class="pl-val">豹 · 🐆</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- PHOTO CAROUSEL -->
-  section class="carousel-section">
+<!-- PHOTO CAROUSEL -->
+<section class="carousel-section">
   <div class="section-eyebrow" data-i18n="carousel-title">GALLERY</div>
   <div class="carousel-track-wrap">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide">
         <img src="assets/images/hero.jpg" alt="이수혁">
-        <div class="slide-caption">이수혁 · 2026</div>
-      </div>
-      <div class="carousel-slide">
-        <img src="assets/images/hero.jpg" alt="이수혁">
-        <div class="slide-caption">이수혁 · 2026</div>
-      </div>
-      <div class="carousel-slide">
-        <img src="assets/images/hero.jpg" alt="이수혁">
         <div class="slide-caption">이수혁 · 2025</div>
       </div>
       <div class="carousel-slide">
-        <img src="assets/images/hero.jpg" alt="이수혁">
-        <div class="slide-caption">이수혁 · 2026</div>
+        <div class="slide-placeholder">
+          <svg class="ph-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#e2c97e" stroke-width="1.2"/><circle cx="20" cy="20" r="5" stroke="#e2c97e" stroke-width="1.2"/></svg>
+          <span class="ph-label">PHOTO 02</span>
+        </div>
+        <div class="slide-caption">이수혁</div>
       </div>
       <div class="carousel-slide">
-        <img src="assets/images/hero.jpg" alt="이수혁">
-        <div class="slide-caption">이수혁 · 2026</div>
+        <div class="slide-placeholder">
+          <svg class="ph-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#e2c97e" stroke-width="1.2"/><circle cx="20" cy="20" r="5" stroke="#e2c97e" stroke-width="1.2"/></svg>
+          <span class="ph-label">PHOTO 03</span>
+        </div>
+        <div class="slide-caption">이수혁</div>
       </div>
       <div class="carousel-slide">
-        <img src="assets/images/hero.jpg" alt="이수혁">
-        <div class="slide-caption">이수혁 · 2026</div>
+        <div class="slide-placeholder">
+          <svg class="ph-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#e2c97e" stroke-width="1.2"/><circle cx="20" cy="20" r="5" stroke="#e2c97e" stroke-width="1.2"/></svg>
+          <span class="ph-label">PHOTO 04</span>
+        </div>
+        <div class="slide-caption">이수혁</div>
+      </div>
+      <div class="carousel-slide">
+        <div class="slide-placeholder">
+          <svg class="ph-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#e2c97e" stroke-width="1.2"/><circle cx="20" cy="20" r="5" stroke="#e2c97e" stroke-width="1.2"/></svg>
+          <span class="ph-label">PHOTO 05</span>
+        </div>
+        <div class="slide-caption">이수혁</div>
+      </div>
+      <div class="carousel-slide">
+        <div class="slide-placeholder">
+          <svg class="ph-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#e2c97e" stroke-width="1.2"/><circle cx="20" cy="20" r="5" stroke="#e2c97e" stroke-width="1.2"/></svg>
+          <span class="ph-label">PHOTO 06</span>
+        </div>
+        <div class="slide-caption">이수혁</div>
       </div>
     </div>
   </div>
@@ -718,163 +385,171 @@
     <div class="carousel-dots" id="carouselDots"></div>
     <button class="carousel-btn" onclick="carouselNext()" aria-label="下一張">&#8594;</button>
   </div>
-  </section>
+</section>
 
-  <!-- NAV CARDS -->
-  <section class="nav-cards-section">
-    <div class="section-eyebrow" data-i18n="nav-cards-title">EXPLORE</div>
-    <div class="nav-cards-grid">
-      <a class="nav-card" href="about.html">
-        <div class="nav-card-kr">소개</div>
-        <div class="nav-card-en">ABOUT</div>
-        <div class="nav-card-desc" data-i18n="nav-about-desc">個人介紹・基本資料・照片</div>
-        <span class="nav-card-arrow">→</span>
-      </a>
-      <a class="nav-card" href="works.html">
-        <div class="nav-card-kr">작품</div>
-        <div class="nav-card-en">WORKS</div>
-        <div class="nav-card-desc" data-i18n="nav-works-desc">2006–2026 作品年表</div>
-        <span class="nav-card-arrow">→</span>
-      </a>
-      <a class="nav-card" href="cheers.html">
-        <div class="nav-card-kr">응원</div>
-        <div class="nav-card-en">CHEERS</div>
-        <div class="nav-card-desc" data-i18n="nav-cheers-desc">應援語・見面會用語</div>
-        <span class="nav-card-arrow">→</span>
-      </a>
-      <a class="nav-card" href="gifts.html">
-        <div class="nav-card-kr">선물</div>
-        <div class="nav-card-en">GIFTS</div>
-        <div class="nav-card-desc" data-i18n="nav-gifts-desc">粉絲應援禮物・免費領取</div>
-        <span class="nav-card-arrow">→</span>
-      </a>
-    </div>
-  </section>
+<!-- NAV CARDS -->
+<section class="nav-cards-section">
+  <div class="section-eyebrow" data-i18n="nav-cards-title">EXPLORE</div>
+  <div class="nav-cards-grid">
+    <a class="nav-card" href="about.html">
+      <div class="nav-card-kr">소개</div>
+      <div class="nav-card-en">ABOUT</div>
+      <div class="nav-card-desc" data-i18n="nav-about-desc">個人介紹・基本資料・照片</div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="works.html">
+      <div class="nav-card-kr">작품</div>
+      <div class="nav-card-en">WORKS</div>
+      <div class="nav-card-desc" data-i18n="nav-works-desc">2006–2026 作品年表</div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="cheers.html">
+      <div class="nav-card-kr">응원</div>
+      <div class="nav-card-en">CHEERS</div>
+      <div class="nav-card-desc" data-i18n="nav-cheers-desc">應援語・見面會用語</div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+    <a class="nav-card" href="gifts.html">
+      <div class="nav-card-kr">선물</div>
+      <div class="nav-card-en">GIFTS</div>
+      <div class="nav-card-desc" data-i18n="nav-gifts-desc">粉絲應援禮物・免費領取</div>
+      <span class="nav-card-arrow">→</span>
+    </a>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>LSH · 豹 · 2006 – &nbsp;|&nbsp;
-      <a href="https://www.instagram.com/leesoohyuk" target="_blank" rel="noopener">IG</a> &nbsp;·&nbsp;
-      <a href="https://www.youtube.com/@leesoohyuk" target="_blank" rel="noopener">YT</a>
-    </p>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <p>LSH · 豹 · 2006 – &nbsp;|&nbsp;
+    <a href="https://www.instagram.com/leesoohyuk" target="_blank" rel="noopener">IG</a> &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@leesoohyuk" target="_blank" rel="noopener">YT</a>
+  </p>
+</footer>
 
-  <script>
-    /* ── NAV scroll ── */
-    const nav = document.getElementById('siteNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
+<script>
+/* ── NAV scroll ── */
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
 
-    /* ── CAROUSEL ── */
-    const track = document.getElementById('carouselTrack');
-    const slides = track.querySelectorAll('.carousel-slide');
-    const dotsWrap = document.getElementById('carouselDots');
-    const total = slides.length;
-    let perView = 3;
-    let current = 0;
+/* ── CAROUSEL ── */
+const track    = document.getElementById('carouselTrack');
+const slides   = track.querySelectorAll('.carousel-slide');
+const dotsWrap = document.getElementById('carouselDots');
+const total    = slides.length;
+let perView    = 3;
+let current    = 0;
 
-    function getPerView() {
-      return window.innerWidth <= 640 ? 1 : 3;
-    }
+function getPerView() {
+  return window.innerWidth <= 640 ? 1 : 3;
+}
 
-    function buildDots() {
-      dotsWrap.innerHTML = '';
-      const pages = Math.ceil(total / perView);
-      for (let i = 0; i < pages; i++) {
-        const d = document.createElement('div');
-        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        d.onclick = () => goTo(i);
-        dotsWrap.appendChild(d);
-      }
-    }
+function buildDots() {
+  dotsWrap.innerHTML = '';
+  const pages = Math.ceil(total / perView);
+  for (let i = 0; i < pages; i++) {
+    const d = document.createElement('div');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsWrap.appendChild(d);
+  }
+}
 
-    function goTo(page) {
-      perView = getPerView();
-      const pages = Math.ceil(total / perView);
-      current = Math.max(0, Math.min(page, pages - 1));
-      const slideW = slides[0].offsetWidth + 16;
-      const offset = current * perView * slideW;
-      track.style.transform = `translateX(-${offset}px)`;
-      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
-    }
+function goTo(page) {
+  perView = getPerView();
+  const pages = Math.ceil(total / perView);
+  current = Math.max(0, Math.min(page, pages - 1));
+  const slideW = slides[0].offsetWidth + 16;
+  const offset = current * perView * slideW;
+  track.style.transform = `translateX(-${offset}px)`;
+  dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === current);
+  });
+}
 
-    function carouselPrev() { goTo(current - 1); }
-    function carouselNext() { goTo(current + 1); }
+function carouselPrev() { goTo(current - 1); }
+function carouselNext() { goTo(current + 1); }
 
-    window.addEventListener('resize', () => {
-      perView = getPerView();
-      buildDots();
-      goTo(0);
-    });
+window.addEventListener('resize', () => {
+  perView = getPerView();
+  buildDots();
+  goTo(0);
+});
 
-    buildDots();
+buildDots();
 
-    /* ── LANG ── */
-    const i18n = {
-      zh: {
-        'hero-tag': 'LEE SOO-HYUK · 이수혁 · 李洙赫',
-        'hero-name-en': 'LEE SOO HYUK',
-        'hero-tagline': '模特兒・演員・MC<br>2006年出道，獨一無二的存在感。',
-        'about-intro-title': 'INTRODUCTION',
-        'about-bio': '<strong>이수혁（李洙赫）</strong>，1988年5月31日生。2006年模特兒出道，與 G-Dragon、Kim Woo-bin 同期。憑藉184cm 高挑身形與冷峻眼神迅速成為韓國頂尖男模。2011年《White Christmas》跨足演員，2015年《夜行書生》「鬼」大受歡迎。',
-        'about-profile-title': 'PROFILE',
-        'pl-birth': '生日', 'pl-height': '身高', 'pl-debut': '出道', 'pl-agency': '公司', 'pl-job': '職業', 'pl-job-val': '模特兒・演員・MC', 'pl-symbol': '象徵',
-        'carousel-title': 'GALLERY',
-        'nav-cards-title': 'EXPLORE',
-        'nav-about-desc': '個人介紹・基本資料・照片',
-        'nav-works-desc': '2006–2026 作品年表',
-        'nav-cheers-desc': '應援語・見面會用語',
-        'nav-gifts-desc': '粉絲應援禮物・免費領取',
-      },
-      en: {
-        'hero-tagline': 'Model · Actor · MC<br>Debuted 2006. An irreplaceable presence.',
-        'about-intro-title': 'INTRODUCTION',
-        'about-bio': '<strong>Lee Soo-hyuk</strong>, born May 31, 1988. Debuted as a model in 2006 alongside G-Dragon and Kim Woo-bin. Known for his 184cm frame and sharp gaze. Crossed into acting with <em>White Christmas</em> (2011) and gained wide recognition as the vampire "Gwi" in <em>Scholar Who Walks the Night</em> (2015).',
-        'pl-birth': 'Birth', 'pl-height': 'Height', 'pl-debut': 'Debut', 'pl-agency': 'Agency', 'pl-job': 'Career', 'pl-job-val': 'Model · Actor · MC', 'pl-symbol': 'Symbol',
-        'nav-about-desc': 'Profile & photos',
-        'nav-works-desc': 'Filmography 2006–2026',
-        'nav-cheers-desc': 'Fan phrases & event vocab',
-        'nav-gifts-desc': 'Fan gifts – free downloads',
-      },
-      ko: {
-        'hero-tagline': '모델・배우・MC<br>2006년 데뷔, 독보적인 존재감.',
-        'about-intro-title': '소개',
-        'about-bio': '<strong>이수혁</strong>, 1988년 5월 31일 생. 2006년 정욱준 패션쇼 모델로 데뷔. G-Dragon, 김우빈과 동기. 184cm의 훤칠한 키와 날카로운 눈빛으로 주목받았으며, 드라마 《화이트 크리스마스》로 연기에 입문. 《야경꾼 일지》의 귀 역으로 큰 사랑을 받았다.',
-        'pl-birth': '생일', 'pl-height': '키', 'pl-debut': '데뷔', 'pl-agency': '소속사', 'pl-job': '직업', 'pl-job-val': '모델・배우・MC', 'pl-symbol': '상징',
-        'nav-about-desc': '프로필 및 사진',
-        'nav-works-desc': '작품 연보 2006–2026',
-        'nav-cheers-desc': '응원 문구・현장 용어',
-        'nav-gifts-desc': '팬 서포트 굿즈・무료 배포',
-      },
-      ja: {
-        'hero-tagline': 'モデル・俳優・MC<br>2006年デビュー、唯一無二の存在感。',
-        'about-intro-title': 'プロフィール',
-        'about-bio': '<strong>イ・スヒョク</strong>、1988年5月31日生まれ。2006年にモデルデビュー。G-Dragon、キム・ウビンと同期。《White Christmas》で俳優業に進出し、《夜を歩く士》の吸血鬼「鬼」役で広く知られるようになった。',
-        'pl-birth': '誕生日', 'pl-height': '身長', 'pl-debut': 'デビュー', 'pl-agency': '事務所', 'pl-job': '職業', 'pl-job-val': 'モデル・俳優・MC', 'pl-symbol': 'シンボル',
-        'nav-about-desc': 'プロフィール・写真',
-        'nav-works-desc': '出演作品 2006–2026',
-        'nav-cheers-desc': '応援フレーズ・会場用語',
-        'nav-gifts-desc': 'ファングッズ・無料配布',
-      },
-    };
+/* ── LANG ── */
+const i18n = {
+  zh: {
+    'hero-tag':         'LEE SOO-HYUK · 이수혁 · 李洙赫',
+    'hero-name-en':     'LEE SOO HYUK',
+    'hero-tagline':     '模特兒・演員・MC<br>2006年出道，獨一無二的存在感。',
+    'about-intro-title':'INTRODUCTION',
+    'about-bio':        '<strong>이수혁（李洙赫）</strong>，1988年5月31日生。2006年模特兒出道，與 G-Dragon、Kim Woo-bin 同期。憑藉184cm 高挑身形與冷峻眼神迅速成為韓國頂尖男模。2011年《White Christmas》跨足演員，2015年《夜行書生》「鬼」大受歡迎。',
+    'about-profile-title':'PROFILE',
+    'pl-birth':'生日','pl-height':'身高','pl-debut':'出道','pl-agency':'公司','pl-job':'職業','pl-job-val':'模特兒・演員・MC','pl-symbol':'象徵',
+    'carousel-title':'GALLERY',
+    'nav-cards-title':'EXPLORE',
+    'nav-about-desc':'個人介紹・基本資料・照片',
+    'nav-works-desc':'2006–2026 作品年表',
+    'nav-cheers-desc':'應援語・見面會用語',
+    'nav-gifts-desc':'粉絲應援禮物・免費領取',
+  },
+  en: {
+    'hero-tagline':     'Model · Actor · MC<br>Debuted 2006. An irreplaceable presence.',
+    'about-intro-title':'INTRODUCTION',
+    'about-bio':        '<strong>Lee Soo-hyuk</strong>, born May 31, 1988. Debuted as a model in 2006 alongside G-Dragon and Kim Woo-bin. Known for his 184cm frame and sharp gaze. Crossed into acting with <em>White Christmas</em> (2011) and gained wide recognition as the vampire "Gwi" in <em>Scholar Who Walks the Night</em> (2015).',
+    'pl-birth':'Birth','pl-height':'Height','pl-debut':'Debut','pl-agency':'Agency','pl-job':'Career','pl-job-val':'Model · Actor · MC','pl-symbol':'Symbol',
+    'nav-about-desc':'Profile & photos',
+    'nav-works-desc':'Filmography 2006–2026',
+    'nav-cheers-desc':'Fan phrases & event vocab',
+    'nav-gifts-desc':'Fan gifts – free downloads',
+  },
+  ko: {
+    'hero-tagline':     '모델・배우・MC<br>2006년 데뷔, 독보적인 존재감.',
+    'about-intro-title':'소개',
+    'about-bio':        '<strong>이수혁</strong>, 1988년 5월 31일 생. 2006년 정욱준 패션쇼 모델로 데뷔. G-Dragon, 김우빈과 동기. 184cm의 훤칠한 키와 날카로운 눈빛으로 주목받았으며, 드라마 《화이트 크리스마스》로 연기에 입문. 《야경꾼 일지》의 귀 역으로 큰 사랑을 받았다.',
+    'pl-birth':'생일','pl-height':'키','pl-debut':'데뷔','pl-agency':'소속사','pl-job':'직업','pl-job-val':'모델・배우・MC','pl-symbol':'상징',
+    'nav-about-desc':'프로필 및 사진',
+    'nav-works-desc':'작품 연보 2006–2026',
+    'nav-cheers-desc':'응원 문구・현장 용어',
+    'nav-gifts-desc':'팬 서포트 굿즈・무료 배포',
+  },
+  ja: {
+    'hero-tagline':     'モデル・俳優・MC<br>2006年デビュー、唯一無二の存在感。',
+    'about-intro-title':'プロフィール',
+    'about-bio':        '<strong>イ・スヒョク</strong>、1988年5月31日生まれ。2006年にモデルデビュー。G-Dragon、キム・ウビンと同期。《White Christmas》で俳優業に進出し、《夜を歩く士》の吸血鬼「鬼」役で広く知られるようになった。',
+    'pl-birth':'誕生日','pl-height':'身長','pl-debut':'デビュー','pl-agency':'事務所','pl-job':'職業','pl-job-val':'モデル・俳優・MC','pl-symbol':'シンボル',
+    'nav-about-desc':'プロフィール・写真',
+    'nav-works-desc':'出演作品 2006–2026',
+    'nav-cheers-desc':'応援フレーズ・会場用語',
+    'nav-gifts-desc':'ファングッズ・無料配布',
+  },
+};
 
-    let currentLang = 'zh';
-    function setLang(lang) {
-      currentLang = lang;
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.lang-btn').forEach(b => {
-        if (b.textContent.trim() === ({ zh: '繁中', en: 'EN', ko: '한국어', ja: '日本語' }[lang])) b.classList.add('active');
-      });
-      const dict = { ...i18n.zh, ...i18n[lang] };
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (dict[key] !== undefined) el.innerHTML = dict[key];
-      });
-    }
-  </script>
+let currentLang = 'zh';
+function setLang(lang) {
+  currentLang = lang;
+  const labels = { zh:'繁中', en:'EN', ko:'한국어' };
+  document.getElementById('langLabel').textContent = labels[lang] || lang;
+  const dict = { ...i18n.zh, ...i18n[lang] };
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+}
+
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+/* 點外面關閉 */
+document.addEventListener('click', e => {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) {
+    document.getElementById('langMenu').classList.remove('open');
+  }
+});
+</script>
 </body>
-
 </html>
