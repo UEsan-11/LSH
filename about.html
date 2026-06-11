@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-hant">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>關於 · 이수혁 Lee Soo Hyuk</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     /* ── about 專屬 ── */
 
@@ -19,7 +22,10 @@
       max-width: 980px;
       margin: 0 auto;
     }
-    .about-divider { background: var(--gold-line); }
+
+    .about-divider {
+      background: var(--gold-line);
+    }
 
     /* 左側 Profile */
     .profile-photo {
@@ -30,36 +36,75 @@
       background: var(--bg3);
       position: relative;
     }
+
     .profile-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: top;
-      display: block; opacity: 0.9;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      opacity: 0.9;
     }
+
     .profile-photo-placeholder {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 12px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
-    .profile-photo-placeholder svg { opacity: 0.1; }
-    .profile-photo-placeholder span { font-size: 10px; letter-spacing: 0.2em; color: var(--text3); }
+
+    .profile-photo-placeholder svg {
+      opacity: 0.1;
+    }
+
+    .profile-photo-placeholder span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text3);
+    }
 
     /* 右側文字 */
-    .about-right { display: flex; flex-direction: column; gap: 0; }
-    .about-eyebrow {
-      font-size: 10px; letter-spacing: 0.35em;
-      color: var(--gold); opacity: 0.7; margin-bottom: 14px;
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
+
+    .about-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+
     .about-name-kr {
       font-family: 'Noto Serif KR', serif;
       font-size: clamp(36px, 5vw, 58px);
-      font-weight: 200; letter-spacing: 0.1em;
-      color: #f8f0dd; line-height: 1.1; margin-bottom: 4px;
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      color: #f8f0dd;
+      line-height: 1.1;
+      margin-bottom: 4px;
     }
+
     .about-name-en {
-      font-size: 13px; letter-spacing: 0.3em;
-      color: var(--text3); margin-bottom: 28px;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      color: var(--text3);
+      margin-bottom: 28px;
     }
-    .about-rule { width: 36px; height: 1px; background: var(--gold); opacity: 0.5; margin-bottom: 28px; }
+
+    .about-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+      margin-bottom: 28px;
+    }
 
     /* Profile list */
     .profile-grid {
@@ -68,370 +113,639 @@
       gap: 14px 24px;
       margin-bottom: 32px;
     }
+
     .profile-item {}
+
     .profile-key {
-      font-size: 9px; letter-spacing: 0.2em;
-      color: var(--gold); opacity: 0.6;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.6;
       margin-bottom: 4px;
     }
+
     .profile-val {
-      font-size: 13px; color: var(--text2);
-      line-height: 1.5; letter-spacing: 0.04em;
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.5;
+      letter-spacing: 0.04em;
     }
 
     /* 豹標記 */
     .leopard-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid rgba(226,201,126,0.3);
-      border-radius: 3px; padding: 8px 16px;
-      font-size: 11px; color: var(--gold); opacity: 0.8;
-      letter-spacing: 0.15em; margin-top: 4px;
-      background: rgba(226,201,126,0.05);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(226, 201, 126, 0.3);
+      border-radius: 3px;
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.8;
+      letter-spacing: 0.15em;
+      margin-top: 4px;
+      background: rgba(226, 201, 126, 0.05);
     }
 
     /* ── BIO SECTION ── */
     .bio-section {
-      max-width: 980px; margin: 0 auto;
+      max-width: 980px;
+      margin: 0 auto;
       padding: 64px 48px;
       border-bottom: 1px solid var(--gold-line);
     }
+
     .section-label {
-      font-size: 10px; letter-spacing: 0.3em;
-      color: var(--gold); opacity: 0.65;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.65;
       margin-bottom: 24px;
     }
-    .bio-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 1px solid var(--gold-line); }
+
+    .bio-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
     .bio-tab {
-      padding: 8px 20px; font-size: 11px; letter-spacing: 0.15em;
-      color: var(--text3); cursor: pointer; background: none; border: none;
-      border-bottom: 2px solid transparent; transition: all 0.2s;
+      padding: 8px 20px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text3);
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
       font-family: 'Noto Sans KR', sans-serif;
     }
-    .bio-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    .bio-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
     .bio-text {
       font-family: 'Noto Serif TC', serif;
-      font-size: 15px; font-weight: 300;
-      line-height: 2.1; color: var(--text2);
-      letter-spacing: 0.05em; max-width: 680px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text2);
+      letter-spacing: 0.05em;
+      max-width: 680px;
       display: none;
     }
-    .bio-text.active { display: block; }
-    .bio-text strong { color: var(--text); font-weight: 400; }
-    .bio-text em { color: var(--gold); font-style: normal; opacity: 0.85; }
+
+    .bio-text.active {
+      display: block;
+    }
+
+    .bio-text strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .bio-text em {
+      color: var(--gold);
+      font-style: normal;
+      opacity: 0.85;
+    }
 
     /* ── LEOPARD STORY ── */
     .leopard-section {
-      max-width: 980px; margin: 0 auto;
+      max-width: 980px;
+      margin: 0 auto;
       padding: 0 48px 64px;
       border-bottom: 1px solid var(--gold-line);
     }
+
     .leopard-card {
-      background: rgba(226,201,126,0.04);
-      border: 1px solid rgba(226,201,126,0.2);
+      background: rgba(226, 201, 126, 0.04);
+      border: 1px solid rgba(226, 201, 126, 0.2);
       border-left: 3px solid var(--gold);
       border-radius: 0 6px 6px 0;
       padding: 28px 32px;
-      display: flex; gap: 24px; align-items: flex-start;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
     }
-    .leopard-icon { font-size: 40px; flex-shrink: 0; line-height: 1; }
+
+    .leopard-icon {
+      font-size: 40px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
     .leopard-title {
       font-family: 'Noto Serif KR', serif;
-      font-size: 18px; font-weight: 300;
-      color: var(--text); margin-bottom: 10px; letter-spacing: 0.06em;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
     }
+
     .leopard-body {
-      font-size: 13px; color: var(--text2);
-      line-height: 1.9; letter-spacing: 0.04em;
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.9;
+      letter-spacing: 0.04em;
     }
-    .leopard-body em { color: var(--gold); font-style: normal; }
+
+    .leopard-body em {
+      color: var(--gold);
+      font-style: normal;
+    }
 
     /* ── PHOTO GRID ── */
     .gallery-section {
-      max-width: 980px; margin: 0 auto;
+      max-width: 980px;
+      margin: 0 auto;
       padding: 64px 48px;
       border-bottom: 1px solid var(--gold-line);
     }
+
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px; margin-top: 28px;
+      gap: 12px;
+      margin-top: 28px;
     }
+
     .photo-cell {
-      aspect-ratio: 3/4; border-radius: 3px; overflow: hidden;
-      border: 1px solid var(--gold-line); background: var(--bg3);
+      aspect-ratio: 3/4;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--gold-line);
+      background: var(--bg3);
       position: relative;
     }
+
     .photo-cell img {
-      width: 100%; height: 100%; object-fit: cover;
-      display: block; opacity: 0.88; transition: opacity 0.3s, transform 0.4s;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+      transition: opacity 0.3s, transform 0.4s;
     }
-    .photo-cell:hover img { opacity: 1; transform: scale(1.04); }
+
+    .photo-cell:hover img {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
     .photo-cell-ph {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 8px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .photo-cell-ph svg { opacity: 0.1; }
-    .photo-cell-ph span { font-size: 9px; letter-spacing: 0.2em; color: var(--text3); }
+
+    .photo-cell-ph svg {
+      opacity: 0.1;
+    }
+
+    .photo-cell-ph span {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text3);
+    }
 
     /* ── BRANDS ── */
     .brands-section {
-      max-width: 980px; margin: 0 auto;
+      max-width: 980px;
+      margin: 0 auto;
       padding: 64px 48px;
       border-bottom: 1px solid var(--gold-line);
     }
+
     .brands-grid {
-      display: flex; flex-wrap: wrap;
-      gap: 10px; margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
     }
+
     .brand-tag {
       padding: 8px 20px;
       border: 1px solid var(--gold-line);
       border-radius: 2px;
-      font-size: 11px; letter-spacing: 0.18em;
-      color: var(--text2); background: rgba(255,255,255,0.02);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--text2);
+      background: rgba(255, 255, 255, 0.02);
       transition: all 0.2s;
     }
-    .brand-tag:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
-    .brand-tag.highlight { border-color: rgba(226,201,126,0.4); color: var(--gold); }
+
+    .brand-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .brand-tag.highlight {
+      border-color: rgba(226, 201, 126, 0.4);
+      color: var(--gold);
+    }
 
     /* ── HYUKMI NOTE ── */
     .hyukmi-section {
-      max-width: 980px; margin: 0 auto;
+      max-width: 980px;
+      margin: 0 auto;
       padding: 64px 48px 80px;
     }
+
     .hyukmi-card {
       border: 1px solid var(--gold-line);
-      border-radius: 6px; padding: 36px 40px;
-      background: rgba(255,255,255,0.015);
-      position: relative; overflow: hidden;
+      border-radius: 6px;
+      padding: 36px 40px;
+      background: rgba(255, 255, 255, 0.015);
+      position: relative;
+      overflow: hidden;
     }
+
     .hyukmi-card::before {
       content: '🐆';
-      position: absolute; bottom: -10px; right: 20px;
-      font-size: 80px; opacity: 0.06; line-height: 1;
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-size: 80px;
+      opacity: 0.06;
+      line-height: 1;
     }
+
     .hyukmi-label {
-      font-size: 9px; letter-spacing: 0.3em;
-      color: var(--gold); opacity: 0.6; margin-bottom: 16px;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 16px;
     }
+
     .hyukmi-text {
       font-family: 'Noto Serif TC', serif;
-      font-size: 14px; font-weight: 300;
-      line-height: 2.1; color: var(--text2);
-      letter-spacing: 0.05em; max-width: 600px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text2);
+      letter-spacing: 0.05em;
+      max-width: 600px;
     }
-    .hyukmi-text em { color: var(--gold); font-style: normal; }
+
+    .hyukmi-text em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
     .hyukmi-sig {
       margin-top: 24px;
-      font-size: 12px; letter-spacing: 0.2em;
+      font-size: 12px;
+      letter-spacing: 0.2em;
       color: var(--text3);
     }
-    .hyukmi-sig span { color: var(--gold); opacity: 0.7; }
+
+    .hyukmi-sig span {
+      color: var(--gold);
+      opacity: 0.7;
+    }
 
     /* RESPONSIVE */
     @media (max-width: 700px) {
       .about-hero {
         grid-template-columns: 1fr;
-        padding: 100px 24px 48px; gap: 32px;
+        padding: 100px 24px 48px;
+        gap: 32px;
       }
-      .about-divider { display: none; }
-      .profile-photo { max-width: 240px; margin: 0 auto; }
-      .bio-section, .leopard-section, .gallery-section,
-      .brands-section, .hyukmi-section { padding-left: 24px; padding-right: 24px; }
-      .photo-grid { grid-template-columns: 1fr 1fr; }
-      .profile-grid { grid-template-columns: 1fr; }
+
+      .about-divider {
+        display: none;
+      }
+
+      .profile-photo {
+        max-width: 240px;
+        margin: 0 auto;
+      }
+
+      .bio-section,
+      .leopard-section,
+      .gallery-section,
+      .brands-section,
+      .hyukmi-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
     }
-  </style>
+    /* 語言下拉 */
+  .lang-dropdown { position: relative; }
+  .lang-globe-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid rgba(240,232,208,0.18);
+    border-radius: 3px; padding: 6px 10px;
+    color: var(--text2); cursor: pointer;
+    font-size: 11px; letter-spacing: 0.1em;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s;
+  }
+  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: rgba(17,17,24,0.98); border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden; min-width: 100px; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-menu.open { display: block; }
+  .lang-menu button {
+    display: block; width: 100%; padding: 10px 16px;
+    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
+    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; text-align: left;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
+  }
+  .lang-menu button:last-child { border-bottom: none; }
+  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }
+</style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav class="site-nav">
-  <a class="nav-logo" href="index.html">이수혁</a>
-  <ul class="nav-links">
-    <li><a href="about.html" class="active">ABOUT</a></li>
-    <li><a href="works.html">WORKS</a></li>
-    <li><a href="cheers.html">CHEERS</a></li>
-    <li><a href="gifts.html">GIFTS</a></li>
-    <li><a href="archive.html" class="active">ARCHIVE</a></li>
-  </ul>
-</nav>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">이수혁</a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">ABOUT</a></li>
+      <li><a href="works.html">WORKS</a></li>
+      <li><a href="cheers.html">CHEERS</a></li>
+      <li><a href="gifts.html">GIFTS</a></li>
+      <li><a href="archive.html">ARCHIVE</a></li>
+    </ul>
+  </nav>
 
-<!-- ABOUT HERO -->
-<section class="about-hero">
-  <!-- 左：照片 -->
-  <div>
-    <div class="profile-photo">
-      <!-- 有照片時換成 <img src="assets/images/about-main.jpg" alt="이수혁"> -->
-      <div class="profile-photo-placeholder">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="8" width="40" height="32" rx="4" stroke="#e2c97e" stroke-width="1.2"/>
-          <circle cx="24" cy="24" r="8" stroke="#e2c97e" stroke-width="1.2"/>
-        </svg>
-        <span>PHOTO</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="about-divider"></div>
-
-  <!-- 右：資料 -->
-  <div class="about-right">
-    <div class="about-eyebrow">LEE SOO-HYUK · 이수혁 · 李洙赫</div>
-    <h1 class="about-name-kr">이수혁</h1>
-    <div class="about-name-en">LEE SOO HYUK</div>
-    <div class="about-rule"></div>
-
-    <div class="profile-grid">
-      <div class="profile-item">
-        <div class="profile-key">생일 · 生日</div>
-        <div class="profile-val">1988 · 05 · 31</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">신장 · 身高</div>
-        <div class="profile-val">184 cm</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">데뷔 · 出道</div>
-        <div class="profile-val">2006</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">혈액형 · 血型</div>
-        <div class="profile-val">AB 型</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">별자리 · 星座</div>
-        <div class="profile-val">雙子座 ♊</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">소속사 · 公司</div>
-        <div class="profile-val">Saram Entertainment</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">직업 · 職業</div>
-        <div class="profile-val">모델 · 배우 · MC</div>
-      </div>
-      <div class="profile-item">
-        <div class="profile-key">출신 · 出身</div>
-        <div class="profile-val">京畿道 果川市</div>
-      </div>
-    </div>
-
-    <div class="leopard-badge">🐆 &nbsp;豹 · 표범 · Leopard</div>
-  </div>
-</section>
-
-<!-- BIO -->
-<section class="bio-section">
-  <div class="section-label">BIOGRAPHY</div>
-  <div class="bio-tabs">
-    <button class="bio-tab active" onclick="setBioLang('zh', this)">繁中</button>
-    <button class="bio-tab" onclick="setBioLang('en', this)">EN</button>
-    <button class="bio-tab" onclick="setBioLang('ko', this)">한국어</button>
-  </div>
-
-  <div class="bio-text active" id="bio-zh">
-    <strong>이수혁（李洙赫）</strong>，1988年5月31日生於韓國京畿道果川市。<br><br>
-    2006年以設計師鄭旭俊（Lone Costume）服裝秀模特兒身分出道，與 G-Dragon、Kim Woo-bin 同為同期模特兒。憑藉 184cm 的高挑身形與冷峻眼神，迅速成為韓國頂尖男模，並登上巴黎、倫敦等國際時裝週。<br><br>
-    2011年以 KBS 校園劇《White Christmas》正式跨足演員領域，2015年在 MBC 奇幻劇《夜行書生》飾演吸血鬼反派「鬼」，獲得廣大迴響，並奪得 <em>MBC 演技大賞男子新人獎</em>。<br><br>
-    2021年《某一天滅亡來到我家門前》、2022年《還有明天》使他的海外知名度大幅攀升。2024年主演《于氏王后》，帝王氣場備受讚譽。2025年加入新公司 <em>Saram Entertainment</em>，展開全新篇章。
-  </div>
-
-  <div class="bio-text" id="bio-en">
-    <strong>Lee Soo-hyuk</strong> was born on May 31, 1988, in Gwacheon, Gyeonggi-do, South Korea.<br><br>
-    He debuted as a model in 2006 at designer Jung Wook-jun's runway show, alongside G-Dragon and Kim Woo-bin. His 184cm frame and striking features quickly established him as one of Korea's top male models, taking him to international runways in Paris and London.<br><br>
-    In 2011, he transitioned into acting with KBS drama <em>White Christmas</em>. His breakthrough came in 2015 with MBC's <em>Scholar Who Walks the Night</em>, where his portrayal of the vampire antagonist "Gwi" earned him a <em>Best New Actor award</em>.<br><br>
-    International recognition followed with <em>Doom at Your Service</em> (2021) and <em>Tomorrow</em> (2022). After signing with <em>Saram Entertainment</em> in 2025, he continues to expand his artistic range.
-  </div>
-
-  <div class="bio-text" id="bio-ko">
-    <strong>이수혁</strong>은 1988년 5월 31일 경기도 과천시에서 태어났습니다.<br><br>
-    2006년 정욱준 패션쇼 런웨이 모델로 데뷔하여 G-Dragon, 김우빈과 동기로 활동했습니다. 184cm의 훤칠한 키와 날카로운 눈빛으로 주목받으며 파리·런던 등 해외 컬렉션에도 참가한 한국 톱 남성 모델로 자리매김했습니다.<br><br>
-    2011년 KBS 드라마 《화이트 크리스마스》로 연기에 입문했고, 2015년 MBC 《야경꾼 일지》에서 뱀파이어 악당 '귀' 역을 맡아 <em>MBC 연기대상 남자 신인상</em>을 수상하며 주목받았습니다.<br><br>
-    《어느 날 우리 집 현관으로 멸망이 들어왔다》(2021), 《내일》(2022)로 해외 팬덤을 크게 넓혔으며, 2025년 <em>사람엔터테인먼트</em>와 계약하며 새로운 출발을 알렸습니다.
-  </div>
-</section>
-
-<!-- 豹的故事 -->
-<section class="leopard-section">
-  <div class="section-label">SYMBOL · 象徵</div>
-  <div class="leopard-card">
-    <div class="leopard-icon">🐆</div>
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <!-- 左：照片 -->
     <div>
-      <div class="leopard-title">豹 · 표범</div>
-      <div class="leopard-body">
-        某天，粉絲們開始在이수혁的照片下貼上豹的圖片與表情符號——<br>
-        那份獨行、冷峻、渾然天成的野性氣質，彷彿與豹不謀而合。<br><br>
-        而이수혁本人也曾在社群上自發分享豹的相關內容，<br>
-        並對粉絲的豹圖貼文默默點了讚。<br><br>
-        沒有正式宣告，卻勝過千言萬語。<br>
-        從此，<em>豹</em> 成為粉絲與他之間心照不宣的默契符號。
+      <div class="profile-photo">
+        <!-- 有照片時換成 <img src="assets/images/about-main.jpg" alt="이수혁"> -->
+        <div class="profile-photo-placeholder">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="4" y="8" width="40" height="32" rx="4" stroke="#e2c97e" stroke-width="1.2" />
+            <circle cx="24" cy="24" r="8" stroke="#e2c97e" stroke-width="1.2" />
+          </svg>
+          <span>PHOTO</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- 照片牆 -->
-<section class="gallery-section">
-  <div class="section-label">GALLERY</div>
-  <div class="photo-grid" id="photoGrid">
-    <!-- 有照片時換成 <img src="..." alt="이수혁"> -->
-    <div class="photo-cell"><div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1"/><circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1"/></svg><span>01</span></div></div>
-    <div class="photo-cell"><div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1"/><circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1"/></svg><span>02</span></div></div>
-    <div class="photo-cell"><div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1"/><circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1"/></svg><span>03</span></div></div>
-    <div class="photo-cell"><div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1"/><circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1"/></svg><span>04</span></div></div>
-    <div class="photo-cell"><div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1"/><circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1"/></svg><span>05</span></div></div>
-    <div class="photo-cell"><div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1"/><circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1"/></svg><span>06</span></div></div>
-  </div>
-</section>
+    <div class="about-divider"></div>
 
-<!-- 品牌代言 -->
-<section class="brands-section">
-  <div class="section-label">BRAND · 品牌合作</div>
-  <div class="brands-grid">
-    <div class="brand-tag highlight">MESSIKA</div>
-    <div class="brand-tag">SONGZIO</div>
-    <div class="brand-tag">Wooyoungmi</div>
-    <div class="brand-tag">Solid Homme</div>
-    <div class="brand-tag">JUUN.J</div>
-    <div class="brand-tag">Balenciaga</div>
-    <div class="brand-tag">Balmain</div>
-    <div class="brand-tag">J.W. Anderson</div>
-    <div class="brand-tag">MCM</div>
-    <div class="brand-tag">KYE</div>
-    <div class="brand-tag">Kimseoryong</div>
-    <div class="brand-tag">JARDIN DE CHOUETTE</div>
-  </div>
-</section>
+    <!-- 右：資料 -->
+    <div class="about-right">
+      <div class="about-eyebrow">LEE SOO-HYUK · 이수혁 · 李洙赫</div>
+      <h1 class="about-name-kr">이수혁</h1>
+      <div class="about-name-en">LEE SOO HYUK</div>
+      <div class="about-rule"></div>
 
-<!-- hyukmi 的話 -->
-<section class="hyukmi-section">
-  <div class="section-label">FROM HYUKMI · 站長的話</div>
-  <div class="hyukmi-card">
-    <div class="hyukmi-label">A NOTE FROM THE CREATOR</div>
-    <div class="hyukmi-text">
-      我是一個台灣飯，自稱 <em>hyukmi</em>——<br>
-      「赫迷」，李洙赫的迷，相近音，是我自取的名字。<br><br>
-      做這個網站，只是想把我喜歡的人好好整理一遍，<br>
-      讓更多人認識이수혁，也讓已經是赫迷的朋友有個小小的據點。<br><br>
-      這裡沒有官方背書，只有滿滿的愛。<br>
-      如果你也因為這個網站愛上了이수혁，<br>
-      那就是我最開心的事了。🐆
+      <div class="profile-grid">
+        <div class="profile-item">
+          <div class="profile-key">생일 · 生日</div>
+          <div class="profile-val">1988 · 05 · 31</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">신장 · 身高</div>
+          <div class="profile-val">184 cm</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">데뷔 · 出道</div>
+          <div class="profile-val">2006</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">혈액형 · 血型</div>
+          <div class="profile-val">AB 型</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">별자리 · 星座</div>
+          <div class="profile-val">雙子座 ♊</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">소속사 · 公司</div>
+          <div class="profile-val">Saram Entertainment</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">직업 · 職業</div>
+          <div class="profile-val">모델 · 배우 · MC</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-key">출신 · 出身</div>
+          <div class="profile-val">京畿道 果川市</div>
+        </div>
+      </div>
+
+      <div class="leopard-badge">🐆 &nbsp;豹 · 표범 · Leopard</div>
     </div>
-    <div class="hyukmi-sig">— <span>hyukmi</span> · 台灣飯 · 2026</div>
-  </div>
-</section>
+  </section>
 
-<footer>LSH · 豹 · 2006 – &nbsp;|&nbsp; made with ♥ by <a href="#" style="color:var(--gold);text-decoration:none;opacity:0.8;">hyukmi</a></footer>
+  <!-- BIO -->
+  <section class="bio-section">
+    <div class="section-label">BIOGRAPHY</div>
+    <div class="bio-tabs">
+      <button class="bio-tab active" onclick="setBioLang('zh', this)">繁中</button>
+      <button class="bio-tab" onclick="setBioLang('en', this)">EN</button>
+      <button class="bio-tab" onclick="setBioLang('ko', this)">한국어</button>
+    </div>
 
-<script>
-function setBioLang(lang, el) {
-  document.querySelectorAll('.bio-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.bio-text').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('bio-' + lang).classList.add('active');
+    <div class="bio-text active" id="bio-zh">
+      <strong>이수혁（李洙赫）</strong>，1988年5月31日生於韓國京畿道果川市。<br><br>
+      2006年以設計師鄭旭俊（Lone Costume）服裝秀模特兒身分出道，與 G-Dragon、Kim Woo-bin 同為同期模特兒。憑藉 184cm
+      的高挑身形與冷峻眼神，迅速成為韓國頂尖男模，並登上巴黎、倫敦等國際時裝週。<br><br>
+      2010年11月4日以電影《依帕內瑪少年》正式演員出道，2011年以 KBS 校園劇《White Christmas》廣受矚目，2015年在 MBC 奇幻劇《夜行書生》飾演吸血鬼反派「鬼」，獲得廣大迴響，並奪得 <em>MBC 演技大賞男子新人獎</em>。<br><br>
+      2021年《某一天滅亡來到我家門前》、2022年《還有明天》使他的海外知名度大幅攀升。2024年主演《于氏王后》，帝王氣場備受讚譽。2025年加入新公司 <em>Saram Entertainment</em>，展開全新篇章。
+    </div>
+
+    <div class="bio-text" id="bio-en">
+      <strong>Lee Soo-hyuk</strong> was born on May 31, 1988, in Gwacheon, Gyeonggi-do, South Korea.<br><br>
+      He debuted as a model in 2006 at designer Jung Wook-jun's runway show, alongside G-Dragon and Kim Woo-bin. His
+      184cm frame and striking features quickly established him as one of Korea's top male models, taking him to
+      international runways in Paris and London.<br><br>
+      He made his official acting debut on November 4, 2010, with the film <em>Boy from Ipanema</em>. In 2011, KBS drama <em>White Christmas</em> brought him wider recognition. His breakthrough came in 2015 with
+      MBC's <em>Scholar Who Walks the Night</em>, where his portrayal of the vampire antagonist "Gwi" earned him a
+      <em>Best New Actor award</em>.<br><br>
+      International recognition followed with <em>Doom at Your Service</em> (2021) and <em>Tomorrow</em> (2022). After
+      signing with <em>Saram Entertainment</em> in 2025, he continues to expand his artistic range.
+    </div>
+
+    <div class="bio-text" id="bio-ko">
+      <strong>이수혁</strong>은 1988년 5월 31일 경기도 과천시에서 태어났습니다.<br><br>
+      2006년 정욱준 패션쇼 런웨이 모델로 데뷔하여 G-Dragon, 김우빈과 동기로 활동했습니다. 184cm의 훤칠한 키와 날카로운 눈빛으로 주목받으며 파리·런던 등 해외 컬렉션에도 참가한 한국 톱 남성
+      모델로 자리매김했습니다.<br><br>
+      2010년 11월 4일 영화 《이파네마 소년》으로 공식 배우 데뷔를 했으며, 2011년 KBS 드라마 《화이트 크리스마스》로 주목받았고, 2015년 MBC 《야경꾼 일지》에서 뱀파이어 악당 '귀' 역을 맡아 <em>MBC 연기대상 남자 신인상</em>을 수상하며
+      주목받았습니다.<br><br>
+      《어느 날 우리 집 현관으로 멸망이 들어왔다》(2021), 《내일》(2022)로 해외 팬덤을 크게 넓혔으며, 2025년 <em>사람엔터테인먼트</em>와 계약하며 새로운 출발을 알렸습니다.
+    </div>
+  </section>
+
+  <!-- 豹的故事 -->
+  <section class="leopard-section">
+    <div class="section-label">SYMBOL · 象徵</div>
+    <div class="leopard-card">
+      <div class="leopard-icon">🐆</div>
+      <div>
+        <div class="leopard-title">豹 · 표범</div>
+        <div class="leopard-body">
+          某天，粉絲們開始在이수혁的照片下貼上豹的圖片與表情符號——<br>
+          那份獨行、冷峻、渾然天成的野性氣質，彷彿與豹不謀而合。<br><br>
+          而이수혁本人也曾在社群上自發分享豹的相關內容，<br>
+          並對粉絲的豹圖貼文默默點了讚。<br><br>
+          沒有正式宣告，卻勝過千言萬語。<br>
+          從此，<em>豹</em> 成為粉絲與他之間心照不宣的默契符號。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 照片牆 -->
+  <section class="gallery-section">
+    <div class="section-label">GALLERY</div>
+    <div class="photo-grid" id="photoGrid">
+      <!-- 有照片時換成 <img src="..." alt="이수혁"> -->
+      <div class="photo-cell">
+        <div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1" />
+            <circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1" />
+          </svg><span>01</span></div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1" />
+            <circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1" />
+          </svg><span>02</span></div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1" />
+            <circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1" />
+          </svg><span>03</span></div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1" />
+            <circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1" />
+          </svg><span>04</span></div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1" />
+            <circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1" />
+          </svg><span>05</span></div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-ph"><svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="5" width="28" height="22" rx="3" stroke="#e2c97e" stroke-width="1" />
+            <circle cx="16" cy="16" r="5" stroke="#e2c97e" stroke-width="1" />
+          </svg><span>06</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌代言 -->
+  <section class="brands-section">
+    <div class="section-label">BRAND · 品牌合作</div>
+    <div class="brands-grid">
+      <div class="brand-tag highlight">MESSIKA</div>
+      <div class="brand-tag">SONGZIO</div>
+      <div class="brand-tag">Wooyoungmi</div>
+      <div class="brand-tag">Solid Homme</div>
+      <div class="brand-tag">JUUN.J</div>
+      <div class="brand-tag">Balenciaga</div>
+      <div class="brand-tag">Balmain</div>
+      <div class="brand-tag">J.W. Anderson</div>
+      <div class="brand-tag">MCM</div>
+      <div class="brand-tag">KYE</div>
+      <div class="brand-tag">Kimseoryong</div>
+      <div class="brand-tag">JARDIN DE CHOUETTE</div>
+    </div>
+  </section>
+
+  <!-- hyukmi 的話 -->
+  <section class="hyukmi-section">
+    <div class="section-label">FROM HYUKMI · 站長的話</div>
+    <div class="hyukmi-card">
+      <div class="hyukmi-label">A NOTE FROM THE CREATOR</div>
+      <div class="hyukmi-text">
+        我是一個台灣飯，自稱 <em>Hyukmi</em>——<br>
+        「赫迷」，李洙赫的迷，諧音哏(台灣人不能放棄諧音哏)，是我自取的名字。<br><br>
+        做這個網站，只是想把我喜歡的人好好整理一遍，<br>
+        讓更多人認識이수혁，也讓已經是赫迷的朋友有個小小的維基。<br><br>
+        這裡沒有官方背書，只有滿滿的愛。<br>
+        如果你也因為這個網站愛上了이수혁，<br>
+        那就是我最開心的事了。🐆
+      </div>
+      <div class="hyukmi-sig">— <span>hyukmi</span> · 台灣飯 · 2026</div>
+    </div>
+  </section>
+
+  <footer>LSH · 豹 · 2010 – &nbsp;|&nbsp; © 2026 Made with 🩵 by <a href="about.html" style="color:var(--gold);text-decoration:none;opacity:0.8;">혁미 · 
+    Taiwan Fan Archive · All Rights Reserved.</footer>
+
+  <script>
+    function setBioLang(lang, el) {
+      document.querySelectorAll('.bio-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.bio-text').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('bio-' + lang).classList.add('active');
+    }
+  
+const i18n = {
+  zh: {
+    'page-tag':   'LEE SOO-HYUK · 이수혁 · 李洙赫',
+    'about-intro-title': 'INTRODUCTION',
+    'about-profile-title': 'PROFILE',
+  },
+  en: {
+    'page-tag':   'LEE SOO-HYUK · 이수혁 · Lee Soo Hyuk',
+    'about-intro-title': 'INTRODUCTION',
+    'about-profile-title': 'PROFILE',
+  },
+  ko: {
+    'page-tag':   'LEE SOO-HYUK · 이수혁 · 李洙赫',
+    'about-intro-title': '소개',
+    'about-profile-title': '프로필',
+  },
+};
+
+function setLang(lang) {
+  const labels = { zh:'繁中', en:'EN', ko:'한국어' };
+  document.getElementById('langLabel').textContent = labels[lang] || lang;
+  const dict = Object.assign({}, i18n.zh, i18n[lang] || {});
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
 }
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) {
+    document.getElementById('langMenu').classList.remove('open');
+  }
+});
+
 </script>
 </body>
+
 </html>

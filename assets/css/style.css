@@ -25,7 +25,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Noto Sans KR', 'Noto Serif TC', sans-serif;
+  font-family: 'Noto Sans KR', 'Noto Sans TC', sans-serif;
   min-height: 100vh;
 }
 

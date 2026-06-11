@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-hant">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -145,6 +145,33 @@
   @media (max-width: 400px) {
     .gifts-grid { grid-template-columns: 1fr; }
   }
+  /* 語言下拉 */
+  .lang-dropdown { position: relative; }
+  .lang-globe-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid rgba(240,232,208,0.18);
+    border-radius: 3px; padding: 6px 10px;
+    color: var(--text2); cursor: pointer;
+    font-size: 11px; letter-spacing: 0.1em;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s;
+  }
+  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: rgba(17,17,24,0.98); border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden; min-width: 100px; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-menu.open { display: block; }
+  .lang-menu button {
+    display: block; width: 100%; padding: 10px 16px;
+    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
+    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; text-align: left;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
+  }
+  .lang-menu button:last-child { border-bottom: none; }
+  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }
 </style>
 </head>
 <body>
@@ -157,8 +184,10 @@
     <li><a href="works.html">WORKS</a></li>
     <li><a href="cheers.html">CHEERS</a></li>
     <li><a href="gifts.html" class="active">GIFTS</a></li>
-    <li><a href="archive.html" class="active">ARCHIVE</a></li>
+    <li><a href="archive.html" >ARCHIVE</a></li>
   </ul>
+  
+
   <div class="nav-right">
     <span class="user-name" id="navUserName"></span>
     <button class="auth-btn" id="navAuthBtn" onclick="handleAuthBtn()">登入</button>
@@ -168,9 +197,9 @@
 <!-- HEADER -->
 <header class="header">
   <div class="header-tag">LEE SOO-HYUK · 이수혁</div>
-  <h1 class="header-title">선물 · 應援禮物</h1>
+  <h1 class="header-title" data-i18n="page-title">선물 · 應援禮物</h1>
   <div class="header-rule"></div>
-  <div class="header-sub">粉絲免費應援禮物 · Fan Free Gifts</div>
+  <div class="header-sub" data-i18n="page-sub">粉絲免費應援禮物 · Fan Free Gifts</div>
 </header>
 
 <!-- TOOLBAR -->
@@ -287,9 +316,9 @@
   </div>
 </div>
 
-<footer style="text-align:center;padding:24px;font-size:11px;color:var(--text3);letter-spacing:0.2em;border-top:1px solid var(--gold-line)">
-  LSH · 豹 · 2006 –
-</footer>
+<footer>LSH · 豹 · 2010 – &nbsp;|&nbsp; © 2026 Made with 🩵 by <a href="about.html"
+    style="color:var(--gold);text-decoration:none;opacity:0.8;">혁미 ·
+    Taiwan Fan Archive · All Rights Reserved.</footer>
 
 <script>
 /* ── 狀態 ── */
@@ -545,6 +574,41 @@ document.querySelectorAll('.modal-backdrop').forEach(m => {
 /* ════ INIT ════ */
 updateNavAuth();
 loadGifts();
+
+const i18n = {
+  zh: {
+    'page-title': '선물 · 應援禮物',
+    'page-sub':   '粉絲免費應援禮物 · Fan Free Gifts',
+  },
+  en: {
+    'page-title': '선물 · Fan Gifts',
+    'page-sub':   'Free fan support gifts',
+  },
+  ko: {
+    'page-title': '선물 · 應援禮物',
+    'page-sub':   '팬 무료 서포트 선물',
+  },
+};
+
+function setLang(lang) {
+  const labels = { zh:'繁中', en:'EN', ko:'한국어' };
+  document.getElementById('langLabel').textContent = labels[lang] || lang;
+  const dict = Object.assign({}, i18n.zh, i18n[lang] || {});
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+}
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) {
+    document.getElementById('langMenu').classList.remove('open');
+  }
+});
+
 </script>
 </body>
 </html>

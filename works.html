@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-hant">
 
 <head>
   <meta charset="UTF-8" />
@@ -8,19 +8,62 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Serif+TC:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap"
     rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-<style>
-  /* ── 時裝秀專用色 ── */
-  :root {
-    --show-c:  #e2b87e;
-    --show-bg: rgba(226,184,126,0.14);
-    --show-br: rgba(226,184,126,0.38);
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── 時裝秀專用色 ── */
+    :root {
+      --show-c: #e2b87e;
+      --show-bg: rgba(226, 184, 126, 0.14);
+      --show-br: rgba(226, 184, 126, 0.38);
+    }
+
+    /* 時裝秀 card */
+    .work-card.type-show {
+      border-color: var(--show-br);
+      border-left-color: var(--show-c);
+    }
+
+    .type-badge.type-show {
+      color: var(--show-c);
+      background: var(--show-bg);
+      border-color: var(--show-br);
+    }
+
+    .filter-btn.active-show {
+      border-color: var(--show-c);
+      background: var(--show-bg);
+      color: var(--show-c);
+    }
+    /* 語言下拉 */
+  .lang-dropdown { position: relative; }
+  .lang-globe-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid rgba(240,232,208,0.18);
+    border-radius: 3px; padding: 6px 10px;
+    color: var(--text2); cursor: pointer;
+    font-size: 11px; letter-spacing: 0.1em;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s;
   }
-  /* 時裝秀 card */
-  .work-card.type-show  { border-color: var(--show-br);  border-left-color: var(--show-c); }
-  .type-badge.type-show { color: var(--show-c); background: var(--show-bg); border-color: var(--show-br); }
-  .filter-btn.active-show { border-color: var(--show-c); background: var(--show-bg); color: var(--show-c); }
+  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: rgba(17,17,24,0.98); border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden; min-width: 100px; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-menu.open { display: block; }
+  .lang-menu button {
+    display: block; width: 100%; padding: 10px 16px;
+    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
+    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; text-align: left;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
+  }
+  .lang-menu button:last-child { border-bottom: none; }
+  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }
 </style>
 </head>
 
@@ -33,23 +76,41 @@
       <li><a href="works.html" class="active">WORKS</a></li>
       <li><a href="cheers.html">CHEERS</a></li>
       <li><a href="gifts.html">GIFTS</a></li>
-      <li><a href="archive.html" class="active">ARCHIVE</a></li>
+      <li><a href="archive.html">ARCHIVE</a></li>
     </ul>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-globe-btn" onclick="toggleLangMenu()" aria-label="語言切換">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" />
+          <ellipse cx="8" cy="8" rx="3" ry="7" stroke="currentColor" stroke-width="1.2" />
+          <line x1="1" y1="6" x2="15" y2="6" stroke="currentColor" stroke-width="1.2" />
+          <line x1="1" y1="10" x2="15" y2="10" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <span id="langLabel">繁中</span>
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="opacity:0.5">
+          <path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button onclick="setLang('zh'); toggleLangMenu()">繁中</button>
+        <button onclick="setLang('en'); toggleLangMenu()">EN</button>
+        <button onclick="setLang('ko'); toggleLangMenu()">한국어</button>
+      </div>
   </nav>
 
   <header class="header">
     <div class="header-tag">LEE SOO-HYUK · 이수혁 · 李洙赫</div>
-    <h1 class="header-title">作品年表</h1>
+    <h1 class="header-title" data-i18n="page-title">作品年表</h1>
     <div class="header-rule"></div>
-    <div class="header-range">2006 — 2026</div>
+    <div class="header-range" data-i18n="page-range">2006 — 2026</div>
   </header>
 
   <div class="filters">
     <button class="filter-btn active-all" onclick="setFilter('全部',   this)">全部</button>
-    <button class="filter-btn"            onclick="setFilter('時裝秀', this)">時裝秀</button>
-    <button class="filter-btn"            onclick="setFilter('電視劇', this)">電視劇</button>
-    <button class="filter-btn"            onclick="setFilter('電影',   this)">電影</button>
-    <button class="filter-btn"            onclick="setFilter('活動',   this)">活動</button>
+    <button class="filter-btn" onclick="setFilter('時裝秀', this)">時裝秀</button>
+    <button class="filter-btn" onclick="setFilter('電影',   this)">電影</button>
+    <button class="filter-btn" onclick="setFilter('電視劇', this)">電視劇</button>
+    <button class="filter-btn" onclick="setFilter('活動',   this)">活動</button>
   </div>
 
   <!-- 活動子分類 -->
@@ -70,44 +131,46 @@
   <div class="timeline-wrap">
     <div class="tl-axis"></div>
     <div id="timeline"></div>
-    <div class="tl-end">∞ 持續更新中</div>
+    <div class="tl-end" data-i18n="tl-end">∞ 持續更新中</div>
   </div>
 
-  <footer>LSH · 豹 · 2006 –</footer>
+  <footer>LSH · 豹 · 2010 – &nbsp;|&nbsp; © 2026 Made with 🩵 by <a href="about.html"
+      style="color:var(--gold);text-decoration:none;opacity:0.8;">혁미 ·
+      Taiwan Fan Archive · All Rights Reserved.</footer>
 
   <script>
     const works = [
       /* ── 時裝秀 ── */
-      { year:2006, title:"Seoul Fashion Week S/S 07 Lone Costume", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 07", type:"時裝秀", desc:"首次登上首爾時裝週伸展台。", tags:["首爾時裝週"] },
+      { year: 2006, title: "Seoul Fashion Week S/S 07 Lone Costume", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 07", type: "時裝秀", desc: "首次登上首爾時裝週伸展台。", tags: ["首爾時裝週"] },
 
-      { year:2008, title:"Seoul Fashion Week S/S 09 Generation Next", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 09", type:"時裝秀", desc:"Generation Next 單元。", tags:["首爾時裝週"] },
-      { year:2008, title:"Seoul Fashion Week S/S 09 Solid Homme By Wooyoungmi", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 09 — Solid Homme 20th Anniversary", type:"時裝秀", desc:"Solid Homme 20周年紀念秀。", tags:["首爾時裝週","Solid Homme"] },
+      { year: 2008, title: "Seoul Fashion Week S/S 09 Generation Next", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 09", type: "時裝秀", desc: "Generation Next 單元。", tags: ["首爾時裝週"] },
+      { year: 2008, title: "Seoul Fashion Week S/S 09 Solid Homme By Wooyoungmi", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 09 — Solid Homme 20th Anniversary", type: "時裝秀", desc: "Solid Homme 20周年紀念秀。", tags: ["首爾時裝週", "Solid Homme"] },
 
-      { year:2011, title:"Seoul Fashion Week F/W 11 SONGZIO", title_kr:"서울패션위크", title_en:"Seoul Fashion Week F/W 11 — SONGZIO", type:"時裝秀", desc:"", tags:["首爾時裝週","SONGZIO"] },
-      { year:2011, title:"Seoul Fashion Week S/S 12 SONGZIO", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 12 — SONGZIO", type:"時裝秀", desc:"", tags:["首爾時裝週","SONGZIO"] },
-      { year:2011, title:"Kimseoryong 2012 Spring Summer Collection", title_kr:"김서룡 컬렉션", title_en:"Kimseoryong 2012 S/S Collection", type:"時裝秀", desc:"", tags:["Kimseoryong"] },
+      { year: 2011, title: "Seoul Fashion Week F/W 11 SONGZIO", title_kr: "서울패션위크", title_en: "Seoul Fashion Week F/W 11 — SONGZIO", type: "時裝秀", desc: "", tags: ["首爾時裝週", "SONGZIO"] },
+      { year: 2011, title: "Seoul Fashion Week S/S 12 SONGZIO", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 12 — SONGZIO", type: "時裝秀", desc: "", tags: ["首爾時裝週", "SONGZIO"] },
+      { year: 2011, title: "Kimseoryong 2012 Spring Summer Collection", title_kr: "김서룡 컬렉션", title_en: "Kimseoryong 2012 S/S Collection", type: "時裝秀", desc: "", tags: ["Kimseoryong"] },
 
-      { year:2012, title:"Men's Fashion Week 2012 Singapore SONGZIO", title_kr:"싱가포르 패션위크", title_en:"Men's Fashion Week 2012 Singapore — SONGZIO", type:"時裝秀", desc:"新加坡男裝週。", tags:["SONGZIO","新加坡"] },
+      { year: 2012, title: "Men's Fashion Week 2012 Singapore SONGZIO", title_kr: "싱가포르 패션위크", title_en: "Men's Fashion Week 2012 Singapore — SONGZIO", type: "時裝秀", desc: "新加坡男裝週。", tags: ["SONGZIO", "新加坡"] },
 
-      { year:2013, title:"J.W. Anderson Menswear F/W 2013 London", title_kr:"런던 패션위크", title_en:"J.W. Anderson Menswear F/W 2013 — London", type:"時裝秀", desc:"倫敦時裝週。", tags:["倫敦","J.W.Anderson"] },
-      { year:2013, title:"Balenciaga Menswear F/W 2013 Paris", title_kr:"파리 패션위크", title_en:"Balenciaga Menswear F/W 2013 — Paris", type:"時裝秀", desc:"巴黎時裝週 Balenciaga 男裝秀。", tags:["巴黎","Balenciaga"] },
-      { year:2013, title:"Balmain Menswear F/W 2013 Paris", title_kr:"파리 패션위크", title_en:"Balmain Menswear F/W 2013 — Paris", type:"時裝秀", desc:"", tags:["巴黎","Balmain"] },
-      { year:2013, title:"JUUN.J Menswear F/W 2013 Paris", title_kr:"파리 패션위크", title_en:"JUUN.J Menswear F/W 2013 — Paris", type:"時裝秀", desc:"", tags:["巴黎","JUUN.J"] },
-      { year:2013, title:"SONGZIO Menswear F/W 2013 Paris", title_kr:"파리 패션위크", title_en:"SONGZIO Menswear F/W 2013 — Paris", type:"時裝秀", desc:"", tags:["巴黎","SONGZIO"] },
-      { year:2013, title:"Wooyoungmi Menswear F/W 2013 Paris", title_kr:"파리 패션위크", title_en:"Wooyoungmi Menswear F/W 2013 — Paris", type:"時裝秀", desc:"", tags:["巴黎","Wooyoungmi"] },
-      { year:2013, title:"Seoul Fashion Week F/W 13 Kimseoryong", title_kr:"서울패션위크", title_en:"Seoul Fashion Week F/W 13 — Kimseoryong", type:"時裝秀", desc:"", tags:["首爾時裝週","Kimseoryong"] },
-      { year:2013, title:"Seoul Fashion Week F/W 13 SONGZIO HOMME", title_kr:"서울패션위크", title_en:"Seoul Fashion Week F/W 13 — SONGZIO HOMME", type:"時裝秀", desc:"", tags:["首爾時裝週","SONGZIO"] },
-      { year:2013, title:"Seoul Fashion Week F/W 13 STEVE J & YONI P", title_kr:"서울패션위크", title_en:"Seoul Fashion Week F/W 13 — STEVE J & YONI P", type:"時裝秀", desc:"", tags:["首爾時裝週"] },
-      { year:2013, title:"Seoul Fashion Week F/W 13 JARDIN DE CHOUETTE", title_kr:"서울패션위크", title_en:"Seoul Fashion Week F/W 13 — JARDIN DE CHOUETTE", type:"時裝秀", desc:"", tags:["首爾時裝週"] },
-      { year:2013, title:"Solid Homme 25th Anniversary 2013 AW — RE:BORN", title_kr:"솔리드 옴므 25주년", title_en:"Solid Homme 25th Anniversary 2013 AW RE:BORN", type:"時裝秀", desc:"Solid Homme 25周年紀念秀。", tags:["Solid Homme"] },
-      { year:2013, title:"SONGZIO Menswear S/S 2014 Seoul", title_kr:"서울패션위크", title_en:"SONGZIO Menswear S/S 2014 — Seoul", type:"時裝秀", desc:"", tags:["首爾時裝週","SONGZIO"] },
-      { year:2013, title:"Seoul Fashion Week S/S 14 Kimseoryong", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 14 — Kimseoryong", type:"時裝秀", desc:"", tags:["首爾時裝週","Kimseoryong"] },
-      { year:2013, title:"Seoul Fashion Week S/S 14 STEVE J & YONI P", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 14 — STEVE J & YONI P", type:"時裝秀", desc:"", tags:["首爾時裝週"] },
-      { year:2013, title:"Seoul Fashion Week S/S 14 KYE", title_kr:"서울패션위크", title_en:"Seoul Fashion Week S/S 14 — KYE", type:"時裝秀", desc:"", tags:["首爾時裝週","KYE"] },
-      { year:2013, title:"JARDIN DE CHOUETTE Spring Summer 2014", title_kr:"자르뎅 드 슈에뜨", title_en:"JARDIN DE CHOUETTE S/S 2014", type:"時裝秀", desc:"", tags:["JARDIN DE CHOUETTE"] },
-      { year:2013, title:"MCM Spring Summer 2014 Flower Boys in Paradise", title_kr:"MCM S/S 2014", title_en:"MCM S/S 2014 — Flower Boys in Paradise", type:"時裝秀", desc:"MCM 2014春夏秀。", tags:["MCM"] },
+      { year: 2013, title: "J.W. Anderson Menswear F/W 2013 London", title_kr: "런던 패션위크", title_en: "J.W. Anderson Menswear F/W 2013 — London", type: "時裝秀", desc: "倫敦時裝週。", tags: ["倫敦", "J.W.Anderson"] },
+      { year: 2013, title: "Balenciaga Menswear F/W 2013 Paris", title_kr: "파리 패션위크", title_en: "Balenciaga Menswear F/W 2013 — Paris", type: "時裝秀", desc: "巴黎時裝週 Balenciaga 男裝秀。", tags: ["巴黎", "Balenciaga"] },
+      { year: 2013, title: "Balmain Menswear F/W 2013 Paris", title_kr: "파리 패션위크", title_en: "Balmain Menswear F/W 2013 — Paris", type: "時裝秀", desc: "", tags: ["巴黎", "Balmain"] },
+      { year: 2013, title: "JUUN.J Menswear F/W 2013 Paris", title_kr: "파리 패션위크", title_en: "JUUN.J Menswear F/W 2013 — Paris", type: "時裝秀", desc: "", tags: ["巴黎", "JUUN.J"] },
+      { year: 2013, title: "SONGZIO Menswear F/W 2013 Paris", title_kr: "파리 패션위크", title_en: "SONGZIO Menswear F/W 2013 — Paris", type: "時裝秀", desc: "", tags: ["巴黎", "SONGZIO"] },
+      { year: 2013, title: "Wooyoungmi Menswear F/W 2013 Paris", title_kr: "파리 패션위크", title_en: "Wooyoungmi Menswear F/W 2013 — Paris", type: "時裝秀", desc: "", tags: ["巴黎", "Wooyoungmi"] },
+      { year: 2013, title: "Seoul Fashion Week F/W 13 Kimseoryong", title_kr: "서울패션위크", title_en: "Seoul Fashion Week F/W 13 — Kimseoryong", type: "時裝秀", desc: "", tags: ["首爾時裝週", "Kimseoryong"] },
+      { year: 2013, title: "Seoul Fashion Week F/W 13 SONGZIO HOMME", title_kr: "서울패션위크", title_en: "Seoul Fashion Week F/W 13 — SONGZIO HOMME", type: "時裝秀", desc: "", tags: ["首爾時裝週", "SONGZIO"] },
+      { year: 2013, title: "Seoul Fashion Week F/W 13 STEVE J & YONI P", title_kr: "서울패션위크", title_en: "Seoul Fashion Week F/W 13 — STEVE J & YONI P", type: "時裝秀", desc: "", tags: ["首爾時裝週"] },
+      { year: 2013, title: "Seoul Fashion Week F/W 13 JARDIN DE CHOUETTE", title_kr: "서울패션위크", title_en: "Seoul Fashion Week F/W 13 — JARDIN DE CHOUETTE", type: "時裝秀", desc: "", tags: ["首爾時裝週"] },
+      { year: 2013, title: "Solid Homme 25th Anniversary 2013 AW — RE:BORN", title_kr: "솔리드 옴므 25주년", title_en: "Solid Homme 25th Anniversary 2013 AW RE:BORN", type: "時裝秀", desc: "Solid Homme 25周年紀念秀。", tags: ["Solid Homme"] },
+      { year: 2013, title: "SONGZIO Menswear S/S 2014 Seoul", title_kr: "서울패션위크", title_en: "SONGZIO Menswear S/S 2014 — Seoul", type: "時裝秀", desc: "", tags: ["首爾時裝週", "SONGZIO"] },
+      { year: 2013, title: "Seoul Fashion Week S/S 14 Kimseoryong", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 14 — Kimseoryong", type: "時裝秀", desc: "", tags: ["首爾時裝週", "Kimseoryong"] },
+      { year: 2013, title: "Seoul Fashion Week S/S 14 STEVE J & YONI P", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 14 — STEVE J & YONI P", type: "時裝秀", desc: "", tags: ["首爾時裝週"] },
+      { year: 2013, title: "Seoul Fashion Week S/S 14 KYE", title_kr: "서울패션위크", title_en: "Seoul Fashion Week S/S 14 — KYE", type: "時裝秀", desc: "", tags: ["首爾時裝週", "KYE"] },
+      { year: 2013, title: "JARDIN DE CHOUETTE Spring Summer 2014", title_kr: "자르뎅 드 슈에뜨", title_en: "JARDIN DE CHOUETTE S/S 2014", type: "時裝秀", desc: "", tags: ["JARDIN DE CHOUETTE"] },
+      { year: 2013, title: "MCM Spring Summer 2014 Flower Boys in Paradise", title_kr: "MCM S/S 2014", title_en: "MCM S/S 2014 — Flower Boys in Paradise", type: "時裝秀", desc: "MCM 2014春夏秀。", tags: ["MCM"] },
 
-      { year:2015, title:"Seoul Fashion Week F/W 15 SONGZIO", title_kr:"서울패션위크", title_en:"Seoul Fashion Week F/W 15 — SONGZIO", type:"時裝秀", desc:"", tags:["首爾時裝週","SONGZIO"] },
+      { year: 2015, title: "Seoul Fashion Week F/W 15 SONGZIO", title_kr: "서울패션위크", title_en: "Seoul Fashion Week F/W 15 — SONGZIO", type: "時裝秀", desc: "", tags: ["首爾時裝週", "SONGZIO"] },
       { year: 2006, title: "模特兒出道", title_kr: "모델 데뷔", title_en: "Model Debut", type: "活動", desc: "活躍於韓國時尚圈。", tags: ["模特兒"] },
 
       { year: 2007, title: "韓國時尚攝影師協會 男模新人獎", title_kr: "한국패션사진가협회 남자 모델 신인상", title_en: "Korea Fashion Photographers Association - Best New Male Model", type: "獲獎", desc: "模特兒時期獲獎。", tags: ["獲獎"] },
@@ -116,7 +179,7 @@
       { year: 2009, title: "《戀愛小說》MV", title_kr: "〈연애소설〉", title_en: "Love Story MV", type: "音樂錄影帶", desc: "Gavy NJ 音樂錄影帶出演。", tags: ["MV"] },
       { year: 2010, title: "《It Hurts》MV", title_kr: "〈아파〉", title_en: "It Hurts MV", type: "音樂錄影帶", desc: "2NE1 音樂錄影帶出演。", tags: ["MV"] },
 
-      { year: 2010, title: "《依帕內瑪少年》", title_kr: "이파네마 소년", title_en: "The Boy from Ipanema", type: "電影", role: "-", desc: "文藝電影，演員初期代表作。", tags: ["文藝", "初期代表作"] },
+      { year: 2010, month: "11/4", title: "《依帕內瑪少年》", title_kr: "이파네마 소년", title_en: "The Boy from Ipanema", type: "電影", role: "-", desc: "文藝電影，演員初期代表作。", tags: ["文藝", "初期代表作"] },
 
       { year: 2011, title: "《White Christmas》", title_kr: "화이트 크리스마스", title_en: "White Christmas", type: "電視劇", role: "尹秀 / 윤수 / Yoon Soo", desc: "陰鬱心理校園劇，建立病嬌美男形象的重要作品。", tags: ["心理劇", "病嬌美男"] },
       { year: 2011, title: "《吸血鬼偶像》", title_kr: "뱀파이어 아이돌", title_en: "Vampire Idol", type: "電視劇", role: "李洙赫 / 이수혁", desc: "情境喜劇，少見搞笑演出。", tags: ["喜劇"] },
@@ -164,66 +227,67 @@
       { year: 2024, title: "《于氏王后》", title_kr: "우씨왕후", title_en: "Queen Woo", type: "電視劇", role: "高發岐 / 고발기", desc: "古裝權力鬥爭劇，帝王氣場很強。", tags: ["古裝", "權謀", "主演"] },
       { year: 2024, title: "《Project 7》", title_kr: "프로젝트 7", title_en: "Project 7", type: "綜藝", desc: "選秀節目主持人。", tags: ["綜藝", "主持"] },
 
-      { year: 2025, title: "Saram Entertainment", title_kr: "사람엔터테인먼트", title_en: "Saram Entertainment", type: "經紀公司", desc: "離開 YG Entertainment，正式簽約新公司。", tags: ["公司", "轉簽"] },
+      { year: 2025, month: "07/14", title: "Saram Entertainment", title_kr: "사람엔터테인먼트", title_en: "Saram Entertainment", type: "經紀公司", desc: "離開 YG Entertainment，正式簽約新公司。", tags: ["公司", "轉簽"] },
       { year: 2025, title: "《파란／Lost》", title_kr: "파란", title_en: "Lost", type: "電影", role: "-", desc: "心理懸疑電影。", tags: ["心理", "懸疑"] },
       { year: 2025, title: "《S LINE》", title_kr: "S라인", title_en: "S LINE", type: "電視劇", role: "韓志昱 / 한지욱 / Han Ji-wook", desc: "黑暗奇幻題材，話題度很高。", tags: ["黑暗奇幻", "話題", "主演"] },
       { year: 2025, month: "11/21", title: "杭州粉絲見面會", title_kr: "항저우 팬미팅", title_en: "Hangzhou Fan Meeting", type: "活動", desc: "時隔10年的官方粉絲見面會 #1。", tags: ["팬미팅", "Fan Meeting"] },
 
-      { year: 2026, month: "01/28", title: "《Sister》", title_kr: "시스터", title_en: "Sister", type: "電影", role: "未公開", desc: "黑暗犯罪題材，挑戰全新反派形象。", tags: ["犯罪", "反派"] },
+      { year: 2026, month: "01/28", title: "《Sister》", title_kr: "시스터", title_en: "Sister", type: "電影", role: "泰洙", desc: "黑暗犯罪題材，挑戰全新反派形象。", tags: ["犯罪", "反派"] },
       { year: 2026, title: "《訂閱男友》", title_kr: "구독남친", title_en: "Monthly Boyfriend", type: "電視劇", role: "崔時宇 / 최시우", desc: "Netflix 特別出演。", tags: ["Netflix", "特別出演"] },
       { year: 2026, title: "《銀河大酒店》", title_kr: "은하수 호텔", title_en: "Galaxy Hotel", type: "電視劇", role: "白基 / 백기", desc: "Netflix 待播作品。", tags: ["Netflix", "待播", "主演"] },
       { year: 2026, title: "《女皇的後宮們》", title_kr: "여왕의 후궁들", title_en: "The Queen's Court", type: "電視劇", role: "未公開", desc: "tvN 待播作品。", tags: ["待播", "主演"] },
       { year: 2026, title: "《Dealer》", title_kr: "딜러", title_en: "Dealer", type: "電視劇", role: "趙俊 / 조준", desc: "Netflix 待播作品。", tags: ["Netflix", "待播", "主演"] },
       { year: 2026, month: "05/30", title: "上海粉絲見面會", title_kr: "상하이 팬미팅", title_en: "Shanghai Fan Meeting", type: "活動", desc: "官方粉絲見面會 #2。", tags: ["팬미팅", "Fan Meeting"] },
       { year: 2026, month: "05/31", title: "弘大生日咖啡廳", title_kr: "홍대 생일카페", title_en: "Hongdae Birthday Cafe Event", type: "活動", desc: "韓國粉絲小型慶生活動。", tags: ["생카", "生日咖啡廳"] },
+      { year: 2026, month: "06/11", title: "MESSIKA 珠寶大使活動", title_kr: "메시카 주얼리 앰배서더", title_en: "MESSIKA Jewelry Ambassador Event", type: "活動", desc: "珠寶品牌 MESSIKA 大使活動。", tags: ["時尚", "大使", "品牌活動"] },
     ];
 
     /* 主分類對應 CSS class */
     const TYPE_CLASS = {
-      電視劇:    "type-drama",
-      電影:      "type-film",
-      活動:      "type-event",
-      獲獎:      "type-event",
-      兵役:      "type-event",
-      經紀公司:  "type-event",
-      綜藝:      "type-event",
-      主持:      "type-event",
-      廣播劇:    "type-event",
-      音樂錄影帶:"type-event",
-      時裝秀:    "type-show",
+      電視劇: "type-drama",
+      電影: "type-film",
+      活動: "type-event",
+      獲獎: "type-event",
+      兵役: "type-event",
+      經紀公司: "type-event",
+      綜藝: "type-event",
+      主持: "type-event",
+      廣播劇: "type-event",
+      音樂錄影帶: "type-event",
+      時裝秀: "type-show",
     };
 
     /* 哪些 type 屬於「活動」大分類 */
     const EVENT_TYPES = new Set([
-      '活動','獲獎','兵役','經紀公司','綜藝','主持','廣播劇','音樂錄影帶'
+      '活動', '獲獎', '兵役', '經紀公司', '綜藝', '主持', '廣播劇', '音樂錄影帶'
     ]);
 
     /* 子分類 tag → 主要 type 對應 */
     const SUBTAG_MAP = {
-      '팬미팅': ['팬미팅','Fan Meeting'],
-      '生咖':   ['생카','生日咖啡廳'],
-      '綜藝':   null,  // 直接比對 type
-      '主持':   null,
-      'MV':     ['MV'],
+      '팬미팅': ['팬미팅', 'Fan Meeting'],
+      '生咖': ['생카', '生日咖啡廳'],
+      '綜藝': null,  // 直接比對 type
+      '主持': null,
+      'MV': ['MV'],
       '廣播劇': null,
-      '獲獎':   null,
-      '經紀公司':null,
-      '兵役':   null,
-      '品牌活動':['時尚','代言'],
+      '獲獎': null,
+      '經紀公司': null,
+      '兵役': null,
+      '品牌活動': ['時尚', '代言'],
     };
 
-    let currentFilter    = "全部";
+    let currentFilter = "全部";
     let currentSubFilter = "全部";
 
     function setFilter(f, btn) {
-      currentFilter    = f;
+      currentFilter = f;
       currentSubFilter = "全部";
       document.querySelectorAll('.filter-btn').forEach(b => b.className = 'filter-btn');
-      const cls = f === "全部"   ? "active-all"
-                : f === "電視劇" ? "active-drama"
-                : f === "電影"   ? "active-film"
-                : f === "時裝秀" ? "active-show"
-                :                  "active-event";
+      const cls = f === "全部" ? "active-all"
+        : f === "電視劇" ? "active-drama"
+          : f === "電影" ? "active-film"
+            : f === "時裝秀" ? "active-show"
+              : "active-event";
       btn.classList.add(cls);
 
       /* 顯示/隱藏子分類列 */
@@ -249,33 +313,33 @@
       if (currentFilter === "全部") return true;
       if (currentFilter === "時裝秀") return w.type === "時裝秀";
       if (currentFilter === "電視劇") return w.type === "電視劇";
-      if (currentFilter === "電影")   return w.type === "電影";
+      if (currentFilter === "電影") return w.type === "電影";
       /* 活動大分類 */
       if (!EVENT_TYPES.has(w.type)) return false;
       if (currentSubFilter === "全部") return true;
       /* 子分類比對 */
       const subKey = currentSubFilter;
       /* type 直接對應的子分類 */
-      if (['綜藝','主持','廣播劇','獲獎','兵役','經紀公司'].includes(subKey)) {
+      if (['綜藝', '主持', '廣播劇', '獲獎', '兵役', '經紀公司'].includes(subKey)) {
         return w.type === subKey;
       }
       /* tag 對應的子分類 */
-      if (subKey === '팬미팅') return w.tags.some(t => ['팬미팅','Fan Meeting'].includes(t));
-      if (subKey === '生咖')   return w.tags.some(t => ['생카','生日咖啡廳'].includes(t));
-      if (subKey === 'MV')     return w.tags.includes('MV') || w.type === '音樂錄影帶';
-      if (subKey === '品牌活動') return w.tags.some(t => ['時尚','代言','品牌'].includes(t));
+      if (subKey === '팬미팅') return w.tags.some(t => ['팬미팅', 'Fan Meeting'].includes(t));
+      if (subKey === '生咖') return w.tags.some(t => ['생카', '生日咖啡廳'].includes(t));
+      if (subKey === 'MV') return w.tags.includes('MV') || w.type === '音樂錄影帶';
+      if (subKey === '品牌活動') return w.tags.some(t => ['時尚', '代言', '品牌'].includes(t));
       return false;
     }
 
     function render() {
       const filtered = works.filter(matchesFilter);
-      const grouped  = {};
-      filtered.forEach(w => {
+      const grouped = {};
+      filtered.forEach(function (w) {
         if (!grouped[w.year]) grouped[w.year] = [];
         grouped[w.year].push(w);
       });
 
-      const years = Object.keys(grouped).sort((a, b) => +a - +b);
+      const years = Object.keys(grouped).sort(function (a, b) { return +a - +b; });
       const tl = document.getElementById('timeline');
       tl.innerHTML = '';
 
@@ -284,42 +348,58 @@
         return;
       }
 
-      years.forEach(year => {
+      years.forEach(function (year) {
         const group = document.createElement('div');
         group.className = 'year-group';
 
         const hdr = document.createElement('div');
         hdr.className = 'year-header';
-        hdr.innerHTML = `<div class="year-label">${year}</div><div class="year-dot"></div>`;
+        hdr.innerHTML = '<div class="year-label">' + year + '</div><div class="year-dot"></div>';
         group.appendChild(hdr);
 
         const col = document.createElement('div');
         col.className = 'items-col';
 
-        grouped[year].forEach(item => {
+        grouped[year].forEach(function (item) {
           const tc = TYPE_CLASS[item.type] || 'type-event';
+
           const monthHtml = item.month
-            ? `<span class="card-month">${item.month}</span>` : '';
-          const altHtml = (item.title_kr || item.title_en)
-            ? `<div class="card-alt">${[item.title_kr, item.title_en].filter(Boolean).join(' · ')}</div>` : '';
+            ? '<span class="card-month">' + item.month + '</span>'
+            : '';
+
+          let altParts = [];
+          if (item.title_kr) altParts.push(item.title_kr);
+          if (item.title_en) altParts.push(item.title_en);
+          const altHtml = altParts.length
+            ? '<div class="card-alt">' + altParts.join(' · ') + '</div>'
+            : '';
+
           const roleHtml = item.role
-            ? `<div class="card-role">▸ ${item.role}</div>` : '';
-          const tagsHtml = item.tags.length
-            ? `<div class="card-tags">${item.tags.map(t => `<span class="tag">#${t}</span>`).join('')}</div>` : '';
+            ? '<div class="card-role">&#9658; ' + item.role + '</div>'
+            : '';
+
+          let tagsHtml = '';
+          if (item.tags && item.tags.length) {
+            const tagSpans = item.tags.map(function (t) {
+              return '<span class="tag">#' + t + '</span>';
+            }).join('');
+            tagsHtml = '<div class="card-tags">' + tagSpans + '</div>';
+          }
 
           const card = document.createElement('div');
-          card.className = `work-card ${tc}`;
-          card.innerHTML = `
-            <div class="card-top">
-              <span class="type-badge ${tc}">${item.type}</span>
-              <div class="card-body">
-                <div class="card-title">${monthHtml}${item.title}</div>
-                ${altHtml}
-                ${roleHtml}
-                <div class="card-desc">${item.desc}</div>
-                ${tagsHtml}
-              </div>
-            </div>`;
+          card.className = 'work-card ' + tc;
+          card.innerHTML =
+            '<div class="card-top">' +
+            '<span class="type-badge ' + tc + '">' + item.type + '</span>' +
+            '<div class="card-body">' +
+            '<div class="card-title">' + monthHtml + item.title + '</div>' +
+            altHtml +
+            roleHtml +
+            '<div class="card-desc">' + item.desc + '</div>' +
+            tagsHtml +
+            '</div>' +
+            '</div>';
+
           col.appendChild(card);
         });
 
@@ -329,7 +409,156 @@
     }
 
     render();
-  </script>
+
+
+
+
+    function setSubFilter(f, btn) {
+      currentSubFilter = f;
+      document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    }
+
+    function matchesFilter(w) {
+      if (currentFilter === "全部") return true;
+      if (currentFilter === "時裝秀") return w.type === "時裝秀";
+      if (currentFilter === "電視劇") return w.type === "電視劇";
+      if (currentFilter === "電影") return w.type === "電影";
+      /* 活動大分類 */
+      if (!EVENT_TYPES.has(w.type)) return false;
+      if (currentSubFilter === "全部") return true;
+      /* 子分類比對 */
+      const subKey = currentSubFilter;
+      /* type 直接對應的子分類 */
+      if (['綜藝', '主持', '廣播劇', '獲獎', '兵役', '經紀公司'].includes(subKey)) {
+        return w.type === subKey;
+      }
+      /* tag 對應的子分類 */
+      if (subKey === '팬미팅') return w.tags.some(t => ['팬미팅', 'Fan Meeting'].includes(t));
+      if (subKey === '生咖') return w.tags.some(t => ['생카', '生日咖啡廳'].includes(t));
+      if (subKey === 'MV') return w.tags.includes('MV') || w.type === '音樂錄影帶';
+      if (subKey === '品牌活動') return w.tags.some(t => ['時尚', '代言', '品牌'].includes(t));
+      return false;
+    }
+
+    function render() {
+      const filtered = works.filter(matchesFilter);
+      const grouped = {};
+      filtered.forEach(function (w) {
+        if (!grouped[w.year]) grouped[w.year] = [];
+        grouped[w.year].push(w);
+      });
+
+      const years = Object.keys(grouped).sort(function (a, b) { return +a - +b; });
+      const tl = document.getElementById('timeline');
+      tl.innerHTML = '';
+
+      if (!years.length) {
+        tl.innerHTML = '<div style="text-align:center;padding:60px 0;color:rgba(240,232,208,0.28);font-size:13px;letter-spacing:0.2em;">— 暫無資料 —</div>';
+        return;
+      }
+
+      years.forEach(function (year) {
+        const group = document.createElement('div');
+        group.className = 'year-group';
+
+        const hdr = document.createElement('div');
+        hdr.className = 'year-header';
+        hdr.innerHTML = '<div class="year-label">' + year + '</div><div class="year-dot"></div>';
+        group.appendChild(hdr);
+
+        const col = document.createElement('div');
+        col.className = 'items-col';
+
+        grouped[year].forEach(function (item) {
+          const tc = TYPE_CLASS[item.type] || 'type-event';
+
+          const monthHtml = item.month
+            ? '<span class="card-month">' + item.month + '</span>'
+            : '';
+
+          let altParts = [];
+          if (item.title_kr) altParts.push(item.title_kr);
+          if (item.title_en) altParts.push(item.title_en);
+          const altHtml = altParts.length
+            ? '<div class="card-alt">' + altParts.join(' · ') + '</div>'
+            : '';
+
+          const roleHtml = item.role
+            ? '<div class="card-role">&#9658; ' + item.role + '</div>'
+            : '';
+
+          let tagsHtml = '';
+          if (item.tags && item.tags.length) {
+            const tagSpans = item.tags.map(function (t) {
+              return '<span class="tag">#' + t + '</span>';
+            }).join('');
+            tagsHtml = '<div class="card-tags">' + tagSpans + '</div>';
+          }
+
+          const card = document.createElement('div');
+          card.className = 'work-card ' + tc;
+          card.innerHTML =
+            '<div class="card-top">' +
+            '<span class="type-badge ' + tc + '">' + item.type + '</span>' +
+            '<div class="card-body">' +
+            '<div class="card-title">' + monthHtml + item.title + '</div>' +
+            altHtml +
+            roleHtml +
+            '<div class="card-desc">' + item.desc + '</div>' +
+            tagsHtml +
+            '</div>' +
+            '</div>';
+
+          col.appendChild(card);
+        });
+
+        group.appendChild(col);
+        tl.appendChild(group);
+      });
+    }
+
+    render();
+  
+const i18n = {
+  zh: {
+    'page-title': '作品年表',
+    'page-range': '2006 — 2026',
+    'tl-end': '∞ 持續更新中',
+  },
+  en: {
+    'page-title': 'Filmography',
+    'page-range': '2006 — 2026',
+    'tl-end': '∞ Continuously updated',
+  },
+  ko: {
+    'page-title': '작품 연보',
+    'page-range': '2006 — 2026',
+    'tl-end': '∞ 계속 업데이트 중',
+  },
+};
+
+function setLang(lang) {
+  const labels = { zh:'繁中', en:'EN', ko:'한국어' };
+  document.getElementById('langLabel').textContent = labels[lang] || lang;
+  const dict = Object.assign({}, i18n.zh, i18n[lang] || {});
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+}
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) {
+    document.getElementById('langMenu').classList.remove('open');
+  }
+});
+
+</script>
 </body>
 
 </html>

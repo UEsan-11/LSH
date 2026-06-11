@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-hant">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -108,6 +108,33 @@
   @media (max-width: 480px) {
     .cards-grid { grid-template-columns: 1fr; }
   }
+  /* 語言下拉 */
+  .lang-dropdown { position: relative; }
+  .lang-globe-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid rgba(240,232,208,0.18);
+    border-radius: 3px; padding: 6px 10px;
+    color: var(--text2); cursor: pointer;
+    font-size: 11px; letter-spacing: 0.1em;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s;
+  }
+  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: rgba(17,17,24,0.98); border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden; min-width: 100px; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-menu.open { display: block; }
+  .lang-menu button {
+    display: block; width: 100%; padding: 10px 16px;
+    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
+    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; text-align: left;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
+  }
+  .lang-menu button:last-child { border-bottom: none; }
+  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }
 </style>
 </head>
 <body>
@@ -122,14 +149,33 @@
     <li><a href="gifts.html">GIFTS</a></li>
     <li><a href="archive.html" class="active">ARCHIVE</a></li>
   </ul>
+  <div class="lang-dropdown" id="langDropdown">
+    <button class="lang-globe-btn" onclick="toggleLangMenu()" aria-label="語言切換">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+        <ellipse cx="8" cy="8" rx="3" ry="7" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="1" y1="6" x2="15" y2="6" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="1" y1="10" x2="15" y2="10" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <span id="langLabel">繁中</span>
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="opacity:0.5">
+        <path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="lang-menu" id="langMenu">
+      <button onclick="setLang('zh'); toggleLangMenu()">繁中</button>
+      <button onclick="setLang('en'); toggleLangMenu()">EN</button>
+      <button onclick="setLang('ko'); toggleLangMenu()">한국어</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HEADER -->
 <header class="header">
   <div class="header-tag">LEE SOO-HYUK · 이수혁</div>
-  <h1 class="header-title">응원어 · 應援語</h1>
+  <h1 class="header-title" data-i18n="page-title">응원어 · 應援語</h1>
   <div class="header-rule"></div>
-  <div class="header-sub">繁中 · EN · 한국어 · 日本語</div>
+  <div class="header-sub" data-i18n="page-sub">繁中 · EN · 한국어 · 日本語</div>
 </header>
 
 <!-- CATEGORY TABS -->
@@ -144,7 +190,7 @@
 <!-- CARDS -->
 <div class="cards-wrap" id="cardsWrap"></div>
 
-<footer>LSH · 豹 · 2006 –</footer>
+<footer>LSH · 豹 · 2010 –</footer>
 
 <script>
 const cheers = [
@@ -401,6 +447,41 @@ function render() {
 }
 
 render();
+
+const i18n = {
+  zh: {
+    'page-title': '응원어 · 應援語',
+    'page-sub':   '繁中 · EN · 한국어 · 日本語',
+  },
+  en: {
+    'page-title': 'Fan Phrases · 응원어',
+    'page-sub':   'Traditional Chinese · EN · Korean · Japanese',
+  },
+  ko: {
+    'page-title': '응원어 · 應援語',
+    'page-sub':   '번체 중국어 · EN · 한국어 · 일본어',
+  },
+};
+
+function setLang(lang) {
+  const labels = { zh:'繁中', en:'EN', ko:'한국어' };
+  document.getElementById('langLabel').textContent = labels[lang] || lang;
+  const dict = Object.assign({}, i18n.zh, i18n[lang] || {});
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+}
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) {
+    document.getElementById('langMenu').classList.remove('open');
+  }
+});
+
 </script>
 </body>
 </html>
