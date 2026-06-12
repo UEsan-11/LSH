@@ -1,0 +1,469 @@
+/* ── about.css ── */
+
+/* ── about 專屬 ── */
+
+    /* HERO 小版（非全螢幕） */
+    .about-hero {
+      padding: 120px 48px 64px;
+      border-bottom: 1px solid var(--gold-line);
+      display: grid;
+      grid-template-columns: 1fr 1px 1.4fr;
+      gap: 0 56px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .about-divider {
+      background: var(--gold-line);
+    }
+
+    /* 左側 Profile */
+    .profile-photo {
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--gold-line);
+      background: var(--bg3);
+      position: relative;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      opacity: 0.9;
+    }
+
+    .profile-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .profile-photo-placeholder svg {
+      opacity: 0.1;
+    }
+
+    .profile-photo-placeholder span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text3);
+    }
+
+    /* 右側文字 */
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .about-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+
+    .about-name-kr {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      color: #f8f0dd;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .about-name-en {
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      color: var(--text3);
+      margin-bottom: 28px;
+    }
+
+    .about-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+      margin-bottom: 28px;
+    }
+
+    /* Profile list */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 24px;
+      margin-bottom: 32px;
+    }
+
+    .profile-item {}
+
+    .profile-key {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+
+    .profile-val {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+    }
+
+    /* 豹標記 */
+    .leopard-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(226, 201, 126, 0.3);
+      border-radius: 3px;
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.8;
+      letter-spacing: 0.15em;
+      margin-top: 4px;
+      background: rgba(226, 201, 126, 0.05);
+    }
+
+    /* ── BIO SECTION ── */
+    .bio-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.65;
+      margin-bottom: 24px;
+    }
+
+    .bio-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
+    .bio-tab {
+      padding: 8px 20px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text3);
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .bio-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .bio-text {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text2);
+      letter-spacing: 0.05em;
+      max-width: 680px;
+      display: none;
+    }
+
+    .bio-text.active {
+      display: block;
+    }
+
+    .bio-text strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .bio-text em {
+      color: var(--gold);
+      font-style: normal;
+      opacity: 0.85;
+    }
+
+    /* ── LEOPARD STORY ── */
+    .leopard-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 48px 64px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
+    .leopard-card {
+      background: rgba(226, 201, 126, 0.04);
+      border: 1px solid rgba(226, 201, 126, 0.2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 28px 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .leopard-icon {
+      font-size: 40px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .leopard-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .leopard-body {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.9;
+      letter-spacing: 0.04em;
+    }
+
+    .leopard-body em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── PHOTO GRID ── */
+    .gallery-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .photo-cell {
+      aspect-ratio: 3/4;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--gold-line);
+      background: var(--bg3);
+      position: relative;
+    }
+
+    .photo-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+      transition: opacity 0.3s, transform 0.4s;
+    }
+
+    .photo-cell:hover img {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
+    .photo-cell-ph {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .photo-cell-ph svg {
+      opacity: 0.1;
+    }
+
+    .photo-cell-ph span {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text3);
+    }
+
+    /* ── BRANDS ── */
+    .brands-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--gold-line);
+    }
+
+    .brands-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .brand-tag {
+      padding: 8px 20px;
+      border: 1px solid var(--gold-line);
+      border-radius: 2px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--text2);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.2s;
+    }
+
+    .brand-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .brand-tag.highlight {
+      border-color: rgba(226, 201, 126, 0.4);
+      color: var(--gold);
+    }
+
+    /* ── HYUKMI NOTE ── */
+    .hyukmi-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 64px 48px 80px;
+    }
+
+    .hyukmi-card {
+      border: 1px solid var(--gold-line);
+      border-radius: 6px;
+      padding: 36px 40px;
+      background: rgba(255, 255, 255, 0.015);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hyukmi-card::before {
+      content: '🐆';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      font-size: 80px;
+      opacity: 0.06;
+      line-height: 1;
+    }
+
+    .hyukmi-label {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+
+    .hyukmi-text {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text2);
+      letter-spacing: 0.05em;
+      max-width: 600px;
+    }
+
+    .hyukmi-text em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .hyukmi-sig {
+      margin-top: 24px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--text3);
+    }
+
+    .hyukmi-sig span {
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 48px;
+        gap: 32px;
+      }
+
+      .about-divider {
+        display: none;
+      }
+
+      .profile-photo {
+        max-width: 240px;
+        margin: 0 auto;
+      }
+
+      .bio-section,
+      .leopard-section,
+      .gallery-section,
+      .brands-section,
+      .hyukmi-section {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* 語言下拉 */
+  .lang-dropdown { position: relative; }
+  .lang-globe-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: 1px solid rgba(240,232,208,0.18);
+    border-radius: 3px; padding: 6px 10px;
+    color: var(--text2); cursor: pointer;
+    font-size: 11px; letter-spacing: 0.1em;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s;
+  }
+  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-menu {
+    display: none; position: absolute; top: calc(100% + 8px); right: 0;
+    background: rgba(17,17,24,0.98); border: 1px solid var(--gold-line);
+    border-radius: 4px; overflow: hidden; min-width: 100px; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-menu.open { display: block; }
+  .lang-menu button {
+    display: block; width: 100%; padding: 10px 16px;
+    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
+    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
+    cursor: pointer; text-align: left;
+    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
+  }
+  .lang-menu button:last-child { border-bottom: none; }
+  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }

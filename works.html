@@ -11,63 +11,13 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;600&family=Noto+Serif+TC:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <style>
-    /* ── 時裝秀專用色 ── */
-    :root {
-      --show-c: #e2b87e;
-      --show-bg: rgba(226, 184, 126, 0.14);
-      --show-br: rgba(226, 184, 126, 0.38);
-    }
-
-    /* 時裝秀 card */
-    .work-card.type-show {
-      border-color: var(--show-br);
-      border-left-color: var(--show-c);
-    }
-
-    .type-badge.type-show {
-      color: var(--show-c);
-      background: var(--show-bg);
-      border-color: var(--show-br);
-    }
-
-    .filter-btn.active-show {
-      border-color: var(--show-c);
-      background: var(--show-bg);
-      color: var(--show-c);
-    }
-    /* 語言下拉 */
-  .lang-dropdown { position: relative; }
-  .lang-globe-btn {
-    display: flex; align-items: center; gap: 6px;
-    background: none; border: 1px solid rgba(240,232,208,0.18);
-    border-radius: 3px; padding: 6px 10px;
-    color: var(--text2); cursor: pointer;
-    font-size: 11px; letter-spacing: 0.1em;
-    font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s;
-  }
-  .lang-globe-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .lang-menu {
-    display: none; position: absolute; top: calc(100% + 8px); right: 0;
-    background: rgba(17,17,24,0.98); border: 1px solid var(--gold-line);
-    border-radius: 4px; overflow: hidden; min-width: 100px; z-index: 200;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  }
-  .lang-menu.open { display: block; }
-  .lang-menu button {
-    display: block; width: 100%; padding: 10px 16px;
-    background: none; border: none; border-bottom: 1px solid rgba(240,232,208,0.06);
-    color: var(--text2); font-size: 12px; letter-spacing: 0.12em;
-    cursor: pointer; text-align: left;
-    font-family: 'Noto Sans KR', sans-serif; transition: all 0.15s;
-  }
-  .lang-menu button:last-child { border-bottom: none; }
-  .lang-menu button:hover { background: var(--gold-dim); color: var(--gold); }
-</style>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/works.css"/>
 </head>
 
 <body>
+
+<script src="assets/js/lsh-ask.js"></script>
 
   <nav class="site-nav">
     <a class="nav-logo" href="index.html">이수혁</a>
@@ -123,7 +73,7 @@
     <button class="sub-btn" onclick="setSubFilter('MV', this)">🎵 MV</button>
     <button class="sub-btn" onclick="setSubFilter('廣播劇', this)">📻 廣播劇</button>
     <button class="sub-btn" onclick="setSubFilter('獲獎', this)">🏆 獲獎</button>
-    <button class="sub-btn" onclick="setSubFilter('經紀公司', this)">🏢 經紀公司</button>
+    <button class="sub-btn" onclick="setSubFilter('經紀', this)">🏢 經紀</button>
     <button class="sub-btn" onclick="setSubFilter('兵役', this)">🪖 兵役</button>
     <button class="sub-btn" onclick="setSubFilter('品牌活動', this)">💎 品牌活動</button>
   </div>
@@ -179,67 +129,69 @@
       { year: 2009, title: "《戀愛小說》MV", title_kr: "〈연애소설〉", title_en: "Love Story MV", type: "音樂錄影帶", desc: "Gavy NJ 音樂錄影帶出演。", tags: ["MV"] },
       { year: 2010, title: "《It Hurts》MV", title_kr: "〈아파〉", title_en: "It Hurts MV", type: "音樂錄影帶", desc: "2NE1 音樂錄影帶出演。", tags: ["MV"] },
 
-      { year: 2010, month: "11/4", title: "《依帕內瑪少年》", title_kr: "이파네마 소년", title_en: "The Boy from Ipanema", type: "電影", role: "-", desc: "文藝電影，演員初期代表作。", tags: ["文藝", "初期代表作"] },
+      { year: 2010, month: "11/4", title: "《이파네마소년/依帕內瑪少年》", title_kr: "이파네마 소년", title_en: "The Boy from Ipanema", type: "電影", role: "-", desc: "文藝電影，演員初期代表作。", tags: ["文藝", "初期代表作"] },
 
       { year: 2011, title: "《White Christmas》", title_kr: "화이트 크리스마스", title_en: "White Christmas", type: "電視劇", role: "尹秀 / 윤수 / Yoon Soo", desc: "陰鬱心理校園劇，建立病嬌美男形象的重要作品。", tags: ["心理劇", "病嬌美男"] },
       { year: 2011, title: "《吸血鬼偶像》", title_kr: "뱀파이어 아이돌", title_en: "Vampire Idol", type: "電視劇", role: "李洙赫 / 이수혁", desc: "情境喜劇，少見搞笑演出。", tags: ["喜劇"] },
 
-      { year: 2012, title: "《車警官》", title_kr: "차형사", title_en: "Runway Cop", type: "電影", role: "金善浩 / 김선호 / Kim Sun-ho", desc: "模特圈喜劇電影。", tags: ["喜劇"] },
+      { year: 2012, title: "《차형사/ 醜男大作戰》", title_kr: "차형사", title_en: "Runway Cop", type: "電影", role: "金善浩 / 김선호 / Kim Sun-ho", desc: "模特圈喜劇電影。", tags: ["喜劇"] },
       { year: 2012, title: "《Whoz That Girl》MV", title_kr: "〈Whoz That Girl〉", title_en: "Whoz That Girl MV", type: "音樂錄影帶", desc: "EXID 音樂錄影帶出演。", tags: ["MV"] },
 
-      { year: 2013, title: "sidusHQ", title_kr: "싸이더스HQ", title_en: "sidusHQ", type: "經紀公司", desc: "早期所屬公司。", tags: ["公司"] },
+      { year: 2013, title: "sidusHQ", title_kr: "싸이더스HQ", title_en: "sidusHQ", type: "經紀", desc: "早期所屬公司。", tags: ["公司"] },
       { year: 2013, title: "《鯊魚》", title_kr: "상어", title_en: "Shark", type: "電視劇", role: "金秀賢 / 김수현", desc: "與 Kim Nam-gil 合作。", tags: ["配角"] },
-      { year: 2013, title: "《恐怖故事2》", title_kr: "무서운 이야기 2", title_en: "Horror Stories 2", type: "電影", role: "-", desc: "驚悚短篇作品。", tags: ["驚悚"] },
+      { year: 2013, title: "《무서운이야기 2 / 恐怖故事2》", title_kr: "무서운 이야기 2", title_en: "Horror Stories 2", type: "電影", role: "-", desc: "驚悚短篇作品。", tags: ["驚悚"] },
       { year: 2013, title: "《Falling In Love》MV", title_kr: "〈Falling In Love〉", title_en: "Falling In Love MV", type: "音樂錄影帶", desc: "2NE1 音樂錄影帶出演。", tags: ["MV"] },
       { year: 2013, title: "《Style Log Season 1》", title_kr: "스타일로그 시즌1", title_en: "Style Log Season 1", type: "主持", desc: "與洪宗玄共同主持。", tags: ["主持"] },
 
-      { year: 2014, title: "Star J Entertainment", title_kr: "스타제이엔터테인먼트", title_en: "Star J Entertainment", type: "經紀公司", desc: "2014—2017 所屬公司。", tags: ["公司"] },
+      { year: 2014, title: "Star J Entertainment", title_kr: "스타제이엔터테인먼트", title_en: "Star J Entertainment", type: "經紀", desc: "2014—2017 所屬公司。", tags: ["公司"] },
       { year: 2014, title: "《高校處世王》", title_kr: "고교처세왕", title_en: "High School King of Savvy", type: "電視劇", role: "劉振宇 / 유진우 / Yoo Jin-woo", desc: "冷帥財閥氣場開始成形。", tags: ["財閥", "冷帥"] },
       { year: 2014, title: "《有理的愛》", title_kr: "일리있는 사랑", title_en: "Valid Love", type: "電視劇", role: "金俊 / 김준 / Kim Jun", desc: "感性成熟角色。", tags: ["感性"] },
       { year: 2014, title: "第10屆堤川國際音樂電影節", title_kr: "제10회 제천국제음악영화제", title_en: "10th Jecheon International Music & Film Festival", type: "主持", desc: "開幕典禮主持。", tags: ["主持"] },
       { year: 2014, title: "Korea Best Dresser 演員部門 最佳著裝獎", title_kr: "코리아 베스트 드레서 배우 부문 베스트 드레서상", title_en: "Korea Best Dresser - Best Dressed Actor", type: "獲獎", desc: "演員部門最佳著裝獎。", tags: ["獲獎"] },
       { year: 2014, title: "亞洲電影大獎 新人獎", title_kr: "아시안 필름 어워즈 신인상", title_en: "Asian Film Awards - Newcomer Award", type: "獲獎", desc: "新人獎。", tags: ["獲獎"] },
 
-      { year: 2015, title: "《夜行書生》", title_kr: "밤을 걷는 선비", title_en: "Scholar Who Walks the Night", type: "電視劇", role: "鬼 / 귀 / Gwi", desc: "飾演吸血鬼反派『鬼』，經典代表角色之一，很多人因此入坑。", tags: ["吸血鬼", "反派", "經典"] },
+      { year: 2015, title: "《밤을걷는선비 / 夜行書生》", title_kr: "밤을 걷는 선비", title_en: "Scholar Who Walks the Night", type: "電視劇", role: "鬼 / 귀 / Gwi", desc: "飾演吸血鬼反派『鬼』，經典代表角色之一，很多人因此入坑。", tags: ["吸血鬼", "反派", "經典"] },
       { year: 2015, title: "MBC演技大賞 男子新人獎", title_kr: "MBC 연기대상 남자 신인상", title_en: "MBC Drama Awards - Best New Actor", type: "獲獎", desc: "憑《夜行書生》獲得迷你劇部門男子新人獎。", tags: ["獲獎", "夜行書生"] },
 
       { year: 2016, title: "《好運羅曼史》", title_kr: "운빨로맨스", title_en: "Lucky Romance", type: "電視劇", role: "崔建旭 / 최건욱 / Choi Gun-wook", desc: "溫柔科技宅男角色。", tags: ["浪漫"] },
       { year: 2016, title: "《住在我家的男人》", title_kr: "우리 집에 사는 남자", title_en: "Sweet Stranger and Me", type: "電視劇", role: "權德奉 / 권덕봉 / Kwon Deok-bong", desc: "主演作品。", tags: ["主演"] },
 
-      { year: 2017, title: "YG Entertainment", title_kr: "YG엔터테인먼트", title_en: "YG Entertainment", type: "經紀公司", desc: "2017—2025 所屬公司。", tags: ["公司"] },
+      { year: 2017, title: "YG Entertainment", title_kr: "YG엔터테인먼트", title_en: "YG Entertainment", type: "經紀", desc: "2017—2025 所屬公司。", tags: ["公司"] },
       { year: 2017, month: "08/10", title: "入伍", title_kr: "입대", title_en: "Military Enlistment", type: "兵役", desc: "以公益勤務要員身份服役。", tags: ["兵役"] },
 
-      { year: 2019, month: "07", title: "退伍", title_kr: "전역", title_en: "Military Discharge", type: "兵役", desc: "完成兵役義務。", tags: ["兵役"] },
+      { year: 2019, month: "JUL", title: "退伍", title_kr: "전역", title_en: "Military Discharge", type: "兵役", desc: "完成兵役義務。", tags: ["兵役"] },
 
-      { year: 2020, title: "《Born Again／重生》", title_kr: "본 어게인", title_en: "Born Again", type: "電視劇", role: "車亨彬 / 金秀赫", desc: "前世今生懸疑愛情劇。", tags: ["懸疑", "愛情", "主演"] },
+      { year: 2020, title: "《본어게인 ／ 重生》", title_kr: "본 어게인", title_en: "Born Again", type: "電視劇", role: "車亨彬 / 金秀赫", desc: "前世今生懸疑愛情劇。", tags: ["懸疑", "愛情", "主演"] },
       { year: 2020, title: "《物以類聚》", title_kr: "끼리끼리", title_en: "Birds of a Feather", type: "綜藝", desc: "固定嘉賓出演。", tags: ["綜藝"] },
 
-      { year: 2021, title: "《Pipeline 管線》", title_kr: "파이프라인", title_en: "Pipeline", type: "電影", role: "建宇 / 건우 / Gun-woo", desc: "犯罪動作電影。", tags: ["犯罪", "動作"] },
-      { year: 2021, title: "《某一天滅亡來到我家門前》", title_kr: "어느 날 우리 집 현관으로 멸망이 들어왔다", title_en: "Doom at Your Service", type: "電視劇", role: "車主益 / 차주익 / Cha Joo-ik", desc: "出版社室長，名場面超多，海外人氣大增。", tags: ["奇幻", "人氣", "主演"] },
+      { year: 2021, title: "《파이프라인 / 管道》", title_kr: "파이프라인", title_en: "Pipeline", type: "電影", role: "建宇 / 건우 / Gun-woo", desc: "犯罪動作電影。", tags: ["犯罪", "動作"] },
+      { year: 2021, title: "《어느날우리집현관으로멸망이들어왔다 / 某一天滅亡來到我家門前》", title_kr: "어느 날 우리 집 현관으로 멸망이 들어왔다", title_en: "Doom at Your Service", type: "電視劇", role: "車主益 / 차주익 / Cha Joo-ik", desc: "出版社室長，名場面超多，海外人氣大增。", tags: ["奇幻", "人氣", "主演"] },
       { year: 2021, title: "《鄉下西式快餐》", title_kr: "시고르 경양식", title_en: "Country Life of Gen-Z", type: "綜藝", desc: "固定嘉賓出演。", tags: ["綜藝"] },
 
-      { year: 2022, title: "《還有明天》", title_kr: "내일", title_en: "Tomorrow", type: "電視劇", role: "朴重吉 / 박중길 / Park Joong-gil", desc: "飾演死神組長朴重吉，粉絲人氣高峰角色之一。", tags: ["奇幻", "人氣高峰"] },
+      { year: 2022, title: "《내일 / 還有明天》", title_kr: "내일", title_en: "Tomorrow", type: "電視劇", role: "朴重吉 / 박중길 / Park Joong-gil", desc: "飾演死神組長朴重吉，粉絲人氣高峰角色之一。", tags: ["奇幻", "人氣高峰"] },
       { year: 2022, title: "《歡迎光臨休南洞書店》", title_kr: "어서 오세요, 휴남동 서점입니다", title_en: "Welcome to Hyunam-dong Bookshop", type: "廣播劇", role: "玄勝宇 / 현승우", desc: "Millie's Library 廣播劇出演。", tags: ["廣播劇"] },
 
       { year: 2023, title: "時尚活動・品牌代言", title_kr: "패션 활동 · 브랜드 앰배서더", title_en: "Fashion Events & Brand Ambassador", type: "活動", desc: "持續維持高級精品形象，活躍於時尚圈。", tags: ["時尚", "代言"] },
       { year: 2023, title: "《不要結婚，要同居》", title_kr: "결혼 말고 동거", title_en: "Living Together Without Marriage", type: "綜藝", desc: "主持節目。", tags: ["綜藝", "主持"] },
 
-      { year: 2024, title: "《于氏王后》", title_kr: "우씨왕후", title_en: "Queen Woo", type: "電視劇", role: "高發岐 / 고발기", desc: "古裝權力鬥爭劇，帝王氣場很強。", tags: ["古裝", "權謀", "主演"] },
+      { year: 2024, title: "《우씨왕후/于氏王后》", title_kr: "우씨왕후", title_en: "Queen Woo", type: "電視劇", role: "高發岐 / 고발기", desc: "古裝權力鬥爭劇，帝王氣場很強。", tags: ["古裝", "權謀", "主演"] },
       { year: 2024, title: "《Project 7》", title_kr: "프로젝트 7", title_en: "Project 7", type: "綜藝", desc: "選秀節目主持人。", tags: ["綜藝", "主持"] },
 
-      { year: 2025, month: "07/14", title: "Saram Entertainment", title_kr: "사람엔터테인먼트", title_en: "Saram Entertainment", type: "經紀公司", desc: "離開 YG Entertainment，正式簽約新公司。", tags: ["公司", "轉簽"] },
-      { year: 2025, title: "《파란／Lost》", title_kr: "파란", title_en: "Lost", type: "電影", role: "-", desc: "心理懸疑電影。", tags: ["心理", "懸疑"] },
-      { year: 2025, title: "《S LINE》", title_kr: "S라인", title_en: "S LINE", type: "電視劇", role: "韓志昱 / 한지욱 / Han Ji-wook", desc: "黑暗奇幻題材，話題度很高。", tags: ["黑暗奇幻", "話題", "主演"] },
-      { year: 2025, month: "11/21", title: "杭州粉絲見面會", title_kr: "항저우 팬미팅", title_en: "Hangzhou Fan Meeting", type: "活動", desc: "時隔10年的官方粉絲見面會 #1。", tags: ["팬미팅", "Fan Meeting"] },
+      { year: 2025, month: "05/04", title: "Dolce & Gabbana 旗艦店開幕", title_kr: "돌체앤가바나 플래그십 오프닝", title_en: "Dolce & Gabbana flagship opening at BELLAVITA", type: "活動", desc: "D&G 台北 BELLAVITA 旗艦店開幕活動。", tags: ["時尚", "品牌活動"] },
+      { year: 2025, month: "11/06", title: "2025 臺北時裝週", title_kr: "2025 타이베이 패션위크", title_en: "2025 Taipei Fashion Week", type: "活動", desc: "台北時裝週活動出席。", tags: ["時尚"] },
+      { year: 2025, month: "07/14", title: "Saram Entertainment", title_kr: "사람엔터테인먼트", title_en: "Saram Entertainment", type: "經紀", desc: "離開 YG Entertainment，正式簽約新公司。", tags: ["公司", "轉簽"] },
+      { year: 2025, title: "《파란 ／ Lost》", title_kr: "파란", title_en: "Lost", type: "電影", role: "-", desc: "心理懸疑電影。", tags: ["心理", "懸疑"] },
+      { year: 2025, title: "《S라인 / S LINE》", title_kr: "S라인", title_en: "S LINE", type: "電視劇", role: "韓志昱 / 한지욱 / Han Ji-wook", desc: "黑暗奇幻題材，話題度很高。", tags: ["黑暗奇幻", "話題", "主演"] },
+      { year: 2025, month: "08/30", title: "杭州見面會", title_kr: "항저우 팬미팅", title_en: "Hangzhou Fan Meeting", type: "活動", desc: "時隔10年的官方粉絲見面會 #1。", tags: ["팬미팅", "Fan Meeting"] },
 
-      { year: 2026, month: "01/28", title: "《Sister》", title_kr: "시스터", title_en: "Sister", type: "電影", role: "泰洙", desc: "黑暗犯罪題材，挑戰全新反派形象。", tags: ["犯罪", "反派"] },
-      { year: 2026, title: "《訂閱男友》", title_kr: "구독남친", title_en: "Monthly Boyfriend", type: "電視劇", role: "崔時宇 / 최시우", desc: "Netflix 特別出演。", tags: ["Netflix", "特別出演"] },
-      { year: 2026, title: "《銀河大酒店》", title_kr: "은하수 호텔", title_en: "Galaxy Hotel", type: "電視劇", role: "白基 / 백기", desc: "Netflix 待播作品。", tags: ["Netflix", "待播", "主演"] },
-      { year: 2026, title: "《女皇的後宮們》", title_kr: "여왕의 후궁들", title_en: "The Queen's Court", type: "電視劇", role: "未公開", desc: "tvN 待播作品。", tags: ["待播", "主演"] },
+      { year: 2026, month: "01/28", title: "《시스터 / Sister》", title_kr: "시스터", title_en: "Sister", type: "電影", role: "泰洙", desc: "黑暗犯罪題材，挑戰全新反派形象。", tags: ["犯罪", "反派"] },
+      { year: 2026, month: "03/06", title: "《訂閱男友》", title_kr: "구독남친", title_en: "Monthly Boyfriend", type: "電視劇", role: "崔時宇 / 최시우", desc: "Netflix 特別出演。", tags: ["Netflix", "特別出演"] },
+      { year: 2026, title: "《은하수호텔 / 銀河大酒店》", title_kr: "은하수 호텔", title_en: "Galaxy Hotel", type: "電視劇", role: "白基 / 백기", desc: "Netflix 待播作品。", tags: ["Netflix", "待播", "主演"] },
+      { year: 2026, title: "《여왕의후궁들 / 女皇的後宮》", title_kr: "여왕의 후궁들", title_en: "The Queen's Court", type: "電視劇", role: "未公開", desc: "tvN 待播作品。", tags: ["待播", "主演"] },
       { year: 2026, title: "《Dealer》", title_kr: "딜러", title_en: "Dealer", type: "電視劇", role: "趙俊 / 조준", desc: "Netflix 待播作品。", tags: ["Netflix", "待播", "主演"] },
-      { year: 2026, month: "05/30", title: "上海粉絲見面會", title_kr: "상하이 팬미팅", title_en: "Shanghai Fan Meeting", type: "活動", desc: "官方粉絲見面會 #2。", tags: ["팬미팅", "Fan Meeting"] },
+      { year: 2026, month: "05/30", title: "上海見面會", title_kr: "상하이 팬미팅", title_en: "Shanghai Fan Meeting", type: "活動", desc: "官方粉絲見面會 #2。", tags: ["팬미팅", "Fan Meeting"] },
       { year: 2026, month: "05/31", title: "弘大生日咖啡廳", title_kr: "홍대 생일카페", title_en: "Hongdae Birthday Cafe Event", type: "活動", desc: "韓國粉絲小型慶生活動。", tags: ["생카", "生日咖啡廳"] },
-      { year: 2026, month: "06/11", title: "MESSIKA 珠寶大使活動", title_kr: "메시카 주얼리 앰배서더", title_en: "MESSIKA Jewelry Ambassador Event", type: "活動", desc: "珠寶品牌 MESSIKA 大使活動。", tags: ["時尚", "大使", "品牌活動"] },
+      { year: 2026, month: "06/11", title: "MESSIKA new Opening at HK", title_kr: "메시카 주얼리 앰배서더", title_en: "MESSIKA Jewelry Ambassador Event", type: "活動", desc: "珠寶品牌 MESSIKA 大使活動。", tags: ["時尚", "大使", "品牌活動"] },
     ];
 
     /* 主分類對應 CSS class */
@@ -249,7 +201,7 @@
       活動: "type-event",
       獲獎: "type-event",
       兵役: "type-event",
-      經紀公司: "type-event",
+      經紀: "type-event",
       綜藝: "type-event",
       主持: "type-event",
       廣播劇: "type-event",
@@ -259,7 +211,7 @@
 
     /* 哪些 type 屬於「活動」大分類 */
     const EVENT_TYPES = new Set([
-      '活動', '獲獎', '兵役', '經紀公司', '綜藝', '主持', '廣播劇', '音樂錄影帶'
+      '活動', '獲獎', '兵役', '經紀', '綜藝', '主持', '廣播劇', '音樂錄影帶'
     ]);
 
     /* 子分類 tag → 主要 type 對應 */
@@ -271,7 +223,7 @@
       'MV': ['MV'],
       '廣播劇': null,
       '獲獎': null,
-      '經紀公司': null,
+      '經紀': null,
       '兵役': null,
       '品牌活動': ['時尚', '代言'],
     };
@@ -320,7 +272,7 @@
       /* 子分類比對 */
       const subKey = currentSubFilter;
       /* type 直接對應的子分類 */
-      if (['綜藝', '主持', '廣播劇', '獲獎', '兵役', '經紀公司'].includes(subKey)) {
+      if (['綜藝', '主持', '廣播劇', '獲獎', '兵役', '經紀'].includes(subKey)) {
         return w.type === subKey;
       }
       /* tag 對應的子分類 */
@@ -339,7 +291,14 @@
         grouped[w.year].push(w);
       });
 
-      const years = Object.keys(grouped).sort(function (a, b) { return +a - +b; });
+      Object.keys(grouped).forEach(function (year) {
+        grouped[year].sort(function (a, b) {
+          const ma = a.month ? parseInt(a.month.split('/')[0]) * 100 + parseInt(a.month.split('/')[1]) : 0;
+          const mb = b.month ? parseInt(b.month.split('/')[0]) * 100 + parseInt(b.month.split('/')[1]) : 0;
+          return ma - mb;
+        });
+      });
+
       const tl = document.getElementById('timeline');
       tl.innerHTML = '';
 
@@ -386,10 +345,16 @@
             tagsHtml = '<div class="card-tags">' + tagSpans + '</div>';
           }
 
+          const thumbHtml = (item.img && (item.type === '電視劇' || item.type === '電影'))
+            ? '<div class="card-thumb"><img src="' + item.img + '" alt="' + item.title + '" loading="lazy"/></div>'
+            : '';
+
           const card = document.createElement('div');
           card.className = 'work-card ' + tc;
           card.innerHTML =
             '<div class="card-top">' +
+            thumbHtml +
+            '<div style="flex:1;min-width:0;">' +
             '<span class="type-badge ' + tc + '">' + item.type + '</span>' +
             '<div class="card-body">' +
             '<div class="card-title">' + monthHtml + item.title + '</div>' +
@@ -397,6 +362,7 @@
             roleHtml +
             '<div class="card-desc">' + item.desc + '</div>' +
             tagsHtml +
+            '</div>' +
             '</div>' +
             '</div>';
 
@@ -431,7 +397,7 @@
       /* 子分類比對 */
       const subKey = currentSubFilter;
       /* type 直接對應的子分類 */
-      if (['綜藝', '主持', '廣播劇', '獲獎', '兵役', '經紀公司'].includes(subKey)) {
+      if (['綜藝', '主持', '廣播劇', '獲獎', '兵役', '經紀'].includes(subKey)) {
         return w.type === subKey;
       }
       /* tag 對應的子分類 */
@@ -450,6 +416,14 @@
         grouped[w.year].push(w);
       });
 
+      // 排序用的除了year 加上month
+      Object.keys(grouped).forEach(function (year) {
+        grouped[year].sort(function (a, b) {
+          const ma = a.month ? parseInt(a.month.split('/')[0]) * 100 + parseInt(a.month.split('/')[1]) : 0;
+          const mb = b.month ? parseInt(b.month.split('/')[0]) * 100 + parseInt(b.month.split('/')[1]) : 0;
+          return ma - mb;
+        });
+      });
       const years = Object.keys(grouped).sort(function (a, b) { return +a - +b; });
       const tl = document.getElementById('timeline');
       tl.innerHTML = '';
@@ -497,10 +471,16 @@
             tagsHtml = '<div class="card-tags">' + tagSpans + '</div>';
           }
 
+          const thumbHtml = (item.img && (item.type === '電視劇' || item.type === '電影'))
+            ? '<div class="card-thumb"><img src="' + item.img + '" alt="' + item.title + '" loading="lazy"/></div>'
+            : '';
+
           const card = document.createElement('div');
           card.className = 'work-card ' + tc;
           card.innerHTML =
             '<div class="card-top">' +
+            thumbHtml +
+            '<div style="flex:1;min-width:0;">' +
             '<span class="type-badge ' + tc + '">' + item.type + '</span>' +
             '<div class="card-body">' +
             '<div class="card-title">' + monthHtml + item.title + '</div>' +
@@ -508,6 +488,7 @@
             roleHtml +
             '<div class="card-desc">' + item.desc + '</div>' +
             tagsHtml +
+            '</div>' +
             '</div>' +
             '</div>';
 
@@ -520,45 +501,45 @@
     }
 
     render();
-  
-const i18n = {
-  zh: {
-    'page-title': '作品年表',
-    'page-range': '2006 — 2026',
-    'tl-end': '∞ 持續更新中',
-  },
-  en: {
-    'page-title': 'Filmography',
-    'page-range': '2006 — 2026',
-    'tl-end': '∞ Continuously updated',
-  },
-  ko: {
-    'page-title': '작품 연보',
-    'page-range': '2006 — 2026',
-    'tl-end': '∞ 계속 업데이트 중',
-  },
-};
 
-function setLang(lang) {
-  const labels = { zh:'繁中', en:'EN', ko:'한국어' };
-  document.getElementById('langLabel').textContent = labels[lang] || lang;
-  const dict = Object.assign({}, i18n.zh, i18n[lang] || {});
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    const key = el.dataset.i18n;
-    if (dict[key] !== undefined) el.innerHTML = dict[key];
-  });
-}
-function toggleLangMenu() {
-  document.getElementById('langMenu').classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  const dd = document.getElementById('langDropdown');
-  if (dd && !dd.contains(e.target)) {
-    document.getElementById('langMenu').classList.remove('open');
-  }
-});
+    const i18n = {
+      zh: {
+        'page-title': '作品年表',
+        'page-range': '2006 — 2026',
+        'tl-end': '∞ 持續更新中',
+      },
+      en: {
+        'page-title': 'Filmography',
+        'page-range': '2006 — 2026',
+        'tl-end': '∞ Continuously updated',
+      },
+      ko: {
+        'page-title': '작품 연보',
+        'page-range': '2006 — 2026',
+        'tl-end': '∞ 계속 업데이트 중',
+      },
+    };
 
-</script>
+    function setLang(lang) {
+      const labels = { zh: '繁中', en: 'EN', ko: '한국어' };
+      document.getElementById('langLabel').textContent = labels[lang] || lang;
+      const dict = Object.assign({}, i18n.zh, i18n[lang] || {});
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        const key = el.dataset.i18n;
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+    }
+    function toggleLangMenu() {
+      document.getElementById('langMenu').classList.toggle('open');
+    }
+    document.addEventListener('click', function (e) {
+      const dd = document.getElementById('langDropdown');
+      if (dd && !dd.contains(e.target)) {
+        document.getElementById('langMenu').classList.remove('open');
+      }
+    });
+
+  </script>
 </body>
 
 </html>
