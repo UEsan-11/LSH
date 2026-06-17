@@ -20,12 +20,18 @@
       <a class="nav-logo" href="index.html">
         <img src="assets/images/LSH_logo_g.png" alt="LSH" class="nav-logo-img">
       </a>
-      <ul class="nav-links">
+
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">이수혁</a></li>
         <li><a href="about.html">ABOUT</a></li>
         <li><a href="works.html">WORKS</a></li>
         <li><a href="cheers.html">CHEERS</a></li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+
       <div class="nav-icons">
         <div class="lang-dropdown" id="langDropdown">
           <button class="lang-globe-btn" onclick="toggleLangMenu()" aria-label="語言切換">
@@ -161,6 +167,18 @@
   </button>
 
   <script>
+
+    /* 漢堡選單 */
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open');
+      });
+    }
+
+
     /* ══════════════════
        靜態預覽資料
        ══════════════════ */

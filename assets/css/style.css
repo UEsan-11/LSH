@@ -43,36 +43,38 @@ body {
 .page-wrap {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 10%;
+  padding: 0 20%;
 }
 
 /* ── NAV ── */
 .site-nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   height: 62px;
-  background: rgba(10, 10, 15, 0.95);
+  background: rgba(10,10,15,0.95);
   overflow: visible;
 }
 
 .nav-inner {
   height: 100%;
-  max-width: 1500px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 28px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  padding: 0 clamp(16px, 4vw, 60px);
+  display: flex;
   align-items: center;
   box-sizing: border-box;
+  gap: 5px;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
   line-height: 0;
+  font-size: 0;
+  flex-shrink: 0;
+  margin-right: 4px;
+  text-decoration: none;
 }
 
 .nav-logo-img {
@@ -82,94 +84,91 @@ body {
   mix-blend-mode: lighten;
 }
 
+/* ── NAV LINKS ── */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 5px;
   list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-left: 18px;
+  margin: 0; padding: 0;
+  flex-shrink: 1;
 }
 
 .nav-links a {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.22em;
-  color: rgba(240, 232, 208, 0.5);
+  letter-spacing: 0.18em;
+  color: rgba(240,232,208,0.5);
   text-decoration: none;
-  transition: color 0.2s ease;
+  padding: 4px 8px;
+  transition: color 0.2s;
 }
 
 .nav-links a:hover,
-.nav-links a.active {
-  color: var(--gold);
-}
-
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  margin-left: 0;
-  flex-shrink: 0;
-}
-
-.nav-icon-btn,
-.lang-globe-btn {
-  width: auto;
-  height: auto;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  color: rgba(240, 232, 208, 0.45);
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.nav-icon-btn:hover,
-.lang-globe-btn:hover {
-  color: var(--gold);
-  background: transparent;
-  transform: translateY(-1px);
-}
+.nav-links a.active { color: var(--gold); }
 
 /* ── NAV ICONS ── */
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 2px;
-  margin-left: 40px;
+  gap: 5px;
+  margin-left: auto;
   flex-shrink: 0;
+  min-width: max-content;
 }
 
-.nav-icon-btn {
+.nav-icon-btn,
+.lang-globe-btn {
+  flex: 0 0 36px;
+  width: 36px; height: 36px;
+  padding: 0; border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(240,232,208,0.45);
+  cursor: pointer;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: rgba(240, 232, 208, 0.45);
-  cursor: pointer;
-  padding: 0;
+  transition: color 0.2s;
   -webkit-appearance: none;
   appearance: none;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
-  background
 }
 
-.nav-icon-btn:hover {
-  color: var(--gold);
-  background: none;
+.nav-icon-btn:hover,
+.lang-globe-btn:hover { color: var(--gold); }
+
+.nav-icon-btn svg,
+.lang-globe-btn svg { display: block; flex-shrink: 0; }
+
+/* ── HAMBURGER（手機專用，預設隱藏）── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: rgba(240,232,208,0.6);
+  transition: all 0.25s ease;
+  border-radius: 1px;
+}
+
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* ── LANG DROPDOWN ── */
@@ -789,59 +788,53 @@ footer a:hover {
 }
 
 /* ── RESPONSIVE ── */
+
+/* 平板（768–1023px）*/
+@media (max-width: 1023px) {
+  .nav-links { gap: 2px; }
+  .nav-links a { font-size: 10px; padding: 4px 6px; letter-spacing: 0.12em; }
+  .nav-logo-img { height: 42px; }
+}
+
+/* 手機（< 768px）*/
+@media (max-width: 767px) {
+  .nav-hamburger { display: flex; }
+  .nav-icons { margin-left: 0; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 62px; left: 0; right: 0;
+    background: rgba(10,10,15,0.98);
+    border-top: 1px solid var(--gold-line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 16px 0 24px;
+    z-index: 99;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 32px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid rgba(240,232,208,0.05);
+  }
+
+  .nav-logo-img { height: 36px; }
+}
+
+/* Timeline 手機 */
 @media (max-width: 480px) {
-  .nav-inner {
-    padding: 0 24px;
-  }
-
-  .tl-axis {
-    left: calc(24px + 46px);
-  }
-
-  .year-label {
-    width: 46px;
-    padding-right: 14px;
-  }
-
-  .items-col {
-    padding-left: 60px;
-  }
-
-  .tl-end {
-    padding-left: 60px;
-  }
-}
-
-/* FIX 1: header 右上 icon 不被切 */
-.site-nav {
-  overflow: visible;
-}
-
-.nav-inner {
-  box-sizing: border-box;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 10%);
-  /* 左側空白就是這個 */
-}
-
-.nav-links {
-  flex-shrink: 1;
-}
-
-.nav-icons {
-  min-width: max-content;
-}
-
-.nav-icon-btn,
-.lang-globe-btn {
-  flex: 0 0 40px;
-}
-
-.nav-icon-btn svg,
-.lang-globe-btn svg {
-  display: block;
-  flex-shrink: 0;
+  .tl-axis { left: calc(24px + 46px); }
+  .year-label { width: 46px; padding-right: 14px; }
+  .items-col { padding-left: 60px; }
+  .tl-end { padding-left: 60px; }
 }
 
 /* FIX 2: 首頁 GALLERY 左右滑 */
@@ -901,32 +894,6 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
-  .nav-inner {
-    padding: 0 12px;
-  }
-
-  .nav-logo {
-    margin-right: 10px;
-    font-size: 13px;
-    letter-spacing: 0.18em;
-  }
-
-  .nav-links {
-    gap: 10px;
-  }
-
-  .nav-links a {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-  }
-
-  .nav-icon-btn,
-  .lang-globe-btn {
-    width: 34px;
-    height: 34px;
-    flex-basis: 34px;
-  }
-
   .carousel-track-wrap {
     width: calc(100% - 32px);
   }
